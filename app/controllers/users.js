@@ -4,7 +4,10 @@ const models = require('../models');
 const User = models.User;
 
 users.get('/', (req, res) => {
-  res.render('index');
+  User.findAll().then((allUser) => {
+    let ctx = {users: allUser};
+    res.render('users/index.handlebars', ctx);
+  });
 });
 
 users.get('/new', (req, res) => {
