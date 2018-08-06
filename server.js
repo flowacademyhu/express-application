@@ -9,4 +9,12 @@ app.set('views', './app/views');
 const users = require('./app/controllers/users');
 app.use('/users', users);
 
+// const kutyafule = express.Router();
+
+// kutyafule.get('/kecske/hegyi', (req, res) => {
+//   res.send('mekk');
+// });
+
+// app.use('/kakukk', kutyafule);
+
 app.listen(8080);

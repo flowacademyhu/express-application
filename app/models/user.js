@@ -1,17 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define('User', {
-    username: DataTypes.STRING,
-    firstname: DataTypes.STRING,
-    lastname: DataTypes.STRING,
-    email: DataTypes.STRING,
-    encryptedPassword: DataTypes.STRING,
-    role: {
-      type: DataTypes.ENUM,
-      values: ['normal', 'admin'],
-      defaultValue: 'normal'
-    }
-  }, {
-    tableName: 'users',
-    timestamps: false
-  });
+  var User = sequelize.define('User', {
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    email: DataTypes.STRING
+  }, {});
+  User.associate = function(models) {
+    // associations can be defined here
+  };
+  return User;
 };
