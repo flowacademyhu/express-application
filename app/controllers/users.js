@@ -32,9 +32,9 @@ users.post('/create', (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email
   }).then(user => {
-    console.log(User);
+    res.status(200).redirect('/users');
   }).catch(error => {
-    console.log(error);
+    res.status(500).json(error);
   });
 });
 
