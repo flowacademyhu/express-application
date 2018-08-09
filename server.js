@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir: './app/views/layouts'}));
 app.set('view engine', 'handlebars');
@@ -14,13 +17,5 @@ app.use('/users', users);
 
 const api = require('./app/controllers/api');
 app.use('/api', api);
-
-// const kutyafule = express.Router();
-
-// kutyafule.get('/kecske/hegyi', (req, res) => {
-//   res.send('mekk');
-// });
-
-// app.use('/kakukk', kutyafule);
 
 app.listen(8080);
