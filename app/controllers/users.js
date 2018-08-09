@@ -27,7 +27,17 @@ users.get('/:id', (req, res) => {
 // Create
 users.post('/create', (req, res) => {
   // console.log(JSON.stringify(req, undefined, 2));
+  createOrUpdate(req, res);
+});
+
+// Update
+users.put('/:id/update', (req, res) => {
+  createOrUpdate(req, res);
+});
+
+const createOrUpdate = (req, res) => {
   User.create({
+    id: req.body.id ? req.body.id : null,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email
@@ -36,6 +46,6 @@ users.post('/create', (req, res) => {
   }).catch(error => {
     res.status(500).json(error);
   });
-});
+};
 
 module.exports = users;
