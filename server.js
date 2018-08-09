@@ -12,6 +12,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/users', users);
 
+const api = require('./app/controllers/api');
+app.use('/api', api);
+
 // const kutyafule = express.Router();
 
 // kutyafule.get('/kecske/hegyi', (req, res) => {
