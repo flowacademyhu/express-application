@@ -1,0 +1,12 @@
+<form method="POST" action="/users/{{user.id}}?_method=put">
+  <label for="firstName">First name</label>
+  <input type="text" name="firstName" value="{{user.firstName}}">
+
+  <label for="lastName">Last name</label>
+  <input type="text" name="lastName" value="{{user.lastName}}">
+
+  <label for="email">Email</label>
+  <input type="text" name="email" value="{{user.email}}">
+  
+  <button type="submit">Update</button>
+</form>

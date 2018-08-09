@@ -6,38 +6,27 @@ const User = models.User;
 // Index
 users.get('/', (req, res) => {
   User.findAll().then((allUser) => {
-    let ctx = {users: allUser};
+    let ctx = { users: allUser };
     res.render('users/index.handlebars', ctx);
   });
 });
 
 // New
 users.get('/new', (req, res) => {
-  res.render('new');
+  res.render('users/new.handlebars');
 });
 
 // Show
 users.get('/:id', (req, res) => {
   User.findById(req.params.id).then((userRecord) => {
-    let ctx = {user: userRecord};
+    let ctx = { user: userRecord };
     res.render('users/show.handlebars', ctx);
   });
 });
 
 // Create
-users.post('/create', (req, res) => {
-  // console.log(JSON.stringify(req, undefined, 2));
-  createOrUpdate(req, res);
-});
-
-// Update
-users.put('/:id/update', (req, res) => {
-  createOrUpdate(req, res);
-});
-
-const createOrUpdate = (req, res) => {
+users.post('/', (req, res) => {
   User.create({
-    id: req.body.id ? req.body.id : null,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email
@@ -46,6 +35,23 @@ const createOrUpdate = (req, res) => {
   }).catch(error => {
     res.status(500).json(error);
   });
-};
+});
+
+// Edit
+users.get('/:id/edit', (req, res) => {
+  User.findById(req.params.id).then((userRecord) => {
+    let ctx = { user: userRecord };
+    res.render('users/edit.handlebars', ctx);
+  });
+});
+
+// Update
+users.put('/:id', (req, res) => {
+  User.findById(req.params.id).then((userRecord) => {
+    userRecord.update(req.body).then((updatedUserRecord) => {
+      res.redirect('/users');
+    });
+  });
+});
 
 module.exports = users;
