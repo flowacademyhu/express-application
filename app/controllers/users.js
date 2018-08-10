@@ -10,15 +10,19 @@ users.get('/', (req, res) => {
   });
 });
 
+//Index
 users.get('/new', (req, res) => {
   res.render('new');
 });
 
+//New
 users.get('/:id', (req, res) => {
   User.findById(req.params.id).then((userRecord) => {
     let ctx = {user: userRecord};
     res.render('users/show.handlebars', ctx);
   });
 });
+
+
 
 module.exports = users;
