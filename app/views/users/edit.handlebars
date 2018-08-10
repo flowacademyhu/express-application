@@ -1,0 +1,21 @@
+<div class="boxok mx-auto">
+<form method="POST" action="/users/{{user.id}}?_method=put">
+  <div class="form-group">
+    <label for="exampleInputEmail1">First name:</label>
+    <input name="firstName" type="text" value="{{user.firstName}}" class="form-control" id="exampleInputEmail1">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Last name:</label>
+    <input name="lastName" type="text" value="{{user.lastName}}" class="form-control" id="exampleInputEmail1">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address:</label>
+    <input name="email" type="email" value="{{user.email}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password:</label>
+    <input name="encryptedPassword" value="{{user.encryptedPassword}}" type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <button type="submit" class="btn btn-light">Change</button>
+</form>
+</div>

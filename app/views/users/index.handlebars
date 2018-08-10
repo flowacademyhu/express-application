@@ -1,4 +1,27 @@
 {{#each users}}
-  <h2>{{firstName}} {{lastName}} {{email}}</h2>
-  <a href="/users/{{id}}">Megjelenítés</a>
+
+<div class="row">
+  <div class="col-sm-2"><h4>{{firstName}}</h4></div>
+  <div class="col-sm-2"><h4> {{lastName}}</h4></div>
+  <div class="col-sm-5"><h4> {{email}}</h4></div>
+
+<div class="col-sm-1">
+  <a href="/users/{{id}}">
+  <button type="submit" class="btn btn-outline-dark">Show</button>
+  </a>
+</div>
+
+<div class="col-sm-1">
+  <a href="/users/{{id}}/edit">
+  <button type="submit" class="btn btn-outline-dark">Edit</button>
+  </a>
+</div>
+
+<div class="col-sm-1">
+  <form method="POST" action="/users/{{id}}?_method=delete">
+  <button type="submit" class="btn btn-outline-dark">Törlés</button>
+  </form>
+  </div>
+</div>
+
 {{/each}}

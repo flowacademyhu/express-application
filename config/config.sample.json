@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "TITOK",
+    "username": "gabor",
+    "password": "gabor",
     "database": "webapp_database",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {

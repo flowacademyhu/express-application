@@ -1,0 +1,29 @@
+body {margin: auto; }
+
+
+#logo {
+    width: 83px;
+    height: 30px;
+}
+
+.boxok {
+    margin: 20px;
+    padding: 20px; 
+    min-width: 270px;
+    max-width: 400px;
+    align-items:center; 
+    border:2px #292629 solid; 
+    color: white;
+    background: #383B43;
+}
+
+.pageDark {
+   background-color: #383B43;
+   color:white
+}
+
+.usersList {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
