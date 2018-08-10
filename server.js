@@ -17,7 +17,10 @@ app.use('/users', users);
 
 const api = require('./app/controllers/api');
 app.use('/api', api);
+<<<<<<< HEAD
 
 app.use(express.static('./public'));
+=======
+>>>>>>> 4310c8c11021fb00eb82184a302b93ee95b826d3
 
 app.listen(8080);

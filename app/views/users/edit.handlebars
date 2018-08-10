@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="boxok mx-auto">
 <form method="POST" action="/users/{{user.id}}?_method=put">
   <div class="form-group">
@@ -19,3 +20,17 @@
   <button type="submit" class="btn btn-light">Change</button>
 </form>
 </div>
+=======
+<form method="POST" action="/users/{{user.id}}?_method=put">
+  <label for="firstName">First name</label>
+  <input type="text" name="firstName" value="{{user.firstName}}">
+
+  <label for="lastName">Last name</label>
+  <input type="text" name="lastName" value="{{user.lastName}}">
+
+  <label for="email">Email</label>
+  <input type="text" name="email" value="{{user.email}}">
+  
+  <button type="submit">Update</button>
+</form>
+>>>>>>> 4310c8c11021fb00eb82184a302b93ee95b826d3
