@@ -1,33 +1,26 @@
-<!-- <form method="POST" action="/users"> 
-  <label for="firstName">First name</label>
-  <input type="text" name="firstName">
-
-  <label for="lastName">Last name</label>
-  <input type="text" name="lastName">
-
-  <label for="email">Email</label>
-  <input type="text" name="email">
+<div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
+  <form method="POST" action="/users">
+    <div class="form-group">
+      <label>First name:</label>
+      <input name="firstName" type="text" class="form-control" id="exampleInputEmail1"  placeholder="First name">
+    </div>
+    <div class="form-group">
+      <label>Last name:</label>
+      <input name="lastName" type="text" class="form-control" id="exampleInputEmail1"  placeholder="Last name">
+    </div>
+    <div class="form-group">
+      <label>Email address:</label>
+      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input name="encryptedPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+     <div class="form-group">
+      <label>Repeat Password:</label>
+        <input name="psw-repeat" type="password" placeholder="Repeat Password" class="form-control" oninput="check(this)">
+    </div>
   
-  <button type="submit">Send</button>
-</form> -->
-<div class="boxok mx-auto">
-<form method="POST" action="/users">
-  <div class="form-group">
-    <label for="exampleInputEmail1">First name:</label>
-    <input name="firstName" type="text" class="form-control" id="exampleInputEmail1"  placeholder="First name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Last name:</label>
-    <input name="lastName" type="text" class="form-control" id="exampleInputEmail1"  placeholder="Last name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address:</label>
-    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password:</label>
-    <input name="encryptedPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-light">Register</button>
-</form>
+    <button class="btn btn-success my-2 my-sm-3" type="submit">Register</button>
+  </form>
 </div>

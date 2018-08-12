@@ -1,4 +1,4 @@
-<div class="boxok mx-auto">
+<div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
 <form method="POST" action="/users/{{user.id}}?_method=put">
   <div class="form-group">
     <label for="exampleInputEmail1">First name:</label>
@@ -16,6 +16,6 @@
     <label for="exampleInputPassword1">Password:</label>
     <input name="encryptedPassword" value="{{user.encryptedPassword}}" type="password" class="form-control" id="exampleInputPassword1">
   </div>
-  <button type="submit" class="btn btn-light">Change</button>
+  <button class="btn btn-success my-2 my-sm-0" type="submit">Change</button>
 </form>
 </div>

@@ -1,27 +1,26 @@
 {{#each users}}
 
-<div class="row">
-  <div class="col-sm-2"><h4>{{firstName}}</h4></div>
-  <div class="col-sm-2"><h4> {{lastName}}</h4></div>
-  <div class="col-sm-5"><h4> {{email}}</h4></div>
+<div class="row justify-content-center align-self-center mt-2 mb-2">
 
-<div class="col-sm-1">
-  <a href="/users/{{id}}">
-  <button type="submit" class="btn btn-outline-dark">Show</button>
-  </a>
-</div>
+  <div class="btn-group col-sm-2 ml-3"><h4>{{firstName}}</h4></div>
+  <div class="btn-group col-sm-2 ml-3"><h4> {{lastName}}</h4></div>
+  <div class="btn-group col-sm-5 ml-3"><h4> {{email}}</h4></div>
+    
+  <div class="btn-group col-sm-2">
+    <a href="/users/{{id}}">
+      <button type="submit" class="btn btn-outline-success">Show</button>
+    </a>
 
-<div class="col-sm-1">
-  <a href="/users/{{id}}/edit">
-  <button type="submit" class="btn btn-outline-dark">Edit</button>
-  </a>
-</div>
+    <a href="/users/{{id}}/edit">
+      <button type="submit" class="btn btn-outline-success">Edit</button>
+    </a>
 
-<div class="col-sm-1">
-  <form method="POST" action="/users/{{id}}?_method=delete">
-  <button type="submit" class="btn btn-outline-dark">Törlés</button>
-  </form>
+    <form method="POST" action="/users/{{id}}?_method=delete">
+      <button type="submit" class="btn btn-outline-success">Törlés</button>
+    </form>
   </div>
+ 
 </div>
+ <hr style="width: 100%; color: black; height: 1px; background-color:black; padding:0; margin:0;"  />
 
 {{/each}}
