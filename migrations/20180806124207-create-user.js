@@ -7,13 +7,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      userName: {
         type: Sequelize.STRING
       },
-      firstname: {
+      role: {
+        type: Sequelize.ENUM('user', 'admin'),
+        allowNull: false
+      },
+      firstName: {
         type: Sequelize.STRING
       },
-      lastname: {
+      lastName: {
         type: Sequelize.STRING
       },
       password: {
@@ -22,7 +26,7 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      address: {
+      addressId: {
         type: Sequelize.STRING
       },
       createdAt: {
