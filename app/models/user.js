@@ -10,12 +10,14 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
     encryptedPassword: DataTypes.STRING,
-    addressId: Sequelize.STRING,
-    createdAt: Sequelize.DATE,
-    lastLoginAt: Sequelize.DATE
+    addressId: DataTypes.STRING,
+    createdAt: DataTypes.DATE,
+    lastLoginAt: Datatypes.DATE
   }, {});
   User.associate = function (models) {
     // associations can be defined here
   };
   return User;
 };
+
+
