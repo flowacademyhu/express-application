@@ -19,8 +19,11 @@ module.exports = {
       onStock: {
         type: Sequelize.INTEGER
       },
-      pictures: {
+      picturesFolder: {
         type: Sequelize.STRING
+      },
+      vat: {
+        type: Sequelize.INTEGER
       }
     });
   },
