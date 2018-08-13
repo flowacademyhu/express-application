@@ -1,45 +1,47 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Addresses', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userName: {
-        type: Sequelize.STRING
-      },
-      role: {
-        type: Sequelize.ENUM('user', 'admin'),
-        allowNull: false
-      },
-      firstName: {
-        type: Sequelize.STRING
-      },
-      lastName: {
-        type: Sequelize.STRING
-      },
-      password: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      addressId: {
-        type: Sequelize.STRING
-      },
-      createdAt: {
+      country: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
-      lastLoginAt: {
+      city: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.STRING
+      },
+      zip: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      county: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      street: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      houseNumber: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      floor: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      door: {
+        allowNull: true,
+        type: Sequelize.STRING
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('Addresses');
   }
 };
