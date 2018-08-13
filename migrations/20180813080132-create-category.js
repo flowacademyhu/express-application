@@ -8,7 +8,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       mainCategory: {
-        type: Sequelize.BOOLEAN;
+        type: Sequelize.BOOLEAN
       },
       subCategory: {
         type: Sequelize.BOOLEAN
