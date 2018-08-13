@@ -7,11 +7,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      mainCategory: {
-        type: Sequelize.BOOLEAN;
-      },
-      subCategory: {
-        type: Sequelize.BOOLEAN
+      parentId: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       name: {
         type: Sequelize.STRING
