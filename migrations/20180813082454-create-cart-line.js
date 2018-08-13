@@ -11,6 +11,12 @@ module.exports = {
       },
       quantity: {
         type: Sequelize.INTEGER
+      },
+      productId: {
+        type: Sequelize.INTEGER
+      },
+      userId: {
+        type: Sequelize.INTEGER
       }
     });
   },
