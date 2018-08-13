@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var User = sequelize.define('User', {
+  var Users = sequelize.define('User', {
     userName: DataTypes.STRING,
     role: {
       type: DatyaTypes.ENUM,
@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
     encryptedPassword: DataTypes.STRING,
-    addressId: Sequelize.STRING,
-    createdAt: Sequelize.DATE,
-    lastLoginAt: Sequelize.DATE
+    addressId: DataTypes.STRING,
+    createdAt: DataTypes.DATE,
+    lastLoginAt: Datatypes.DATE
   }, {});
   User.associate = function (models) {
     // associations can be defined here
