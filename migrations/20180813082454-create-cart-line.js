@@ -1,22 +1,21 @@
+'use strict';
+// /!w FK's
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Category', {
+    return queryInterface.createTable('CartLines', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      parentId: {
-        allowNull: false,
+      quantity: {
         type: Sequelize.INTEGER
-      },
-      name: {
-        type: Sequelize.STRING
       }
     });
   },
+
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Category');
+    return queryInterface.dropTable('CartLines');
   }
 };
