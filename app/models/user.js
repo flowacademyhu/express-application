@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Users = sequelize.define('User', {
+  var User = sequelize.define('User', {
     userName: DataTypes.STRING,
     role: {
       type: DatyaTypes.ENUM,
@@ -19,3 +19,5 @@ module.exports = (sequelize, DataTypes) => {
   };
   return User;
 };
+
+
