@@ -1,17 +1,15 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Category', {
+    return queryInterface.createTable('Categories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      mainCategory: {
-        type: Sequelize.BOOLEAN
-      },
-      subCategory: {
-        type: Sequelize.BOOLEAN
+      parentId: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       name: {
         type: Sequelize.STRING
@@ -19,6 +17,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Category');
+    return queryInterface.dropTable('Categories');
   }
 };
