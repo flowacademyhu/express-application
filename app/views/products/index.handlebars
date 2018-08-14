@@ -1,0 +1,27 @@
+{{#each products}}
+
+<div class="row justify-content-center align-self-center mt-2 mb-2">
+
+  <div class="btn-group col-sm-2 ml-3"><h4>{{name}}</h4></div>
+  <div class="btn-group col-sm-2 ml-3"><h4> {{description}}</h4></div>
+  <div class="btn-group col-sm-5 ml-3"><h4> {{price}}</h4></div>
+  <div class="btn-group col-sm-5 ml-3"><h4> {{onStock}}</h4></div>
+    
+  <div class="btn-group col-sm-2">
+    <a href="/products/{{id}}">
+      <button type="submit" class="btn btn-outline-success">Show</button>
+    </a>
+
+    <a href="/products/{{id}}/edit">
+      <button type="submit" class="btn btn-outline-success">Edit</button>
+    </a>
+
+    <form method="POST" action="/products/{{id}}?_method=delete">
+      <button type="submit" class="btn btn-outline-success">Delete</button>
+    </form>
+  </div>
+ 
+</div>
+ <hr style="width: 100%; color: black; height: 1px; background-color:black; padding:0; margin:0;"  />
+
+{{/each}}
