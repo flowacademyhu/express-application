@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   var Category = sequelize.define('Category', {
-    id: DataTypes.STRING,
     parentId: DataTypes.STRING,
     name: DataTypes.STRING
   }, {});
@@ -9,3 +8,4 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Category;
 };
+4
