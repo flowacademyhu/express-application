@@ -1,6 +1,6 @@
 const express = require('express');
 const orders = express.Router();
-const models = require('../models');
+const models = require('../../models');
 const Order = models.Order;
 
 // Index

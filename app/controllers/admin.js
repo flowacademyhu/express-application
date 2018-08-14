@@ -1,5 +1,6 @@
 const express = require('express');
 const admin = express.Router();
+const bodyParser = require('body-parser');
 
 admin.use('/admin', (req, res, extra) => {
   const isAdmin = true;
@@ -8,7 +9,14 @@ admin.use('/admin', (req, res, extra) => {
   }
 });
 
-const product = require('./admin/products');
-admin.use('/admin', product);
+const products = require('./admin/products');
+admin.use(bodyParser.urlencoded({extended: false}));
+admin.use(bodyParser.json());
+admin.use('/products', products);
+
+const orders = require('./admin/orders');
+admin.use(bodyParser.urlencoded({extended: false}));
+admin.use(bodyParser.json());
+admin.use('/orders', orders);
 
 module.exports = admin;
