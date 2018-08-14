@@ -18,6 +18,12 @@ app.use('/users', users);
 const api = require('./app/controllers/api');
 app.use('/api', api);
 
+const categories = require('./app/controllers/categories');
+app.use('/categories', categories);
+
+const products = require('./app/controllers/products');
+app.use('/products', products);
+
 app.use(express.static('./public'));
 
 app.listen(8080);
