@@ -8,15 +8,15 @@
   <div class="btn-group col-sm-5 ml-3"><h4> {{onStock}}</h4></div>
     
   <div class="btn-group col-sm-2">
-    <a href="/products/{{id}}">
+    <a href="/admin/products/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>
 
-    <a href="/products/{{id}}/edit">
+    <a href="/admin/products/{{id}}/edit">
       <button type="submit" class="btn btn-outline-success">Edit</button>
     </a>
 
-    <form method="POST" action="/products/{{id}}?_method=delete">
+    <form method="POST" action="/admin/products/{{id}}?_method=delete">
       <button type="submit" class="btn btn-outline-success">Delete</button>
     </form>
   </div>

@@ -32,7 +32,7 @@ products.post('/', (req, res) => {
     price: req.body.price,
     onStock: req.body.onStock
   }).then(product => {
-    res.status(200).redirect('/products');
+    res.status(200).redirect('/admin/products');
   }).catch(error => {
     res.status(500).json(error);
   });
@@ -50,7 +50,7 @@ products.get('/:id/edit', (req, res) => {
 products.put('/:id', (req, res) => {
   Product.findById(req.params.id).then((productRecord) => {
     productRecord.update(req.body).then((updatedProductRecord) => {
-      res.redirect('/products');
+      res.redirect('/admin/products');
     });
   });
 });
@@ -59,7 +59,7 @@ products.put('/:id', (req, res) => {
 products.delete('/:id', (req, res) => {
   Product.findById(req.params.id).then((productRecord) => {
     productRecord.destroy().then(() => {
-      res.redirect('/products');
+      res.redirect('/admin/products');
     });
   });
 });
