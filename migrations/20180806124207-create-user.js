@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userName: {
+      username: {
         type: Sequelize.STRING
       },
       role: {
@@ -33,7 +33,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      lastLoginAt: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }
