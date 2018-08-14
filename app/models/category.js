@@ -8,4 +8,3 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Category;
 };
-4

@@ -24,6 +24,14 @@ module.exports = {
       status: {
         type: Sequelize.ENUM('ordered', 'delivererd'),
         allowNull: false
+      }, 
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },
