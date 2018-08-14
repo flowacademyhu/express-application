@@ -18,6 +18,14 @@ app.use('/users', users);
 const api = require('./app/controllers/api');
 app.use('/api', api);
 
+const admin = require('./app/controllers/admin');
+app.use('/admin', admin);
+
+const products = require('./app/controllers/admin/products');
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use('/admin/products', products);
+
 app.use(express.static('./public'));
 
 app.listen(8080);
