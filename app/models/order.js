@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
-    userID: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
     email: DataTypes.STRING,
     billingAddressId: DataTypes.INTEGER,
     deliveryAddressId: DataTypes.INTEGER,
     status: {
       type: DataTypes.ENUM,
-      values: ['ordered', 'delivered'],
+      values: ['ordered', 'delivered', 'deleted'],
       defaultValue: 'ordered'
     }
   }, {});
