@@ -15,6 +15,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/users', users);
 
+const searches = require('./app/controllers/searches');
+app.use('/search', searches);
+
 const api = require('./app/controllers/api');
 app.use('/api', api);
 
