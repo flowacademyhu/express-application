@@ -1,6 +1,6 @@
 const express = require('express');
 const categories = express.Router();
-const models = require('../models');
+const models = require('../../models');
 const Category = models.Category;
 
 // Index

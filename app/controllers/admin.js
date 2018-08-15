@@ -19,4 +19,9 @@ admin.use(bodyParser.urlencoded({extended: false}));
 admin.use(bodyParser.json());
 admin.use('/orders', orders);
 
+const categories = require('./admin/categories');
+admin.use(bodyParser.urlencoded({extended: false}));
+admin.use(bodyParser.json());
+admin.use('/categories', categories);
+
 module.exports = admin;
