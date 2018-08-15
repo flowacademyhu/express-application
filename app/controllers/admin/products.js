@@ -30,7 +30,8 @@ products.post('/', (req, res) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    onStock: req.body.onStock
+    onStock: req.body.onStock,
+    categoryId: req.body.categoryId
   }).then(product => {
     res.status(200).redirect('/admin/products');
   }).catch(error => {
