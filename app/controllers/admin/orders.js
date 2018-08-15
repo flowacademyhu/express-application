@@ -11,12 +11,10 @@ orders.get('/', (req, res) => {
   });
 });
 
-/*
 // New
 orders.get('/new', (req, res) => {
   res.render('orders/new.handlebars');
 });
- */
 
 // Show
 orders.get('/:id', (req, res) => {
@@ -29,12 +27,13 @@ orders.get('/:id', (req, res) => {
 // Create
 orders.post('/', (req, res) => {
   Order.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    userId: req.body.userId,
     email: req.body.email,
-    encryptedPassword: req.body.encryptedPassword
+    billingAddressId: req.body.billingAddressId,
+    deliveryAddressId: req.body.deliveryAddressId,
+    status: req.body.status
   }).then(user => {
-    res.status(200).redirect('/orders');
+    res.status(200).redirect('/admin/orders');
   }).catch(error => {
     res.status(500).json(error);
   });
@@ -52,7 +51,7 @@ orders.get('/:id/edit', (req, res) => {
 orders.put('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     orderRecord.update(req.body).then((updatedOrderRecord) => {
-      res.redirect('/orders');
+      res.redirect('/admin/orders');
     });
   });
 });
@@ -61,7 +60,7 @@ orders.put('/:id', (req, res) => {
 orders.delete('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     orderRecord.destroy().then(() => {
-      res.redirect('/orders');
+      res.redirect('/admin/orders');
     });
   });
 });
