@@ -24,6 +24,9 @@ app.use('/categories', categories);
 const products = require('./app/controllers/products');
 app.use('/products', products);
 
+const comments = require('./app/controllers/comments');
+app.use('/comments', comments);
+
 app.use(express.static('./public'));
 
 app.listen(8080);
