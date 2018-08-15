@@ -21,7 +21,7 @@ searches.get('/', (req, res) => {
     }    
   }).then((searchedProduct) => {
     let ctx = { products: searchedProduct };
-    res.render('../views/search/index', ctx);
+    res.render('search/index', ctx);
   });
 });
 

@@ -48,6 +48,7 @@ a:hover{
     word-wrap: break-word;
     border: 1px solid black;
     
+    display: block;
 }
 .price {
     display: flex;
