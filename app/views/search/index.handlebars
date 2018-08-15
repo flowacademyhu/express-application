@@ -4,15 +4,24 @@
 
 <div class="productlist">
     <div class="productphoto">
-        <img id="productphoto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR80FK5gyEk__YsKwzzT4pVeZy2DeOXryuZ6_83KM4SkMdSG_SG"
-        />
+        {{#if pictures}}
+        <img id="productphoto" src="{{pictures}}" height="100px"/>
+        {{else}}
+        <img id="productnophoto" src="https://www.notebook-alkatresz.hu/images/nincs_kep.jpg"/>
+        {{/if}}
+
     </div>
-    <div class="details">
-        <b><font size="5em">Termék: </b>{{name}}</font>
+    <div class="details px-3">
+        <b>
+            <font size="5em">Termék: </b>{{name}}</font>
         <br>
         <b>Termékleírás: </b>{{description}}
     </div>
-    <div class="price"><b><font size="5em">{{price}} Ft</b></font></div>
+    <div class="price px-3">
+        <b>
+            <font size="5em">{{price}} Ft</b>
+        </font>
+    </div>
 </div>
 
 {{/each}}
