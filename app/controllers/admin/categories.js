@@ -32,7 +32,7 @@ categories.post('/', (req, res) => {
   Category.create({
     name: req.body.name
   }).then(category => {
-    res.status(200).redirect('/categories');
+    res.status(200).redirect('/admin/categories');
   }).catch(error => {
     res.status(500).json(error);
   });
@@ -50,7 +50,7 @@ categories.get('/:id/edit', (req, res) => {
 categories.put('/:id', (req, res) => {
   Category.findById(req.params.id).then((categoryRecord) => {
     categoryRecord.update(req.body).then((updatedCategoryRecord) => {
-      res.redirect('/categories');
+      res.redirect('/admin/categories');
     });
   });
 });
@@ -59,7 +59,7 @@ categories.put('/:id', (req, res) => {
 categories.delete('/:id', (req, res) => {
   Category.findById(req.params.id).then((categoryRecord) => {
     categoryRecord.destroy().then(() => {
-      res.redirect('/categories');
+      res.redirect('/admin/categories');
     });
   });
 });

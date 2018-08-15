@@ -5,15 +5,15 @@
   <div class="btn-group col-sm-2 ml-3"><h4>{{name}}</h4></div>
     
   <div class="btn-group col-sm-2">
-    <a href="/categories/{{id}}">
+    <a href="/admin/categories/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>
 
-    <a href="/categories/{{id}}/edit">
+    <a href="/admin/categories/{{id}}/edit">
       <button type="submit" class="btn btn-outline-success">Edit</button>
     </a>
 
-    <form method="POST" action="/categories/{{id}}?_method=delete">
+    <form method="POST" action="/admin/categories/{{id}}?_method=delete">
       <button type="submit" class="btn btn-outline-success">Törlés</button>
     </form>
   </div>
