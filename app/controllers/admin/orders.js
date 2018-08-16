@@ -47,6 +47,14 @@ orders.get('/:id/edit', (req, res) => {
   });
 });
 
+// Change Status
+orders.get('/:id/chst', (req, res) => {
+  Order.findById(req.params.id).then((orderRecord) => {
+    let ctx = { order: orderRecord };
+    res.render('orders/chst.handlebars', ctx);
+  });
+});
+
 // Update
 orders.put('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
