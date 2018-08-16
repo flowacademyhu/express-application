@@ -33,6 +33,9 @@ app.use('/products', products);
 const comments = require('./app/controllers/comments');
 app.use('/comments', comments);
 
+const cart = require('./app/controllers/cart');
+app.use('/cart', cart);
+
 app.use(express.static('./public'));
 
 app.listen(8080);
