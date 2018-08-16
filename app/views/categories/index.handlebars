@@ -1,19 +1,21 @@
-<div class="col-3 p-3 m-3 mx-auto bg-dark text-white">
-    <h4><u>Category:</u><br/>{{category.name}}</h4>
-</div>
-
-{{#each products}}
+{{#each categories}}
 
 <div class="row justify-content-center align-self-center mt-2 mb-2">
 
   <div class="btn-group col-sm-2 ml-3"><h4>{{name}}</h4></div>
-  <div class="btn-group col-sm-2 ml-3"><h4> {{price}}</h4></div>
-  <div class="btn-group col-sm-5 ml-3"><h4> {{onStock}}</h4></div>
     
   <div class="btn-group col-sm-2">
-    <a href="/products/{{id}}">
+    <a href="/admin/categories/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>
+
+    <a href="/admin/categories/{{id}}/edit">
+      <button type="submit" class="btn btn-outline-success">Edit</button>
+    </a>
+
+    <form method="POST" action="/admin/categories/{{id}}?_method=delete">
+      <button type="submit" class="btn btn-outline-success">Törlés</button>
+    </form>
   </div>
  
 </div>

@@ -15,8 +15,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/users', users);
 
+const searches = require('./app/controllers/searches');
+app.use('/search', searches);
+
 const api = require('./app/controllers/api');
 app.use('/api', api);
+
+const admin = require('./app/controllers/admin');
+app.use('/admin', admin);
 
 const categories = require('./app/controllers/categories');
 app.use('/categories', categories);
