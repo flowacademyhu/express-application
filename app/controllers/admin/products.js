@@ -2,25 +2,33 @@ const express = require('express');
 const products = express.Router();
 const models = require('../../models');
 const Product = models.Product;
+const Category = models.Category;
 
 // Index
 products.get('/', (req, res) => {
   Product.findAll().then((allProduct) => {
     let ctx = { products: allProduct };
-    res.render('products/index.handlebars', ctx);
+    res.render('products/admin/index.handlebars', ctx);
   });
 });
 
 // New
 products.get('/new', (req, res) => {
-  res.render('products/new.handlebars');
+  Category.findAll().then((allCategories) => {
+    let ctx = { categories: allCategories };
+    res.render('products/admin/new.handlebars', ctx);
+  });
 });
 
 // Show
 products.get('/:id', (req, res) => {
-  Product.findById(req.params.id).then((productRecord) => {
-    let ctx = { product: productRecord };
-    res.render('products/show.handlebars', ctx);
+  Product.findById(req.params.id).then((getProduct) => {
+    Category.findById(getProduct.categoryId).then((getCategory) => {
+      const product = getProduct;
+      const category = getCategory;
+      let ctx = { product, category };
+      res.render('products/admin/show.handlebars', ctx);
+    });
   });
 });
 
@@ -31,7 +39,8 @@ products.post('/', (req, res) => {
     description: req.body.description,
     price: req.body.price,
     onStock: req.body.onStock,
-    categoryId: req.body.categoryId
+    categoryId: req.body.id
+
   }).then(product => {
     res.status(200).redirect('/admin/products');
   }).catch(error => {
@@ -41,9 +50,13 @@ products.post('/', (req, res) => {
 
 // Edit
 products.get('/:id/edit', (req, res) => {
-  Product.findById(req.params.id).then((productRecord) => {
-    let ctx = { product: productRecord };
-    res.render('products/edit.handlebars', ctx);
+  Product.findById(req.params.id).then((getProduct) => {
+    Category.findAll().then((getCategory) => {
+      const product = getProduct;
+      const category = getCategory;
+      let ctx = { product, category };
+      res.render('products/admin/edit.handlebars', ctx);
+    });
   });
 });
 
