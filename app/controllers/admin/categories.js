@@ -7,7 +7,7 @@ const Category = models.Category;
 categories.get('/', (req, res) => {
   Category.findAll().then((allCategories) => {
     let ctx = { categories: allCategories };
-    res.render('categories/index.handlebars', ctx);
+    res.render('admins/categories/index.handlebars', ctx);
   });
 });
 
@@ -15,7 +15,7 @@ categories.get('/', (req, res) => {
 categories.get('/new', (req, res) => {
   Category.findAll().then((allCategories) => {
     let ctx = { categories: allCategories };
-    res.render('categories/new.handlebars', ctx);
+    res.render('admins/categories/new.handlebars', ctx);
   });
 });
 
@@ -23,14 +23,15 @@ categories.get('/new', (req, res) => {
 categories.get('/:id', (req, res) => {
   Category.findById(req.params.id).then((categoryRecord) => {
     let ctx = { category: categoryRecord };
-    res.render('categories/show.handlebars', ctx);
+    res.render('admins/categories/show.handlebars', ctx);
   });
 });
 
 // Create
 categories.post('/', (req, res) => {
   Category.create({
-    name: req.body.name
+    parentId: req.body.parentId,
+    name: req.body.categoryName
   }).then(category => {
     res.status(200).redirect('/admin/categories');
   }).catch(error => {
@@ -42,7 +43,7 @@ categories.post('/', (req, res) => {
 categories.get('/:id/edit', (req, res) => {
   Category.findById(req.params.id).then((categoryRecord) => {
     let ctx = { category: categoryRecord };
-    res.render('categories/edit.handlebars', ctx);
+    res.render('admins/categories/edit.handlebars', ctx);
   });
 });
 

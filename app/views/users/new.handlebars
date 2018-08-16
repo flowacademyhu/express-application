@@ -1,26 +1,30 @@
 <div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
   <form method="POST" action="/users">
+   <div class="form-group">
+      <label>Username:</label>
+      <input name="username" type="text" class="form-control" pattern="^\S{6,}$" placeholder="Username (minimum 6 characters)">
+    </div>
     <div class="form-group">
       <label>First name:</label>
-      <input name="firstName" type="text" class="form-control" id="exampleInputEmail1"  placeholder="First name">
+      <input name="firstName" type="text" class="form-control" placeholder="First name">
     </div>
     <div class="form-group">
       <label>Last name:</label>
-      <input name="lastName" type="text" class="form-control" id="exampleInputEmail1"  placeholder="Last name">
+      <input name="lastName" type="text" class="form-control" placeholder="Last name">
     </div>
     <div class="form-group">
       <label>Email address:</label>
-      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
     </div>
     <div class="form-group">
       <label>Password:</label>
-      <input name="encryptedPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input id="password" class="form-control" name="encryptedPassword" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="Password (minimum 6 characters)" required>
     </div>
-     <div class="form-group">
-      <label>Repeat Password:</label>
-        <input name="psw-repeat" type="password" placeholder="Repeat Password" class="form-control" oninput="check(this)">
+    <div class="form-group">
+      <label>Confirm password:</label>
+      <input id="password_two" class="form-control" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Verify Password" required>
     </div>
-  
     <button class="btn btn-success my-2 my-sm-3" type="submit">Register</button>
   </form>
 </div>
+
