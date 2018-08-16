@@ -29,6 +29,7 @@ orders.get('/:id', (req, res) => {
 // Create
 orders.post('/', (req, res) => {
   Order.create({
+    productId: req.body.id,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
