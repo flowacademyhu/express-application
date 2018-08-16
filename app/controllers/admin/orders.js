@@ -7,7 +7,7 @@ const Order = models.Order;
 orders.get('/', (req, res) => {
   Order.findAll().then((allOrder) => {
     let ctx = { orders: allOrder };
-    res.render('orders/index.handlebars', ctx);
+    res.render('admins/orders/index.handlebars', ctx);
   });
 });
 
@@ -20,7 +20,7 @@ orders.get('/new', (req, res) => {
 orders.get('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     let ctx = { order: orderRecord };
-    res.render('orders/show.handlebars', ctx);
+    res.render('admins/orders/show.handlebars', ctx);
   });
 });
 
@@ -43,7 +43,7 @@ orders.post('/', (req, res) => {
 orders.get('/:id/edit', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     let ctx = { order: orderRecord };
-    res.render('orders/edit.handlebars', ctx);
+    res.render('admins/orders/edit.handlebars', ctx);
   });
 });
 
