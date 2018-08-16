@@ -7,7 +7,7 @@ const Product = models.Product;
 // Show
 categories.get('/:id', (req, res) => {
   const getCategory = Category.findById(req.params.id);
-  const getProducts = Product.FindAll({where: {categoryId: req.params.id}});
+  const getProducts = Product.findAll({where: {categoryId: req.params.id}});
   Promise.all([getCategory, getProducts]).then(results => {
     const category = results[0];
     const products = results[1];

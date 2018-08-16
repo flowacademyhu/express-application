@@ -1,22 +1,18 @@
 <div class="col-3 p-3 m-3 mx-auto bg-dark text-white">
     <h4><u>Category:</u><br/>{{category.name}}</h4>
-</div>
 
 {{#each products}}
 
-<div class="row justify-content-center align-self-center mt-2 mb-2">
 
-  <div class="btn-group col-sm-2 ml-3"><h4>{{name}}</h4></div>
-  <div class="btn-group col-sm-2 ml-3"><h4> {{price}}</h4></div>
-  <div class="btn-group col-sm-5 ml-3"><h4> {{onStock}}</h4></div>
+  <h4><u></u><br/>{{name}} {{price}} Ft</h4>
     
   <div class="btn-group col-sm-2">
     <a href="/products/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>
   </div>
- 
-</div>
+
  <hr style="width: 100%; color: black; height: 1px; background-color:black; padding:0; margin:0;"  />
 
 {{/each}}
+</div>

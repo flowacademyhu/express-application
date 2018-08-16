@@ -1,6 +1,22 @@
 <div class="col-3 p-3 m-3 mx-auto bg-dark text-white">
-    <h4><u></u><br/>{{product.name}}</h4>
-    <h4><u></u><br/>{{product.price}}</h4>
+    <h3><u></u><br/>{{product.name}}</h3>
+    <h4><u></u><br/>{{product.price}} Ft</h4>
     <p><u></u><br/>{{product.description}}</p>
-    <p><u></u><br/>{{comment.comment}}</p>
+    <br>
+    <h2>Comments</h2>
+
+    {{#if user}}
+        <form method="POST" action="/comments">
+            <input type="hidden" name="productId" value={{product.id}}/>
+            <label for="comment">Comment</label>
+            <textarea name="comment"></textarea>
+            <br>
+            <input type="submit" value="Submit"/>
+        </form>
+    {{/if}}
+
+    {{#each comments}}
+    <h4><u></u><br/>{{User.username}}</h4>
+    <p><u></u>{{comment}}</p>
+    {{/each}}
 </div>
