@@ -1,12 +1,12 @@
 {{#each users}}
 
-<div class="row justify-content-center align-self-center mt-2 mb-2">
-
-  <div class="btn-group col-sm-2 ml-3"><h4>{{firstName}}</h4></div>
-  <div class="btn-group col-sm-2 ml-3"><h4> {{lastName}}</h4></div>
-  <div class="btn-group col-sm-5 ml-3"><h4> {{email}}</h4></div>
+<div class="row justify-content-center align-self-center m-2">
+  <div class="btn-group col-sm-2 md-4 lg-2 xl-2"><h5>{{username}}</h5></div>
+  <div class="btn-group col-sm-2 md-4 lg-2 xl-2"><h5>{{firstName}}</h5></div>
+  <div class="btn-group col-sm-2 md-4 lg-2 xl-2"><h5> {{lastName}}</h5></div>
+  <div class="btn-group col-sm-3 md-6 lg-3 xl-3"><h5> {{email}}</h5></div>
     
-  <div class="btn-group col-sm-2">
+  <div class="btn-group col-sm-2 md-4 lg-2 xl-2">
     <a href="/users/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>

@@ -24,7 +24,7 @@ module.exports = {
       status: {
         type: Sequelize.ENUM('ordered', 'delivered', 'deleted'),
         allowNull: false
-      },
+      }, 
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
