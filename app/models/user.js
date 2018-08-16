@@ -1,6 +1,8 @@
+const bcrypt = require('bcrypt-nodejs');
+
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
-    userName: DataTypes.STRING,
+    username: DataTypes.STRING,
     role: {
       type: DataTypes.ENUM,
       values: ['user', 'admin'],
@@ -11,13 +13,20 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     encryptedPassword: DataTypes.STRING,
     addressId: DataTypes.STRING,
-    createdAt: DataTypes.DATE,
-    lastLoginAt: DataTypes.DATE
-  }, {});
-  User.associate = function (models) {
-    // associations can be defined here
+  }, {
+    getterMethods: {
+      fullName: function () {
+        return `${this.lastName} ${this.firstName}`;
+      }
+    },
+    setterMethods: {
+      password: function (password) {
+        let encryptedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+        this.setDataValue('encryptedPassword', encryptedPassword);
+      }
+    }
+  });
+  User.associate = (models) => {
   };
   return User;
 };
-
-

@@ -3,6 +3,7 @@ const users = express.Router();
 const models = require('../models');
 const User = models.User;
 
+
 // Index
 users.get('/', (req, res) => {
   User.findAll().then((allUser) => {
@@ -27,10 +28,12 @@ users.get('/:id', (req, res) => {
 // Create
 users.post('/', (req, res) => {
   User.create({
+    username: req.body.username,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    encryptedPassword: req.body.encryptedPassword
+    password: req.body.encryptedPassword
+
   }).then(user => {
     res.status(200).redirect('/users');
   }).catch(error => {
@@ -62,6 +65,17 @@ users.delete('/:id', (req, res) => {
       res.redirect('/users');
     });
   });
+});
+
+// Login
+users.post('/login', (req, res) => {
+  User.findByUsername(req.body.username).then((userRecord) => {
+    bcrypt.compare(req.body.password, userRecord.encryptedPassword, (err,res) => {
+      res.json({
+        JWTtoken: 
+      })
+      });
+    });
 });
 
 module.exports = users;
