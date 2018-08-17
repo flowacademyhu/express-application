@@ -1,21 +1,29 @@
 <div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
 <form method="POST" action="/users/{{user.id}}?_method=put">
+   <div class="form-group">
+    <label for="exampleInputEmail1">Username:</label>
+    <input name="username" type="text" value="{{user.username}}" pattern="^\S{6,}$" class="form-control">
+  </div>
   <div class="form-group">
     <label for="exampleInputEmail1">First name:</label>
-    <input name="firstName" type="text" value="{{user.firstName}}" class="form-control" id="exampleInputEmail1">
+    <input name="firstName" type="text" value="{{user.firstName}}" class="form-control">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Last name:</label>
-    <input name="lastName" type="text" value="{{user.lastName}}" class="form-control" id="exampleInputEmail1">
+    <input name="lastName" type="text" value="{{user.lastName}}" class="form-control">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address:</label>
     <input name="email" type="email" value="{{user.email}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password:</label>
-    <input name="encryptedPassword" value="{{user.encryptedPassword}}" type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <button class="btn btn-success my-2 my-sm-0" type="submit">Change</button>
+<div class="form-group">
+  <label>Password:</label>
+  <input id="password" value="{{user.encryptedPassword}}" class="form-control" name="encryptedPassword" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="Password (minimum 6 characters)" required>
+</div>
+<div class="form-group">
+  <label>Confirm password:</label>
+  <input id="password_two" class="form-control" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Verify Password" required>
+</div>
+<button class="btn btn-success my-2 my-sm-3" type="submit">Update</button>
 </form>
 </div>
