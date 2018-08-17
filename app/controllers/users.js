@@ -2,6 +2,7 @@ const express = require('express');
 const users = express.Router();
 const models = require('../models');
 const User = models.User;
+/* const jwt = require('jsonwebtoken'); */
 
 // Index
 users.get('/', (req, res) => {
@@ -16,17 +17,18 @@ users.get('/new', (req, res) => {
   res.render('users/new.handlebars');
 });
 
+/*
 // Login
 
-// users.post('/login', (req, res) => {
-//   User.findByUsername(req.body.username).then((userRecord) => {
-//     bcrypt.compare(req.body.password, userRecord.encryptedPassword, (err,res) => {
-//       res.json({
-//         JWTtoken: jwt.sign({ foo: 'bar' }, 'shhhhh')
-//         });
-//       });
-//     });
-// });
+users.post('/login', (req, res) => {
+  User.findByUsername(req.body.username).then((userRecord) => {
+    bcrypt.compare(req.body.password, userRecord.encryptedPassword, (err,res) => {
+      res.json({
+        JWTtoken: jwt.sign({ foo: 'bar' }, 'shhhhh')
+        });
+      });
+    });
+}); */
 
 users.get('/login', (req, res) => {
   res.render('users/login.handlebars');

@@ -13,7 +13,7 @@ orders.get('/', (req, res) => {
 
 // New
 orders.get('/new', (req, res) => {
-  res.render('orders/new.handlebars');
+  res.render('admins/orders/new.handlebars');
 });
 
 // Show
@@ -51,7 +51,7 @@ orders.get('/:id/edit', (req, res) => {
 orders.get('/:id/chst', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     let ctx = { order: orderRecord };
-    res.render('orders/chst.handlebars', ctx);
+    res.render('admins/orders/chst.handlebars', ctx);
   });
 });
 
