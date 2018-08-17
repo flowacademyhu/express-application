@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
   Order.associate = function (models) {
     Order.hasMany(models.OrderLine, { foreignKey: 'orderId' });
     Order.belongsTo(models.User, { foreignKey: 'userId' });
-    Order.belongsTo(models.Address, { foreignKey: 'billingAddressId' });
-    Order.belongsTo(models.Address, { foreignKey: 'deliveryAddressId' });
+    Order.belongsTo(models.Address, { foreignKey: 'billingAddressId', as: 'billingAddress' });
+    Order.belongsTo(models.Address, { foreignKey: 'deliveryAddressId', as: 'deliveryAddress' });
   };
   return Order;
 };
