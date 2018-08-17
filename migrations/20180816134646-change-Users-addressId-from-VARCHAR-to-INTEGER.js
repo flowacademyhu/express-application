@@ -2,10 +2,10 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    queryInterface.changeColumn('Users', 'addressId', {type: Sequelize.INTEGER});
+    return queryInterface.changeColumn('Users', 'addressId', {type: Sequelize.INTEGER});
   },
 
   down: (queryInterface, Sequelize) => {
-    queryInterface.changeColumn('Users', 'addressId', {type: Sequelize.VARCHAR});
+    return queryInterface.changeColumn('Users', 'addressId', {type: Sequelize.VARCHAR});
   }
 };
