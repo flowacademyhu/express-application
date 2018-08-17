@@ -11,9 +11,24 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     encryptedPassword: DataTypes.STRING,
     addressId: DataTypes.STRING
-  }, {});
-  User.associate = function (models) {
-    // associations can be defined here
+  }, {
+    getterMethods: {
+      fullName: function () {
+        return `${this.lastName} ${this.firstName}`;
+      }
+    },
+    setterMethods: {
+      password: function (password) {
+        let encryptedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+        this.setDataValue('encryptedPassword', encryptedPassword);
+      }
+    }
+  });
+  User.associate = (models) => {
+    User.hasMany(models.CartLine, { foreignKey: 'userId' });
+    User.hasMany(models.Comment, { foreignKey: 'userId' });
+    User.hasMany(models.Order, { foreignKey: 'userId' });
+    User.belongsTo(models.Address, { foreignKey: 'addressId' });
   };
   return User;
 };
