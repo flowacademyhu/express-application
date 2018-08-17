@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Address.associate = function (models) {
     Address.hasMany(models.User, { foreignKey: 'userId' });
-    Address.hasMany(models.Order, { foreignKey: 'billingAddressId' });
-    Address.hasMany(models.Order, { foreignKey: 'deliveryAddressId' });
+    Address.hasMany(models.Order, { foreignKey: 'billingAddressId', as: 'billingAddress' });
+    Address.hasMany(models.Order, { foreignKey: 'deliveryAddressId', as: 'deliveryAddress' });
   };
   return Address;
 };
