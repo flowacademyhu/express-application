@@ -1,19 +1,19 @@
-<div class="col-3 p-3 m-3 mx-auto bg-dark text-white">
+<div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
     <h3><u></u><br/>{{product.name}}</h3>
     <h4><u></u><br/>{{product.price}} Ft</h4>
     <p><u></u><br/>{{product.description}}</p>
     <br>
     <h2>Comments</h2>
 
-    {{#if user}}
+    {{!-- {{#if user}} --}}
         <form method="POST" action="/comments">
             <input type="hidden" name="productId" value={{product.id}}/>
             <label for="comment">Comment</label>
-            <textarea name="comment"></textarea>
+            <textarea class="form-control" name="comment"></textarea>
             <br>
-            <input type="submit" value="Submit"/>
+            <button class="btn btn-success my-2 my-sm-3" type="submit">Submit</button>
         </form>
-    {{/if}}
+   {{!-- }} {{/if}} --}}
 
     {{#each comments}}
     <h4><u></u><br/>{{User.username}}</h4>

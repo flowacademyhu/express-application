@@ -60,3 +60,10 @@ a:hover{
     border: 1px solid black;
     align-items: center;
 }
+.card p {
+    color: #212529;
+}
+.card {
+    border-color: #212529;
+
+}

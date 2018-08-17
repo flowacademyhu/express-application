@@ -1,18 +1,17 @@
-<div class="col-3 p-3 m-3 mx-auto bg-dark text-white">
+<div class="text-dark p-5">
     <h4><u>Category:</u><br/>{{category.name}}</h4>
 
 {{#each products}}
-
-
-  <h4><u></u><br/>{{name}} {{price}} Ft</h4>
-    
-  <div class="btn-group col-sm-2">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top p-4" src="/images/porszivo.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{price}} Ft</p>
     <a href="/products/{{id}}">
-      <button type="submit" class="btn btn-outline-success">Show</button>
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Megtekintés</button>
     </a>
   </div>
-
+</div>
  <hr style="width: 100%; color: black; height: 1px; background-color:black; padding:0; margin:0;"  />
-
 {{/each}}
 </div>
