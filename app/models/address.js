@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     door: DataTypes.STRING
   }, {});
   Address.associate = function (models) {
-    // associations can be defined here
+    Address.hasMany(models.User, { foreignKey: 'userId' });
+    Address.hasMany(models.Order, { foreignKey: 'billingAddressId' });
+    Address.hasMany(models.Order, { foreignKey: 'deliveryAddressId' });
   };
   return Address;
 };
