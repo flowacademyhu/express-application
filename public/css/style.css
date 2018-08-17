@@ -67,3 +67,16 @@ a:hover{
     border-color: #212529;
 
 }
+.comment {
+    background-color: whitesmoke;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    width: 90%;
+}
+#image {
+    padding: 5%;
+    padding-right: 20%;
+    max-width: 500px;
+    margin: 1% auto;
+}
