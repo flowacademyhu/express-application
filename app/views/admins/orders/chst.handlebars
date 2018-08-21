@@ -1,0 +1,14 @@
+<div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
+<form method="POST" action="/admin/orders/{{order.id}}?_method=put">
+    <h4><u>ID:</u><br/>{{order.id}}</h4>
+    <h4><u>UserID:</u><br/>{{order.userId}}</h4>
+    <h4><u>Delivery Address:</u><br/>{{order.billingAddressId}}</h4>
+    <h4><u>Billing Address:</u><br/>{{order.deliveryAddressId}}</h4>
+    <h4><u>E-mail:</u><br/>{{order.email}}</h4>
+    <div class="form-group">
+      <label for="">Status:</label>
+      <input name="status" type="text" value="{{order.status}}" class="form-control">
+    </div>
+  <button class="btn btn-success my-2 my-sm-0" type="submit">Change status</button>
+</form>
+</div>

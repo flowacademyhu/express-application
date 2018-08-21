@@ -1,0 +1,18 @@
+<div class="text-dark p-5">
+    <h4><u>Category:</u><br/>{{category.name}}</h4><br>
+
+{{#each products}}
+<div class="card" style="width: 18rem;">
+  <a href="/products/{{id}}">
+    <img class="card-img-top p-4" src="/images/porszivo.png" alt="Card image cap">
+  </a>
+  <div class="card-body">
+    <h5 class="card-title text-capitalize">{{name}}</h5>
+    <p class="card-text">{{price}} Ft</p>
+    <a href="/products/{{id}}">
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Megtekintés</button>
+    </a>
+  </div>
+</div>
+{{/each}}
+</div>

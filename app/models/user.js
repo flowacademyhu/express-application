@@ -25,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   User.associate = (models) => {
+    User.hasMany(models.CartLine, { foreignKey: 'userId' });
+    User.hasMany(models.Comment, { foreignKey: 'userId' });
+    User.hasMany(models.Order, { foreignKey: 'userId' });
+    User.belongsTo(models.Address, { foreignKey: 'addressId' });
   };
   return User;
 };

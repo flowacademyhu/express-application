@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Address = sequelize.define('Addresses', {
+  var Address = sequelize.define('Address', {
     country: DataTypes.STRING,
     city: DataTypes.STRING,
     zip: DataTypes.STRING,
@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     door: DataTypes.STRING
   }, {});
   Address.associate = function (models) {
-    // associations can be defined here
+    Address.hasMany(models.User, { foreignKey: 'addressId' });
+    Address.hasMany(models.Order, { foreignKey: 'billingAddressId', as: 'billingAddress' });
+    Address.hasMany(models.Order, { foreignKey: 'deliveryAddressId', as: 'deliveryAddress' });
   };
   return Address;
 };

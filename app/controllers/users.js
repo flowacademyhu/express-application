@@ -2,6 +2,7 @@ const express = require('express');
 const users = express.Router();
 const models = require('../models');
 const User = models.User;
+/* const jwt = require('jsonwebtoken'); */
 
 // Index
 users.get('/', (req, res) => {
@@ -16,6 +17,23 @@ users.get('/new', (req, res) => {
   res.render('users/new.handlebars');
 });
 
+/*
+// Login
+
+users.post('/login', (req, res) => {
+  User.findByUsername(req.body.username).then((userRecord) => {
+    bcrypt.compare(req.body.password, userRecord.encryptedPassword, (err,res) => {
+      res.json({
+        JWTtoken: jwt.sign({ foo: 'bar' }, 'shhhhh')
+        });
+      });
+    });
+}); */
+
+users.get('/login', (req, res) => {
+  res.render('users/login.handlebars');
+});
+
 // Show
 users.get('/:id', (req, res) => {
   User.findById(req.params.id).then((userRecord) => {
@@ -24,13 +42,17 @@ users.get('/:id', (req, res) => {
   });
 });
 
+
+
 // Create
 users.post('/', (req, res) => {
   User.create({
+    username: req.body.username,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    encryptedPassword: req.body.encryptedPassword
+    password: req.body.encryptedPassword
+
   }).then(user => {
     res.status(200).redirect('/users');
   }).catch(error => {
@@ -62,6 +84,10 @@ users.delete('/:id', (req, res) => {
       res.redirect('/users');
     });
   });
+});
+
+users.get('/login', (req, res) => {
+  res.render('users/login.handlebars');
 });
 
 module.exports = users;
