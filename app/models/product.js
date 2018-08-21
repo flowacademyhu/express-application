@@ -3,14 +3,16 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     price: DataTypes.INTEGER,
+    // vat: DataTypes.INTEGER,
     onStock: DataTypes.INTEGER,
     picturesFolder: DataTypes.STRING,
     categoryId: DataTypes.INTEGER
-    //vat: DataTypes.INTEGER
   }, {});
   Product.associate = function (models) {
+    Product.hasMany(models.OrderLine, { foreignKey: 'productId' });
+    Product.hasMany(models.CartLine, { foreignKey: 'productId' });
+    Product.hasMany(models.Comment, { foreignKey: 'productId' });
     Product.belongsTo(models.Category, { foreignKey: 'categoryId' });
-    // associations can be defined here
   };
   return Product;
 };

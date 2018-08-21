@@ -13,7 +13,7 @@ products.get('/', (req, res) => {
       ]
     }).then((allProduct) => {
     let ctx = { products: allProduct };
-    res.render('products/admin/index.handlebars', ctx);
+    res.render('admins/products/index.handlebars', ctx);
   });
 });
 
@@ -21,7 +21,7 @@ products.get('/', (req, res) => {
 products.get('/new', (req, res) => {
   Category.findAll().then((allCategories) => {
     let ctx = { categories: allCategories };
-    res.render('products/admin/new.handlebars', ctx);
+    res.render('admins/products/new.handlebars', ctx);
   });
 });
 
@@ -32,7 +32,7 @@ products.get('/:id', (req, res) => {
       const product = getProduct;
       const category = getCategory;
       let ctx = { product, category };
-      res.render('products/admin/show.handlebars', ctx);
+      res.render('admins/products/show.handlebars', ctx);
     });
   });
 });
@@ -60,7 +60,7 @@ products.get('/:id/edit', (req, res) => {
       const product = getProduct;
       const category = getCategory;
       let ctx = { product, category };
-      res.render('products/admin/edit.handlebars', ctx);
+      res.render('admins/products/edit.handlebars', ctx);
     });
   });
 });

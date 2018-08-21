@@ -1,0 +1,15 @@
+{{#each itemsToRender}}
+
+<div class="row justify-content-center align-self-center mt-2 mb-2"></div>
+
+<form action="/cart"></form>
+  <div class="btn-group col-sm-2 ml-1"><h4>{{name}}</h4></div>
+  <div class="btn-group col-sm-2 ml-5"><h4>{{price}} Ft</h4></div>
+  <div class="btn-group col-sm-2 ml-5"><h4>{{vat}}% ÁFA</h4></div>
+  <div class="btn-group col-sm-2 ml-5"><input type="text" name="FirstName" value="{{quantity}}" size="4"></div>
+  <div class="btn-group col-sm-1 ml-1"><input type="submit" value="Submit"></div>
+</form>
+
+</div>
+
+{{/each}}
