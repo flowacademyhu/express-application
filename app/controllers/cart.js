@@ -7,11 +7,14 @@ const Product = models.Product;
 // Index
 cart.get('/', (req, res) => {
   CartLine.findAll({
+    where: {
+      userId: 1
+    },
     include: [
       {model: Product}
     ]
   }).then(results => {
-    res.send(results);
+    res.render('cart/index', {results});
   });
 });
 
