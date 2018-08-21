@@ -19,10 +19,10 @@
   
   <div class="dropdown">
     <label>Categories:</label>
-    <select class="ui dropdown" name="parentId">
+    <select class="ui dropdown" name="categoryId">
       {{#each category}}
-      <option value="{{id}}">{{name}}</option>
-        {{/each}}
+        <option value="{{id}}">{{name}}</option>
+      {{/each}}
     </select>
   </div>
   <button class="btn btn-success my-2 my-sm-0" type="submit">Edit</button>

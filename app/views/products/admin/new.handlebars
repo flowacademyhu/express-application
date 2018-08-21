@@ -22,7 +22,9 @@
       <select class="ui dropdown" name="id">
         <option value="">Select a category...</option>
           {{#each categories}}
+            {{#if parentId}}
               <option value="{{id}}">{{name}}</option>
+            {{/if}}
           {{/each}}
       </select>
     </div>

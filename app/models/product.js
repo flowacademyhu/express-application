@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     //vat: DataTypes.INTEGER
   }, {});
   Product.associate = function (models) {
+    Product.belongsTo(models.Category, { foreignKey: 'categoryId' });
     // associations can be defined here
   };
   return Product;

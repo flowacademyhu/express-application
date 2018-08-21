@@ -6,7 +6,12 @@ const Category = models.Category;
 
 // Index
 products.get('/', (req, res) => {
-  Product.findAll().then((allProduct) => {
+  Product.findAll(
+    {
+      include: [
+        {model: Category}
+      ]
+    }).then((allProduct) => {
     let ctx = { products: allProduct };
     res.render('products/admin/index.handlebars', ctx);
   });
