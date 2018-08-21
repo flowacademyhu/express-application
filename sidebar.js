@@ -18,7 +18,7 @@ const generate = (list, id) => {
     result += '\r\n<ul>\r\n';
     for (let i in subCategory) {
       let item = subCategory[i];
-      result += '<li><a href="/category/' + item.name + '">' + item.name + '</a>';
+      result += '<li><a href="/categories/' + item.id + '">' + item.name + '</a>';
       result += generate(list, item.id);
     }
     result += '</ul>\r\n';
