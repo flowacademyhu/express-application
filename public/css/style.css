@@ -65,7 +65,7 @@ a:hover{
 }
 .card {
     border-color: #212529;
-
+    margin: 2% auto;
 }
 .comment {
     background-color: whitesmoke;

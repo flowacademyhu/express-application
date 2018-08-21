@@ -1,7 +1,9 @@
 <div class="text-dark p-5">
     <h4><u>Category:</u><br/>{{category.name}}</h4><br>
-
+<div class="container-fluid">
+<div class="row">
 {{#each products}}
+<div class="col-lg-3">
 <div class="card" style="width: 18rem;">
   <a href="/products/{{id}}">
     <img class="card-img-top p-4" src="/images/porszivo.png" alt="Card image cap">
@@ -14,5 +16,8 @@
     </a>
   </div>
 </div>
+</div>
 {{/each}}
+</div>
+</div>
 </div>
