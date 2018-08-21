@@ -1,18 +1,50 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const cookieParser = require('cookie-parser');
+const models = require('./app/models');
 
+app.use(cookieParser());
+
+// method override
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
+// handlebars settings
 const exphbs = require('express-handlebars');
-app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir: './app/views/layouts'}));
+app.engine('handlebars', exphbs({ defaultLayout: 'main', layoutsDir: './app/views/layouts' }));
 app.set('view engine', 'handlebars');
 app.set('views', './app/views');
 
-const users = require('./app/controllers/users');
-app.use(bodyParser.urlencoded({extended: false}));
+// category sidebar
+const sidebar = require('./sidebar');
+app.use(sidebar);
+
+// bodyparser settings
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+	if (req.cookies.token) {
+		models.Token.findOne({
+			where: {
+				token: req.cookies.token
+			}
+		}).then(tokenRecord => {
+			if (!tokenRecord) next();
+			tokenRecord.getUser().then(userRecord => {
+				res.locals = res.locals || {};
+				req.user = res.locals.user = userRecord;
+				console.log(req.user);
+				next();
+			});
+		});
+	} else {
+		next();
+	}
+});
+
+const users = require('./app/controllers/users');
 app.use('/users', users);
 
 const searches = require('./app/controllers/searches');

@@ -6,15 +6,16 @@ const Comment = models.Comment;
 // Create
 comments.post('/', (req, res) => {
   Comment.create({
-    commentId: req.body.commentId,
+    productId: parseInt(req.body.productId),
     comment: req.body.comment
   }).then(comment => {
-    res.status(200).redirect('/comments');
+    res.status(200).redirect(`/products/${req.body.productId}`);
   }).catch(error => {
     res.status(500).json(error);
   });
 });
 
+/*
 // Edit
 comments.get('/:id/edit', (req, res) => {
   Comment.findById(req.params.id).then((commentRecord) => {
@@ -40,5 +41,6 @@ comments.delete('/:id', (req, res) => {
     });
   });
 });
+*/
 
 module.exports = comments;
