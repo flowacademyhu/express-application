@@ -1,8 +1,10 @@
 const express = require('express');
 const users = express.Router();
 const models = require('../models');
+const bcrypt = require('bcryptjs');
+const randomstring = require("randomstring");
 const User = models.User;
-/* const jwt = require('jsonwebtoken'); */
+const Token = models.Token;
 
 // Index
 users.get('/', (req, res) => {
@@ -17,21 +19,38 @@ users.get('/new', (req, res) => {
   res.render('users/new.handlebars');
 });
 
-/*
 // Login
-
-users.post('/login', (req, res) => {
-  User.findByUsername(req.body.username).then((userRecord) => {
-    bcrypt.compare(req.body.password, userRecord.encryptedPassword, (err,res) => {
-      res.json({
-        JWTtoken: jwt.sign({ foo: 'bar' }, 'shhhhh')
-        });
-      });
-    });
-}); */
 
 users.get('/login', (req, res) => {
   res.render('users/login.handlebars');
+});
+
+users.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      username: req.body.username
+    }
+  }).then((userRecord) => {
+    if (!userRecord) return res.redirect('/users/login');
+    console.log(req.body);
+    bcrypt.compare(req.body.password, userRecord.encryptedPassword, (err, result) => {
+      console.log(result);
+      if (result) {
+        let tokenField = randomstring.generate();
+        Token.create({
+          userId: userRecord.id,
+          token: tokenField
+        }).then(tokenRecord => {
+          res.cookie('token', tokenField);
+          console.log(tokenRecord);
+          res.redirect('/');
+        })
+    
+      } else {
+        res.redirect('/users/login');
+      }
+    });
+  });
 });
 
 // Show
@@ -41,8 +60,6 @@ users.get('/:id', (req, res) => {
     res.render('users/show.handlebars', ctx);
   });
 });
-
-
 
 // Create
 users.post('/', (req, res) => {
@@ -86,8 +103,5 @@ users.delete('/:id', (req, res) => {
   });
 });
 
-users.get('/login', (req, res) => {
-  res.render('users/login.handlebars');
-});
 
 module.exports = users;
