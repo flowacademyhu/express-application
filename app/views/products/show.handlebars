@@ -1,6 +1,34 @@
-<div class="col-3 p-3 m-3 mx-auto bg-dark text-white">
-    <h4><u></u><br/>{{product.name}}</h4>
-    <h4><u></u><br/>{{product.price}}</h4>
-    <p><u></u><br/>{{product.description}}</p>
-    <p><u></u><br/>{{comment.comment}}</p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/images/porszivo.png" class="img-responsive" id="image">
+        </div>
+        <div class="col-md-6">
+            <h3><u></u><br/>{{product.name}}</h3>
+            <h4><u></u><br/>{{product.price}} Ft</h4>
+            <p><u></u><br/>{{product.description}}</p>
+        </div>
+      </div>
+    </div>
+
+<div class="text-left p-5 mx-auto">
+
+    {{!-- {{#if user}} --}}
+        <form method="POST" action="/comments" class="col-11 mx-auto">
+            <h2>Comments</h2><br>
+            <input type="hidden" name="productId" value={{product.id}}/>
+            <textarea class="form-control" name="comment" placeholder="Write your comment here."></textarea>
+            <div class="mb-3">
+                <button class="btn btn-success my-2 my-sm-3" type="submit">Submit</button>
+            </div>
+        </form>
+   {{!-- }} {{/if}} --}}
+
+    {{#each comments}}
+    <div class="comment mx-auto">
+    <h4><u></u><br/>{{User.username}}</h4>
+    <p><u></u>{{comment}}</p>
+    </div>
+    <br>
+    {{/each}}
 </div>
