@@ -6,7 +6,6 @@ module.exports = {
       [
         {
           userId: 1,
-          email: 'sylvannas@horde.com',
           billingAddressId: 1,
           deliveryAddressId: 1,
           status: 'ordered',
@@ -15,7 +14,6 @@ module.exports = {
         },
         {
           userId: 2,
-          email: 'varok@horde.com',
           billingAddressId: 1,
           deliveryAddressId: 3,
           status: 'ordered',
@@ -23,7 +21,6 @@ module.exports = {
           updatedAt: '2018.01.01'
         }, {
           userId: 3,
-          email: 'Anduin@alliance.com',
           billingAddressId: 2,
           deliveryAddressId: 2,
           status: 'ordered',
