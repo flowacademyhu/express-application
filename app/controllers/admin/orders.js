@@ -3,20 +3,11 @@ const orders = express.Router();
 const models = require('../../models');
 const Order = models.Order;
 const User = models.User;
-const Address = models.Address;
 
 // Index
 orders.get('/', (req, res) => {
   Order.findAll({
     include: [
-      {
-        model: Address,
-        as: 'billingAddress'
-      },
-      {
-        model: Address,
-        as: 'deliveryAddress'
-      },
       { model: User }
     ]
   }).then((allOrder) => {
@@ -88,6 +79,7 @@ orders.put('/:id', (req, res) => {
   });
 });
 
+/*
 // Destroy
 orders.delete('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
@@ -95,6 +87,6 @@ orders.delete('/:id', (req, res) => {
       res.redirect('/admin/orders');
     });
   });
-});
+}); */
 
 module.exports = orders;
