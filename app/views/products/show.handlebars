@@ -1,29 +1,14 @@
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="/images/sofa.jpg" class="img-responsive" id="image">
+          <img src="{{product.picture}}" class="img-responsive" id="image">
         </div>
         <div class="col-md-6">
             <h3 class="font-weight-bold"><u></u><br/>{{product.name}}</h3>
             <p><u></u><br/>{{product.description}}</p>
             <div class="row mx-auto d-flex justify-content-between mt-5 mb-5">
                 <h4 class="font-weight-bold mr-auto"><u></u>{{product.price}} Ft</h4>
-                <div class="center pr-2">
-                    <div class="input-group">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </span>
-                    <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </span>
-                    </div>
-                </div>
+                <input type="text" class="form-control input-number text-center col-1 mr-2" value="1" min="1" max="10">
                 <a href="#">
                     <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Add to cart</button>
                 </a>
