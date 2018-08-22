@@ -160,3 +160,13 @@ a:hover{
     position: relative;
     left: 30px;
 }
+body {
+    padding-bottom: 10px;
+    height: 100%
+}
+
+footer {
+    position: static;
+    bottom: 0;
+    width: 100%
+}
