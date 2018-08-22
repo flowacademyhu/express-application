@@ -39,14 +39,29 @@ products.get('/:id', (req, res) => {
 
 // Create
 products.post('/', (req, res) => {
-  Product.create({
+  let filename = Math.random().toString(36).substr(2, 5);
+  if (req.files.image) {
+    let image = req.files.image;
+    image.mv((`./public/uploads/${filename}.jpg`), (error) => {
+      if (error) {
+        return res.send(error);
+      }
+    });
+  }
+
+  let productParams = {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
     onStock: req.body.onStock,
     categoryId: req.body.id
+  };
 
-  }).then(product => {
+  if (req.files.image) {
+    productParams.image = filename;
+  }
+
+  Product.create(productParams).then(product => {
     res.status(200).redirect('/admin/products');
   }).catch(error => {
     res.status(500).json(error);

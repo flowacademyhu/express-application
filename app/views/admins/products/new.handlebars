@@ -1,5 +1,5 @@
 <div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
-  <form method="POST" action="/admin/products">
+  <form method="POST" action="/admin/products" enctype="multipart/form-data" >
     <div class="form-group">
       <label>Name:</label>
       <input name="name" type="text" class="form-control" id="exampleInputEmail1"  placeholder="Name">
@@ -29,7 +29,13 @@
       </select>
     </div>
     
+    <div class="form-group">
+      <label>Image:</label>
+      <input type="file" name="image"/>
+    </div>
     
     <button class="btn btn-success my-2 my-sm-3" type="submit">Send</button>
-  </form>
+    </form>     
+
+
 </div>
