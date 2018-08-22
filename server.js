@@ -1,10 +1,12 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const app = express();
 const cookieParser = require('cookie-parser');
 const models = require('./app/models');
 
 app.use(cookieParser());
+app.use(fileUpload());
 
 // method override
 const methodOverride = require('method-override');
