@@ -156,6 +156,10 @@ a:hover{
     max-width: 500px;
     margin: 1% auto;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
 /*----------------------------------------------------------
 6. SIDEBAR 
 ----------------------------------------------------------*/
@@ -250,4 +254,8 @@ a:hover{
 
 login-icon {
   size: 5x;
+}
+
+.userauth {
+  text-align: center;
 }

@@ -1,4 +1,4 @@
-<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3 p-3 my-3 mx-auto bg-dark text-white row">
+<div class="userauth col-sm-5 col-md-4 col-lg-4 col-xl-3 p-3 my-3 mx-auto bg-dark text-white row">
   <form method="POST" action="/users" class="my-3 mx-auto">
    <div class="circle mx-auto bg-success">
   <i class="fas fa-user fa-4x mt-3" aria-hidden="true"></i>
@@ -29,6 +29,9 @@
       <label>Confirm password:</label>
       <input id="password_two" class="form-control" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
     </div>
+
+
+    
     <button class="btn btn-success my-2 my-sm-3" type="submit">Register</button>
   </form>
 </div>
