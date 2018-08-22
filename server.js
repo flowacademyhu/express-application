@@ -72,9 +72,9 @@ app.use('/cart', cart);
 
 app.use(express.static('./public'));
 
-/* // Index
+// Index
 app.get('/', (req, res) => {
   res.render('index.handlebars');
-}); */
+});
 
 app.listen(8080);
