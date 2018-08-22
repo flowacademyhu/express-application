@@ -9,7 +9,11 @@
 <div class="col-lg-3 col-md-6 col-sm-12">
 <div class="card shadow mx-auto">
   <a href="/products/{{id}}">
-    <img class="card-img-top" src="{{product.picture}}" alt="{{name}}">
+    {{#if picture}}
+      <img class="card-img-top" src="/uploads/{{picture}}" alt="{{name}}">
+    {{else}}
+      <img class="card-img-top" src="/images/nincs_kep.jpg" alt="{{name}}">
+    {{/if}}
   </a>
   <div class="card-body">
     <a href="/products/{{id}}">
@@ -17,9 +21,11 @@
     </a>
     <div class="row mx-auto d-flex justify-content-between">
       <h5 class="card-text p-2">{{price}} Ft</h5>
-      <a href="#">
-        <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart" title="Add to cart" alt="add to cart"></i></button>
-      </a>
+      <form method="POST" action="#">
+        <a href="#">
+          <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart" title="Add to cart" alt="add to cart"></i></button>
+        </a>
+      </form>
     </div>
   </div>
 </div>
