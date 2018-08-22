@@ -70,9 +70,6 @@ app.use('/comments', comments);
 const cart = require('./app/controllers/cart');
 app.use('/cart', cart);
 
-const checkout = require('./app/controllers/checkout');
-app.use('/checkout', checkout);
-
 app.use(express.static('./public'));
 
 app.listen(8080);
