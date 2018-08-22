@@ -1,7 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     userId: DataTypes.INTEGER,
-    email: DataTypes.STRING,
     status: {
       type: DataTypes.ENUM,
       values: ['draft', 'ordered', 'delivered', 'deleted'],

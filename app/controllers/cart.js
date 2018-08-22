@@ -3,6 +3,8 @@ const cart = express.Router();
 const models = require('../models');
 const CartLine = models.CartLine;
 const Product = models.Product;
+const Order = models.Order;
+const OrderLine = models.OrderLine;
 
 // GET items of the cart
 cart.get('/', (req, res) => {
@@ -35,5 +37,94 @@ cart.delete('/:id', (req, res) => {
     });
   });
 });
+
+// ORDER items from a cart
+cart.get('/order', (req, res) => {
+  collectCartLineItems(req.user.id)
+    .then(orderLineItems => createOrder(req.user.id)
+      .then(order => createOrderLines(orderLineItems, order)
+        .then(() => res.redirect('/cart'))));
+  // CartLine.findAll({
+  //   where: {
+  //     userId: req.user.id
+  //   },
+  //   include: [
+  //     {model: Product}
+  //   ]
+  // }).then(results => {
+  //   Order.create({
+  //     userId: req.user.id
+  //   }).then(order => {
+  //     Order.findOne({
+  //       where: {
+  //         userId: req.user.id,
+  //         status: 'draft'
+  //       }
+  //     }).then(foundOrder => {
+  //       for (let i = 0; i < results.length; i++) {
+  //         OrderLine.create({
+  //           orderId: foundOrder.id,
+  //           productId: results[i].Product.id,
+  //           unitPrice: results[i].Product.price,
+  //           quantity: results[i].quantity
+  //         }).then(ordered => {
+  //           CartLine.findById(results[i].id).then(item => {
+  //             item.destroy().then(() => {
+  //               res.redirect(`/cart`);
+  //             });
+  //           });
+  //         });
+  //       }
+  //     });
+  //   });
+  // });
+});
+
+const collectCartLineItems = (id) => {
+  return new Promise((resolve, reject) => {
+    CartLine.findAll({
+      where: {
+        userId: id
+      },
+      include: [
+        {model: Product}
+      ]
+    }).then(result => resolve(result));
+  });
+};
+
+const createOrder = (id) => {
+  return new Promise((resolve, reject) => {
+    Order.create({ userId: id }).then(() => {
+      Order.findOne({
+        where: {
+          userId: id,
+          status: 'draft'
+        }
+      }).then(foundOrder => resolve(foundOrder));
+    });
+  });
+};
+
+const createOrderLines = (orderLineItems, order) => {
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < orderLineItems.length; i++) {
+      OrderLine.create({
+        orderId: order.id,
+        productId: orderLineItems[i].Product.id,
+        unitPrice: orderLineItems[i].Product.price,
+        quantity: orderLineItems[i].quantity
+      }).then(() => {
+        CartLine.findById(orderLineItems[i].id).then(item => {
+          item.destroy();
+        });
+      });
+    }
+    Order.update({
+      status: 'ordered'
+    }, { where: { id: order.id } });
+    resolve();
+  });
+};
 
 module.exports = cart;
