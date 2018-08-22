@@ -43,12 +43,25 @@ users.post('/login', (req, res) => {
         }).then(tokenRecord => {
           res.cookie('token', tokenField);
           console.log(tokenRecord);
-          res.redirect('/');
+          res.redirect('/users'); // ha lesz nyitó oldal, akkor oda kell irányítani
         })
-    
       } else {
         res.redirect('/users/login');
       }
+    });
+  });
+});
+
+// Logout
+users.get('/logout', (req, res) => {
+  Token.findOne({
+    where: {
+      token: req.cookies.token
+    }
+  }).then((tokenRecord) => {
+    tokenRecord.destroy().then(() => {
+      res.clearCookie('token', null);
+      res.redirect('/users/login');
     });
   });
 });

@@ -1,5 +1,9 @@
-<div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
-<form method="POST" action="/users/login">
+<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3 p-3 my-3 mx-auto bg-dark text-white row">
+<form method="POST" action="/users/login" class="my-3 mx-auto">
+<div class="circle mx-auto bg-success">
+  <i class="fas fa-user fa-4x mt-3" aria-hidden="true"></i>
+</div>
+<h3 class="my-4">Member login</h3>
   <div class="form-group">
     <label>Username:</label>
     <input name="username" type="text" class="form-control">
@@ -8,6 +12,6 @@
   	<label>Password:</label>
   	<input id="password"  class="form-control" name="password" type="password">
 	</div>
-<button class="btn btn-success my-2 my-sm-3" type="submit">Login</button>
+<button class="btn btn-success my-2 my-sm-3 col-6" type="submit">Login</button>
 </form>
 </div>

@@ -20,13 +20,31 @@ module.exports = {
       lastName: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
-      },
       email: {
         type: Sequelize.STRING
       },
-      addressId: {
+      country: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      zip: {
+        type: Sequelize.STRING
+      },
+      county: {
+        type: Sequelize.STRING
+      },
+      street: {
+        type: Sequelize.STRING
+      },
+      houseNumber: {
+        type: Sequelize.STRING
+      },
+      floor: {
+        type: Sequelize.STRING
+      },
+      door: {
         type: Sequelize.STRING
       },
       createdAt: {
