@@ -17,14 +17,6 @@
 body {
     width:100vw; 
     height:100;
-<<<<<<< HEAD
-}
-
-#logo {
-    width: 83px;
-    height: 30px;
-=======
->>>>>>> development
 }
 
 a {
@@ -78,8 +70,8 @@ a:hover{
 3. BODY
 ----------------------------------------------------------*/
 
-.container {
-    width: 90vw;
+.list {
+    width: 90%;
     min-height: 100%
 }
 
@@ -127,7 +119,7 @@ a:hover{
     align-items: center;
 }
 .products {
-    width: 90%;
+    width: 80%;
 }
 .center {
     width: 115px;
@@ -156,14 +148,14 @@ a:hover{
     padding-left: 30px;
     padding-bottom: 10px;
     border-radius: 15px;
-    width: 90%;
+    width: 74%;
 }
 #image {
     padding: 0%;
     padding-right: 20%;
     max-width: 500px;
     margin: 1% auto;
-
+}
 /*----------------------------------------------------------
 6. SIDEBAR 
 ----------------------------------------------------------*/
@@ -259,8 +251,3 @@ a:hover{
 login-icon {
   size: 5x;
 }
-
-form {
-  text-align: center;
-}
-
