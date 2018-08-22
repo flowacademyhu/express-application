@@ -1,13 +1,29 @@
+    <a href="/admin/orders/filtered/deleted">
+      <button type="submit" class="btn btn-outline-success">Show: Deleted</button>
+    </a>
+
+    <a href="/admin/orders/filtered/delivered">
+      <button type="submit" class="btn btn-outline-success">Show: Delivered</button>
+    </a>
+
+    <a href="/admin/orders/filtered/ordered">
+      <button type="submit" class="btn btn-outline-success">Show: Ordered</button>
+    </a>
+
+    <a href="/admin/orders/">
+      <button type="submit" class="btn btn-outline-success">Show: All</button>
+    </a>
+
 {{#each orders}}
 
-<div class="row justify-content-center align-self-center mt-2 mb-2">
+<div method="GET" action="/admin/orders/{{order.status}}?_method=get" class="row justify-content-center align-self-center mt-2 mb-2">
 
-  <div class="btn-group col-sm-1 ml-1"><h4>{{id}}</h4></div>
-  <div class="btn-group col-sm-3 ml-3"><h4> {{email}}</h4></div>
-  <div class="btn-group col-sm-1 ml-1"><h4> {{deliveryAddressId}}</h4></div>
-  <div class="btn-group col-sm-2 ml-3"><h4> {{status}}</h4></div>
+  <div class="btn-group col-md-1 ml-1"><h4> {{id}}</h4></div>
+  <div class="btn-group col-md-4 ml-1"><h4> {{User.email}}</h4></div>
+  <div class="btn-group col-md-2 ml-1"><h4> {{User.username}}</h4></div>
+  <div class="btn-group col-md-1 ml-1"><h4> {{status}}</h4></div>
     
-  <div class="btn-group col-sm-2">
+  <div class="btn-group col-md-1">
     <a href="/admin/orders/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>
@@ -16,9 +32,10 @@
       <button type="submit" class="btn btn-outline-success">Edit</button>
     </a>
 
-    <form method="POST" action="/admin/orders/{{id}}?_method=delete">
+
+{{!--     <form method="POST" action="/admin/orders/{{id}}?_method=delete">
       <button type="submit" class="btn btn-outline-success">Delete</button>
-    </form>
+    </form> --}}
   </div>
  
 </div>

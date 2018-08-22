@@ -1,12 +1,26 @@
 const express = require('express');
 const admin = express.Router();
+const models = require('../models');
+const User = models.User;
+const Token = models.Token;
 
 admin.use('/', (req, res, next) => {
-  const isAdmin = true;
-  if (!isAdmin) {
-    res.redirect('/rodhadjon_meg_a_hacker');
-  }
-  next();
+  Token.findOne({
+    where: { token: req.cookies.token },
+    include: [
+      { model: User }
+    ]})
+    .then((tokenRecord) => {
+      if (tokenRecord.User.role === 'admin') {
+        next();
+      } else {
+        res.redirect('/');
+      }
+    });
+});
+
+admin.get('/', (req, res) => {
+  res.render('admins/index.handlebars');
 });
 
 const products = require('./admin/products');

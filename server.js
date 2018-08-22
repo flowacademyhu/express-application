@@ -1,10 +1,12 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const app = express();
 const cookieParser = require('cookie-parser');
 const models = require('./app/models');
 
 app.use(cookieParser());
+app.use(fileUpload());
 
 // method override
 const methodOverride = require('method-override');
@@ -25,23 +27,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-	if (req.cookies.token) {
-		models.Token.findOne({
-			where: {
-				token: req.cookies.token
-			}
-		}).then(tokenRecord => {
-			if (!tokenRecord) next();
-			tokenRecord.getUser().then(userRecord => {
-				res.locals = res.locals || {};
-				req.user = res.locals.user = userRecord;
-				console.log(req.user);
-				next();
-			});
-		});
-	} else {
-		next();
-	}
+  if (req.cookies.token) {
+    models.Token.findOne({
+      where: {
+        token: req.cookies.token
+      }
+    }).then(tokenRecord => {
+      if (!tokenRecord) next();
+      tokenRecord.getUser().then(userRecord => {
+        res.locals = res.locals || {};
+        req.user = res.locals.user = userRecord;
+        console.log(req.user);
+        next();
+      });
+    });
+  } else {
+    next();
+  }
 });
 
 const users = require('./app/controllers/users');
@@ -68,9 +70,11 @@ app.use('/comments', comments);
 const cart = require('./app/controllers/cart');
 app.use('/cart', cart);
 
-const checkout = require('./app/controllers/checkout');
-app.use('/checkout', checkout);
-
 app.use(express.static('./public'));
+
+// Index
+app.get('/', (req, res) => {
+  res.render('index.handlebars');
+});
 
 app.listen(8080);
