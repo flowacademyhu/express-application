@@ -1,19 +1,34 @@
 <div class="text-dark p-5">
-    <h4><u>Category:</u><br/>{{category.name}}</h4><br>
+  <div class="mx-auto" style="width: 72%">
+    <h5><u>Category:</u></h5>
+    <p>{{category.name}}</p>
+  </div>
 <div class="container-fluid">
-<div class="row">
+<div class="row products mx-auto">
 {{#each products}}
-<div class="col-lg-3">
-<div class="card" style="width: 18rem;">
+<div class="col-lg-3 col-md-6 col-sm-12">
+<div class="card shadow mx-auto">
   <a href="/products/{{id}}">
-    <img class="card-img-top p-4" src="/images/porszivo.png" alt="Card image cap">
+    {{#if picture}}
+      <img class="card-img-top" src="/uploads/{{picture}}" alt="{{name}}">
+    {{else}}
+      <img class="card-img-top" src="/images/nincs_kep.jpg" alt="{{name}}">
+    {{/if}}
   </a>
   <div class="card-body">
-    <h5 class="card-title text-capitalize">{{name}}</h5>
-    <p class="card-text">{{price}} Ft</p>
     <a href="/products/{{id}}">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Megtekintés</button>
+      <h4 class="card-title text-capitalize">{{name}}</h4>
     </a>
+    <div class="row mx-auto d-flex justify-content-between">
+      <h5 class="card-text p-2">{{price}} Ft</h5>
+      <input type="text" class="form-control text-center col-2" value="1" min="1" max="10">
+
+      <form method="POST" action="#">
+        <a href="#">
+          <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart" title="Add to cart" alt="add to cart"></i></button>
+        </a>
+      </form>
+    </div>
   </div>
 </div>
 </div>
