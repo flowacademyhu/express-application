@@ -20,13 +20,39 @@ module.exports = {
       lastName: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
-      },
       email: {
         type: Sequelize.STRING
       },
-      addressId: {
+      country: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      city: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      zip: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      county: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      street: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      houseNumber: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      floor: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      door: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       createdAt: {
