@@ -4,8 +4,8 @@
 {{#each products}}
 <div class="productlist">
     <div class="productphoto">
-        {{#if picturesFolder}}
-        <img id="productphoto" src="{{picturesFolder}}" height="100px"/>
+        {{#if picture}}
+        <img id="productphoto" src="{{picture}}" height="100px"/>
         {{else}}
         <img id="productnophoto" src="/images/nincs_kep.jpg"/>
         {{/if}}
