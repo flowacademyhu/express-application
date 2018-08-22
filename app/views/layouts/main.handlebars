@@ -7,6 +7,8 @@
   <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
   <!-- Our Custom CSS -->
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
@@ -21,21 +23,19 @@
 <body>
   <!-- Logo -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="/users">
-      <img id="logo" src="/images/flowlogo.png" />
-    </a>
-    <ul class="navbar-nav  ml-5">
-      <li class="nav-item dropdown ml-auto">
-        <span class="hamIcon" onclick="openNav()">
-          Categories
-        </span>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+    <a href="/users">LOGO HELYE</a>
+    <ul class="navbar-nav ml-5">
+      <!-- Category Sidebar -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="dropdown">
+          {{{sidebar}}}
         </div>
-      </li>
+      </div>
+      <!-- Use any element to open the sidenav -->
+      <span class="hamIcon" onclick="openNav()">
+        Categories
+      </span>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -45,50 +45,55 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <form class="form-inline my-2 my-lg-0  ml-auto" action="/search/" method="GET">
         <div class="form-group col-12">
-          <input class="form-control mr-1" name="search" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control" id="searchfield" name="search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" id="searcbutton" type="submit">Search</button>
         </div>
       </form>
+
       <!-- log / reg -->
+
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          {{#if user}} 
-            {{user.username}}
-          {{else}}
-            <a class="nav-link" href="/users/login">Login
-              <span class="sr-only">(current)</span>
-            </a>
-          {{/if}}
+          {{#if user}}
+          <div class="column">
+            <div class="usericons mr-3 mb-1" style="color: white">
+              Hello, {{user.username}}!
+              <a href="???">
+                <!-- setting aloldal -->
+                <i class="fa fa-cog mx-3" aria-hidden="true" title="Settings"></i>
+              </a>
+              <a href="???">
+                <!-- cart oldal -->
+                <i class="fa fa-shopping-cart mr-3" aria-hidden="true" title="Cart"></i>
+              </a>
+              <a href="/users/logout">
+                <i class="fa fa-sign-out-alt mr-3" aria-hidden="true" title="Logout"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+        {{else}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/users/login">Login
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="/users/new">Registration
             <span class="sr-only">(current)</span>
           </a>
+          {{/if}}
         </li>
       </ul>
     </div>
   </nav>
-  <!-- Category Sidebar -->
-  <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="dropdown">
-    {{{sidebar}}}
+  <hr id="header-line" />
+  <div class="container">
+
+    <!-- Body -->
+    {{{body}}}
+
   </div>
-</div>
-<!-- Use any element to open the sidenav -->
-
-
-<!--
-  <div class="sidebar">
-    <div>
-      {{{sidebar}}}
-    </div>
-  </div>
-  -->
-  
-  <!-- Body -->
-  {{{body}}}
-
   <!-- Footer -->
   <footer class="page-footer font-small mdb-color pt-1 text-white bg-dark">
     <!-- Footer Links -->
@@ -132,7 +137,7 @@
           <p>
             <i class="fa fa-phone mr-3" aria-hidden="true"></i>+ 36 30 234 567 88</p>
           <p>
-            <i class="fa fa-skype mr-3" aria-hidden="true"></i>Todo.Shop18</p>
+            <i class="fab fa-skype mr-3" aria-hidden="true"></i>Todo.Shop18</p>
         </div>
         <!-- Grid column -->
       </div>
@@ -153,27 +158,27 @@
             <ul class="list-unstyled list-inline">
               <li class="list-inline-item">
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-cc-visa fa-2x"></i>
+                  <i class="fab fa-cc-visa fa-2x"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-cc-mastercard fa-2x"></i>
+                  <i class="fab fa-cc-mastercard fa-2x"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-cc-amex fa-2x"></i>
+                  <i class="fab fa-cc-amex fa-2x"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-paypal fa-2x"></i>
+                  <i class="fab fa-paypal fa-2x"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-google-wallet fa-2x"></i>
+                  <i class="fab fa-google-wallet fa-2x"></i>
                 </a>
               </li>
             </ul>
@@ -187,14 +192,14 @@
 
   <script>
     /* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "400px";
-}
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "400px";
+    }
 
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
   </script>
 
 </body>
