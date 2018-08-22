@@ -40,9 +40,12 @@ products.get('/:id', (req, res) => {
 // Create
 products.post('/', (req, res) => {
   let filename = Math.random().toString(36).substr(2, 16);
+  let fileExtension;
   if (req.files.image) {
     let image = req.files.image;
-    image.mv((`./public/uploads/${filename}.jpg`), (error) => {
+    let splittedFilename = req.files.image.name.split('.');
+    fileExtension = splittedFilename[1];
+    image.mv((`./public/uploads/${filename}` + '.' + fileExtension), (error) => {
       if (error) {
         return res.send(error);
       }
@@ -53,12 +56,11 @@ products.post('/', (req, res) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    onStock: req.body.onStock,
     categoryId: req.body.id
   };
 
   if (req.files.image) {
-    productParams.picture = filename;
+    productParams.picture = filename + '.' + fileExtension;
   }
 
   Product.create(productParams).then(product => {
