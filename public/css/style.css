@@ -62,6 +62,9 @@ a:hover{
 .products {
     width: 90%;
 }
+.center {
+    width: 115px;
+}
 .card p {
     color: #212529;
 }
