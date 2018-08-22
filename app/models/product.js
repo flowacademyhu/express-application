@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     price: DataTypes.INTEGER,
     // vat: DataTypes.INTEGER,
-    onStock: DataTypes.INTEGER,
+    // onStock: DataTypes.INTEGER,
     picture: DataTypes.STRING,
     categoryId: DataTypes.INTEGER
   }, {});
