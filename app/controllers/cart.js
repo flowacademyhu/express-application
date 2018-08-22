@@ -3,7 +3,6 @@ const cart = express.Router();
 const models = require('../models');
 const CartLine = models.CartLine;
 const Product = models.Product;
-const {isOnStock} = require('../middleware/is-on-stock');
 
 // GET items of the cart
 cart.get('/', (req, res) => {
@@ -20,7 +19,7 @@ cart.get('/', (req, res) => {
 });
 
 // UPDATE quantity of an item
-cart.put('/:id', isOnStock, (req, res) => {
+cart.put('/:id', (req, res) => {
   CartLine.update({
     quantity: req.body.quantity
   }, { where: { id: req.params.id } }).then(user => {
