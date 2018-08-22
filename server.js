@@ -27,23 +27,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-	if (req.cookies.token) {
-		models.Token.findOne({
-			where: {
-				token: req.cookies.token
-			}
-		}).then(tokenRecord => {
-			if (!tokenRecord) next();
-			tokenRecord.getUser().then(userRecord => {
-				res.locals = res.locals || {};
-				req.user = res.locals.user = userRecord;
-				console.log(req.user);
-				next();
-			});
-		});
-	} else {
-		next();
-	}
+  if (req.cookies.token) {
+    models.Token.findOne({
+      where: {
+        token: req.cookies.token
+      }
+    }).then(tokenRecord => {
+      if (!tokenRecord) next();
+      tokenRecord.getUser().then(userRecord => {
+        res.locals = res.locals || {};
+        req.user = res.locals.user = userRecord;
+        console.log(req.user);
+        next();
+      });
+    });
+  } else {
+    next();
+  }
 });
 
 const users = require('./app/controllers/users');
@@ -71,5 +71,10 @@ const cart = require('./app/controllers/cart');
 app.use('/cart', cart);
 
 app.use(express.static('./public'));
+
+// Index
+app.get('/', (req, res) => {
+  res.render('index.handlebars');
+});
 
 app.listen(8080);

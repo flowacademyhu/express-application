@@ -2,7 +2,7 @@ const express = require('express');
 const users = express.Router();
 const models = require('../models');
 const bcrypt = require('bcryptjs');
-const randomstring = require("randomstring");
+const randomstring = require('randomstring');
 const User = models.User;
 const Token = models.Token;
 
@@ -32,9 +32,7 @@ users.post('/login', (req, res) => {
     }
   }).then((userRecord) => {
     if (!userRecord) return res.redirect('/users/login');
-    console.log(req.body);
     bcrypt.compare(req.body.password, userRecord.encryptedPassword, (err, result) => {
-      console.log(result);
       if (result) {
         let tokenField = randomstring.generate();
         Token.create({
@@ -42,7 +40,6 @@ users.post('/login', (req, res) => {
           token: tokenField
         }).then(tokenRecord => {
           res.cookie('token', tokenField);
-          console.log(tokenRecord);
           res.redirect('/users'); // ha lesz nyitó oldal, akkor oda kell irányítani
         })
       } else {
@@ -115,6 +112,5 @@ users.delete('/:id', (req, res) => {
     });
   });
 });
-
 
 module.exports = users;
