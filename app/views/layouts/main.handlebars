@@ -7,7 +7,8 @@
   <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
   <!-- Our Custom CSS -->
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
@@ -22,22 +23,19 @@
 <body>
   <!-- Logo -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="/users">
-      <img id="logo" src="/images/flowlogo.png" />
-    </a>
-    <ul class="navbar-nav  ml-5">
-      <li class="nav-item dropdown ml-auto">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
-          Products
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+    <a href="/users">LOGO HELYE</a>
+    <ul class="navbar-nav ml-5">
+      <!-- Category Sidebar -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="dropdown">
+          {{{sidebar}}}
         </div>
-      </li>
+      </div>
+      <!-- Use any element to open the sidenav -->
+      <span class="hamIcon" onclick="openNav()">
+        Categories
+      </span>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -47,22 +45,25 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <form class="form-inline my-2 my-lg-0  ml-auto" action="/search/" method="GET">
         <div class="form-group col-12">
-          <input class="form-control mr-1" name="search" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control" id="searchfield" name="search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" id="searcbutton" type="submit">Search</button>
         </div>
       </form>
+
       <!-- log / reg -->
-      
+
       <ul class="navbar-nav ml-auto">
-        {{#if user}}
         <li class="nav-item active">
+          {{#if user}}
           <div class="column">
             <div class="usericons mr-3 mb-1" style="color: white">
               Hello, {{user.username}}!
-              <a href="???"> <!-- setting aloldal -->
+              <a href="???">
+                <!-- setting aloldal -->
                 <i class="fa fa-cog mx-3" aria-hidden="true" title="Settings"></i>
               </a>
-              <a href="???"> <!-- cart oldal -->
+              <a href="???">
+                <!-- cart oldal -->
                 <i class="fa fa-shopping-cart mr-3" aria-hidden="true" title="Cart"></i>
               </a>
               <a href="/users/logout">
@@ -70,7 +71,9 @@
               </a>
             </div>
           </div>
-          {{else}}
+        </li>
+        {{else}}
+        <li class="nav-item active">
           <a class="nav-link" href="/users/login">Login
             <span class="sr-only">(current)</span>
           </a>
@@ -79,26 +82,18 @@
           <a class="nav-link" href="/users/new">Registration
             <span class="sr-only">(current)</span>
           </a>
+          {{/if}}
         </li>
-        {{/if}}
       </ul>
     </div>
   </nav>
-  <!-- Category Sidebar -->
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="dropdown">
-      {{{sidebar}}}
-    </div>
+  <hr id="header-line" />
+  <div class="container">
+
+    <!-- Body -->
+    {{{body}}}
+
   </div>
-  <!-- Use any element to open the sidenav -->
-  <span class="hamIcon" onclick="openNav()">
-    Categories
-  </span>
-
-  <!-- Body -->
-  {{{body}}}
-
   <!-- Footer -->
   <footer class="page-footer font-small mdb-color pt-1 text-white bg-dark">
     <!-- Footer Links -->
