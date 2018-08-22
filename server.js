@@ -1,10 +1,12 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const app = express();
 const cookieParser = require('cookie-parser');
 const models = require('./app/models');
 
 app.use(cookieParser());
+app.use(fileUpload());
 
 // method override
 const methodOverride = require('method-override');
@@ -67,9 +69,6 @@ app.use('/comments', comments);
 
 const cart = require('./app/controllers/cart');
 app.use('/cart', cart);
-
-const checkout = require('./app/controllers/checkout');
-app.use('/checkout', checkout);
 
 app.use(express.static('./public'));
 

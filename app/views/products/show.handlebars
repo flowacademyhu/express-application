@@ -1,12 +1,24 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="/images/porszivo.png" class="img-responsive" id="image">
+            {{#if product.picture}}
+                <img src="/uploads/{{product.picture}}" class="img-responsive" alt="{{name}}" id="image">
+            {{else}}
+                <img src="/images/nincs_kep.jpg" class="img-responsive" alt="{{name}}" id="image">
+            {{/if}}
         </div>
         <div class="col-md-6">
-            <h3><u></u><br/>{{product.name}}</h3>
-            <h4><u></u><br/>{{product.price}} Ft</h4>
+            <h3 class="font-weight-bold"><u></u><br/>{{product.name}}</h3>
             <p><u></u><br/>{{product.description}}</p>
+            <div class="row mx-auto d-flex justify-content-between mt-5 mb-5">
+                <h4 class="font-weight-bold mr-auto"><u></u>{{product.price}} Ft</h4>
+                <input type="text" class="form-control input-number text-center col-1 mr-2" value="1" min="1" max="10">
+                <form method="POST" action="#">
+                    <a href="#">
+                        <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Add to cart</button>
+                    </a>
+                </form>
+            </div>
         </div>
       </div>
     </div>
@@ -14,13 +26,14 @@
 <div class="text-left p-5 mx-auto">
 
     {{!-- {{#if user}} --}}
-        <form method="POST" action="/comments" class="col-11 mx-auto">
+        <form method="POST" action="/comments" class="col-9 mx-auto">
             <h2>Comments</h2><br>
             <input type="hidden" name="productId" value={{product.id}}/>
             <textarea class="form-control" name="comment" placeholder="Write your comment here."></textarea>
             <div class="mb-3">
                 <button class="btn btn-success my-2 my-sm-3" type="submit">Submit</button>
             </div>
+            
         </form>
    {{!-- }} {{/if}} --}}
 

@@ -70,8 +70,8 @@ a:hover{
 3. BODY
 ----------------------------------------------------------*/
 
-.container {
-    width: 90vw;
+.list {
+    width: 90%;
     min-height: 100%
 }
 
@@ -118,27 +118,44 @@ a:hover{
     border: 1px solid black;
     align-items: center;
 }
+.products {
+    width: 80%;
+}
+.center {
+    width: 115px;
+}
 .card p {
     color: #212529;
 }
+.card-title {
+    height: 60px;
+    margin-bottom: 20px;
+}
 .card {
-    border-color: #212529;
-    margin: 2% auto;
+    margin: 5% 5%;
+    width: 280px;
+}
+.card-body a {
+    color: #212529;
+}
+@media (max-width: 1500px) {
+    .card {
+        width: 95%;
+    }
 }
 .comment {
     background-color: whitesmoke;
     padding-left: 30px;
     padding-bottom: 10px;
     border-radius: 15px;
-    width: 90%;
+    width: 74%;
 }
 #image {
-    padding: 5%;
+    padding: 0%;
     padding-right: 20%;
     max-width: 500px;
     margin: 1% auto;
 }
-
 /*----------------------------------------------------------
 6. SIDEBAR 
 ----------------------------------------------------------*/
@@ -235,6 +252,6 @@ login-icon {
   size: 5x;
 }
 
-form {
+.userauth {
   text-align: center;
 }
