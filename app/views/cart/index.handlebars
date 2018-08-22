@@ -1,15 +1,20 @@
-{{#each itemsToRender}}
-
-<div class="row justify-content-center align-self-center mt-2 mb-2"></div>
-
-<form action="/cart"></form>
-  <div class="btn-group col-sm-2 ml-1"><h4>{{name}}</h4></div>
-  <div class="btn-group col-sm-2 ml-5"><h4>{{price}} Ft</h4></div>
-  <div class="btn-group col-sm-2 ml-5"><h4>{{vat}}% ÁFA</h4></div>
-  <div class="btn-group col-sm-2 ml-5"><input type="text" name="FirstName" value="{{quantity}}" size="4"></div>
-  <div class="btn-group col-sm-1 ml-1"><input type="submit" value="Submit"></div>
-</form>
-
+{{#each results}}
+<div class="row">
+  <div class="col-sm-4"><h4>{{Product.name}}</h4></div>
+  <div class="col-sm-4"><h4>{{Product.price}} Ft</h4></div>
+  <form method="POST" action="/cart/{{id}}?_method=put">
+    <input name="quantity" type="text" value="{{quantity}}" size="4">
+    <button type="submit" class="btn btn-sm btn-outline-secondary">Modify</button> 
+  </form>
+  <form method="POST" action="/cart/{{id}}?_method=delete">
+    <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button> 
+  </form>
 </div>
-
 {{/each}}
+<br>
+<div class="row">
+  <div class="col-sm-9"></div>
+  <form method="GET" action="/checkout">
+    <button type="submit" class="btn btn-sm btn-outline-secondary">Checkout</button> 
+  </form>
+</div>

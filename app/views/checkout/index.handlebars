@@ -1,0 +1,17 @@
+{{#each results}}
+<div class="row">
+  <div class="col-sm-4"><h4>{{Product.name}}</h4></div>
+  <div class="col-sm-4"><h4>{{Product.price}} HUF</h4></div>
+  <div class="col-sm-2"><h4>Quantity: {{quantity}}</h4></div>
+</div>
+{{/each}}
+<br>
+<div class="row">
+  <div class="col-sm-9"></div>
+  <form method="GET" action="/cart">
+    <button type="submit" class="btn btn-sm btn-outline-secondary">Back to Cart</button> 
+  </form>
+  <form method="GET" action="/checkout">
+    <button type="submit" class="btn btn-sm btn-outline-secondary">Order</button> 
+  </form>
+</div>
