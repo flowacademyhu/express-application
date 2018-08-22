@@ -12,17 +12,8 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      email: {
-        type: Sequelize.STRING
-      },
-      billingAddressId: {
-        type: Sequelize.INTEGER
-      },
-      deliveryAddressId: {
-        type: Sequelize.INTEGER
-      },
       status: {
-        type: Sequelize.ENUM('ordered', 'delivered', 'deleted'),
+        type: Sequelize.ENUM('draft', 'ordered', 'delivered', 'deleted'),
         allowNull: false
       },
       createdAt: {

@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     deliveryAddressId: DataTypes.INTEGER,
     status: {
       type: DataTypes.ENUM,
-      values: ['ordered', 'delivered', 'deleted'],
-      defaultValue: 'ordered'
+      values: ['draft', 'ordered', 'delivered', 'deleted'],
+      defaultValue: 'draft'
     }
   }, {});
   Order.associate = function (models) {

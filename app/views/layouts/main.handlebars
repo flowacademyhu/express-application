@@ -31,11 +31,13 @@
         <div class="dropdown">
           {{{sidebar}}}
         </div>
-      </div>
-      <!-- Use any element to open the sidenav -->
-      <span class="hamIcon" onclick="openNav()">
-        Categories
-      </span>
+      </li>
+      <li class="nav-item ml-auto">
+        {{#if user}} 
+            <a class="nav-link" href="/cart" role="button" aria-haspopup="true" aria-expanded="false">Cart</a>
+        {{else}}
+        {{/if}}
+      </li>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
