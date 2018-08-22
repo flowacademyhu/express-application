@@ -118,6 +118,25 @@ a:hover{
     border: 1px solid black;
     align-items: center;
 }
+.card p {
+    color: #212529;
+}
+.card {
+    border-color: #212529;
+    margin: 2% auto;
+}
+.comment {
+    background-color: whitesmoke;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    width: 90%;
+}
+#image {
+    padding: 5%;
+    padding-right: 20%;
+    max-width: 500px;
+    margin: 1% auto;
 
 /*----------------------------------------------------------
 6. SIDEBAR 
@@ -218,3 +237,4 @@ login-icon {
 form {
   text-align: center;
 }
+
