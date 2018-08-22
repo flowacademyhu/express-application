@@ -16,6 +16,15 @@
     <label for="exampleInputPassword1">On stock:</label>
     <input name="onStock" value="{{product.onStock}}" type="text" class="form-control" id="exampleInputEmail1">
   </div>
+  
+  <div class="dropdown">
+    <label>Categories:</label>
+    <select class="ui dropdown" name="categoryId">
+      {{#each category}}
+        <option value="{{id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
   <button class="btn btn-success my-2 my-sm-0" type="submit">Edit</button>
 </form>
 </div>
