@@ -39,7 +39,7 @@ products.get('/:id', (req, res) => {
 
 // Create
 products.post('/', (req, res) => {
-  let filename = Math.random().toString(36).substr(2, 5);
+  let filename = Math.random().toString(36).substr(2, 16);
   if (req.files.image) {
     let image = req.files.image;
     image.mv((`./public/uploads/${filename}.jpg`), (error) => {
@@ -58,7 +58,7 @@ products.post('/', (req, res) => {
   };
 
   if (req.files.image) {
-    productParams.image = filename;
+    productParams.picture = filename;
   }
 
   Product.create(productParams).then(product => {
