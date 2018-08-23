@@ -8,25 +8,26 @@
 {{#each products}}
 <div class="col-lg-3 col-md-6 col-sm-12">
 <div class="card shadow mx-auto">
-  <a href="/products/{{id}}">
-    {{#if picture}}
-      <img class="card-img-top" src="/uploads/{{picture}}" alt="{{name}}">
-    {{else}}
-      <img class="card-img-top" src="/images/nincs_kep.jpg" alt="{{name}}">
-    {{/if}}
-  </a>
+  <div id="cardimg">
+    <a href="/products/{{id}}">
+      {{#if picture}}
+        <img class="card-img-top" src="/uploads/{{picture}}" alt="{{name}}" >
+      {{else}}
+        <img class="card-img-top" src="/images/noimg.jpg" alt="{{name}}">
+      {{/if}}
+    </a>
+  </div>
   <div class="card-body">
     <a href="/products/{{id}}">
       <h4 class="card-title text-capitalize">{{name}}</h4>
     </a>
-    <div class="row mx-auto d-flex justify-content-between">
-      <h5 class="card-text p-2">{{price}} Ft</h5>
-      <input type="text" class="form-control text-center col-2" value="1" min="1" max="10">
-
-      <form method="POST" action="#">
-        <a href="#">
-          <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart" title="Add to cart" alt="add to cart"></i></button>
-        </a>
+    <div class="row d-flex justify-content-between">
+      <h5 class="card-text mt-2 col-6">{{price}} Ft</h5>
+      <form method="POST" action="/categories/{{id}}?_method=put" class="col-6">
+        <div class="row mx-auto">
+          <input name="quantity" type="text" class="form-control text-center col-5 mr-2" value="1" min="1">
+            <button  class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart" title="Add to cart" alt="add to cart"></i></button>
+        </div>
       </form>
     </div>
   </div>

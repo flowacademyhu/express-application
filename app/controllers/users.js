@@ -41,7 +41,11 @@ users.post('/login', (req, res) => {
         }).then(tokenRecord => {
           res.cookie('token', tokenField);
           res.redirect('/'); // ha lesz nyitó oldal, akkor oda kell irányítani
+<<<<<<< HEAD
         });
+=======
+        })
+>>>>>>> development
       } else {
         res.redirect('/users/login');
       }

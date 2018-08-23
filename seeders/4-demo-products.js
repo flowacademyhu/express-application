@@ -9,7 +9,7 @@ module.exports = {
           description: 'Brand new dwarfmade silver spade',
           price: 2000,
           onStock: 10,
-          picture: 'testlocation',
+          picture: 'sofa.jpg',
           categoryId: 5,
           createdAt: '2018.01.01',
           updatedAt: '2018.01.01'
@@ -19,7 +19,7 @@ module.exports = {
           description: 'Beautiful bronze spade from Stormwind',
           price: 1000,
           onStock: 10,
-          picture: 'testlocation',
+          picture: null,
           categoryId: 5,
           createdAt: '2018.01.01',
           updatedAt: '2018.01.01'
@@ -28,7 +28,7 @@ module.exports = {
           description: 'Delicious cherry',
           price: 500,
           onStock: 10,
-          picture: 'testlocation',
+          picture: null,
           categoryId: 8,
           createdAt: '2018.01.01',
           updatedAt: '2018.01.01'

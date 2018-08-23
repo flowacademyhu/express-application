@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
     crossorigin="anonymous">
   <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <!-- Font Awesome JS -->
@@ -37,7 +38,7 @@
       </div>
       <!-- Use any element to open the sidenav -->
       <div class="hamIcon" onclick="openNav()">
-        Categories
+        <button type="button" class="btn btn-outline-success">Categories</button>
       </div>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -59,7 +60,7 @@
           <div class="column">
             <div class="usericons mr-3 mb-1" style="color: white">
               Hello, {{user.username}}!
-              <a href="???">
+              <a href="/users/{{user.id}}/edit">
                 <!-- setting aloldal -->
                 <i class="fa fa-cog mx-3" aria-hidden="true" title="Settings"></i>
               </a>
@@ -99,7 +100,7 @@
       <div class="row text-center text-md-left mt-3 pb-3">
         <!-- Grid column -->
         <div class="col-md-3 col-lg-3 col-xl-4 mx-auto mt-1">
-          <h6 class="text-uppercase mb-4 font-weight-bold green">Todoshop</h6>
+          <h6 class="text-uppercase mb-4 font-weight-bold text-success">Todoshop</h6>
           <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
             adipisicing elit.</p>
         </div>
@@ -107,7 +108,7 @@
         <hr class="w-100 clearfix d-md-none">
         <!-- Grid column -->
         <div class="col-md-3 col-lg-2 col-xl-3 mx-auto mt-1">
-          <h6 class="text-uppercase mb-4 font-weight-bold green">Let us help you</h6>
+          <h6 class="text-uppercase mb-4 font-weight-bold text-success">Let us help you</h6>
           <p>
             <a href="#!">Your Account</a>
           </p>
@@ -125,7 +126,7 @@
         <hr class="w-100 clearfix d-md-none">
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-1">
-          <h6 class="text-uppercase mb-4 font-weight-bold green">Contact</h6>
+          <h6 class="text-uppercase mb-4 font-weight-bold text-success">Contact</h6>
           <p>
             <span class="fa fa-home mr-3" aria-hidden="true"></span>17 Todo Street, Szeged, 6723
           </p>

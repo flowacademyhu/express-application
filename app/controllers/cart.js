@@ -44,40 +44,6 @@ cart.get('/order', (req, res) => {
     .then(orderLineItems => createOrder(req.user.id)
       .then(order => createOrderLines(orderLineItems, order)
         .then(() => res.redirect('/cart'))));
-  // CartLine.findAll({
-  //   where: {
-  //     userId: req.user.id
-  //   },
-  //   include: [
-  //     {model: Product}
-  //   ]
-  // }).then(results => {
-  //   Order.create({
-  //     userId: req.user.id
-  //   }).then(order => {
-  //     Order.findOne({
-  //       where: {
-  //         userId: req.user.id,
-  //         status: 'draft'
-  //       }
-  //     }).then(foundOrder => {
-  //       for (let i = 0; i < results.length; i++) {
-  //         OrderLine.create({
-  //           orderId: foundOrder.id,
-  //           productId: results[i].Product.id,
-  //           unitPrice: results[i].Product.price,
-  //           quantity: results[i].quantity
-  //         }).then(ordered => {
-  //           CartLine.findById(results[i].id).then(item => {
-  //             item.destroy().then(() => {
-  //               res.redirect(`/cart`);
-  //             });
-  //           });
-  //         });
-  //       }
-  //     });
-  //   });
-  // });
 });
 
 const collectCartLineItems = (id) => {

@@ -14,11 +14,6 @@ users.get('/', (req, res) => {
   });
 });
 
-// New
-users.get('/new', (req, res) => {
-  res.render('admins/users/new.handlebars');
-});
-
 // Login
 
 users.get('/login', (req, res) => {
