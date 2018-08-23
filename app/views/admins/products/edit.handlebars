@@ -14,7 +14,7 @@
   </div>
   
   <div class="dropdown">
-    <label>Categories:</label>
+    <label>Categories:</label><br>
     <select class="ui dropdown" name="categoryId">
       {{#each categories}}
         <option value="{{id}}" {{#if isSelected}} selected {{/if}} >{{name}}</option>
@@ -24,8 +24,8 @@
 
   <div class="form-group">
     <label>Image:</label>
-    <img src="/uploads/{{product.picture}}" alt="product-picture" class="img-thumbnail rounded mx-auto d-block">
-    <input type="file" name="image"/>
+    <img src="/uploads/{{product.picture}}" alt="product-picture" class="img-thumbnail rounded mx-auto d-block" width="200" height="200">
+    <input type="file" name="image" class="pt-3" />
   </div>  
 
   <button class="btn btn-success my-2 my-sm-0" type="submit">Edit</button>

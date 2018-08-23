@@ -133,40 +133,56 @@ a:hover{
 }
 .card {
     margin: 5% 5%;
-    width: 280px;
+    max-width: 280px;
+    min-width: 220px;
     overflow: hidden;
 }
 .card-body {
-    width: 280px;
-    
+    max-width: 280px;
 }
 .card-body a {
     color: #212529;
 }
 #cardimg {
     height: 210px;
-    width: 280px;
+    max-width: 280px;
+    min-width: 220px;
     margin-right: auto;
     margin-left: auto;
     overflow:hidden;
 }
-@media (max-width: 1500px) {
+#image {
+    padding: 0%;
+    padding-right: 15%;
+    max-width: 500px;
+    margin: 1% auto;
+}
+@media (max-width: 1600px) {
     .card {
         width: 95%;
     }
+    .cardfooter h4, h5 {
+        font-size: 1.2em;
+    }
+    #image {
+        max-width: 400px;
+        padding-right: 0%;
+    }
 }
+
+@media (max-width: 1000px) {
+    #image {
+        max-width: 300px;
+        padding-right: 0%;
+    }
+}
+
 .comment {
     background-color: whitesmoke;
     padding-left: 30px;
     padding-bottom: 10px;
     border-radius: 15px;
     width: 74%;
-}
-#image {
-    padding: 0%;
-    padding-right: 20%;
-    max-width: 500px;
-    margin: 1% auto;
 }
 /*----------------------------------------------------------
 6. SIDEBAR 
