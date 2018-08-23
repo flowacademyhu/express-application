@@ -112,13 +112,4 @@ users.put('/:id', (req, res) => {
   });
 });
 
-// Destroy
-users.delete('/:id', (req, res) => {
-  User.findById(req.params.id).then((userRecord) => {
-    userRecord.destroy().then(() => {
-      res.redirect('/users');
-    });
-  });
-});
-
 module.exports = users;

@@ -32,4 +32,7 @@ admin.use('/orders', orders);
 const categories = require('./admin/categories');
 admin.use('/categories', categories);
 
+const users = require('./admin/users');
+admin.use('/users', users);
+
 module.exports = admin;

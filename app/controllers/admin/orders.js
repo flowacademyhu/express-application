@@ -2,61 +2,39 @@ const express = require('express');
 const orders = express.Router();
 const models = require('../../models');
 const Order = models.Order;
-const User = models.User;
 
 // Index
 orders.get('/', (req, res) => {
-  Order.findAll({
-    include: [
-      { model: User }
-    ]
-  }).then((allOrder) => {
-    let ctx = { orders: allOrder };
-    res.render('admins/orders/index.handlebars', ctx);
-    /*   res.json(allOrder); */
+  Order.findAll().then((allOrder) => {
+    let ctx = { users: allOrder };
+    res.render('orders/index.handlebars', ctx);
   });
 });
 
-// Filtered list
-
-orders.get('/filtered/:status', (req, res, next) => {
-  Order.findAll({
-    where: { status: req.params.status },
-    include: [
-      { model: User }
-    ]
-  }).then((allOrder) => {
-    let ctx = { orders: allOrder };
-    res.render('admins/orders/index.handlebars', ctx);
-  });
-});
-
+/*
 // New
 orders.get('/new', (req, res) => {
-  res.render('admins/orders/new.handlebars');
+  res.render('orders/new.handlebars');
 });
+ */
 
 // Show
 orders.get('/:id', (req, res) => {
-  Order.findById(req.params.id,
-    {
-      include: [
-        { model: User }
-      ]
-    }).then((orderRecord) => {
-    let ctx = { order: orderRecord };
-    /* res.json(orderRecord); */
-    res.render('admins/orders/show.handlebars', ctx);
+  Order.findById(req.params.id).then((userRecord) => {
+    let ctx = { user: userRecord };
+    res.render('orders/show.handlebars', ctx);
   });
 });
 
 // Create
 orders.post('/', (req, res) => {
   Order.create({
-    userId: req.body.userId,
-    status: req.body.status
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    encryptedPassword: req.body.encryptedPassword
   }).then(user => {
-    res.status(200).redirect('/admin/orders');
+    res.status(200).redirect('/orders');
   }).catch(error => {
     res.status(500).json(error);
   });
@@ -66,7 +44,7 @@ orders.post('/', (req, res) => {
 orders.get('/:id/edit', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     let ctx = { order: orderRecord };
-    res.render('admins/orders/edit.handlebars', ctx);
+    res.render('orders/edit.handlebars', ctx);
   });
 });
 
@@ -74,19 +52,18 @@ orders.get('/:id/edit', (req, res) => {
 orders.put('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     orderRecord.update(req.body).then((updatedOrderRecord) => {
-      res.redirect('/admin/orders');
+      res.redirect('/orders');
     });
   });
 });
 
-/*
 // Destroy
 orders.delete('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     orderRecord.destroy().then(() => {
-      res.redirect('/admin/orders');
+      res.redirect('/orders');
     });
   });
-}); */
+});
 
 module.exports = orders;
