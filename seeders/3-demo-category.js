@@ -1,52 +1,29 @@
 'use strict';
+const csv = require('csv-parser');
+const fs = require('fs');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Categories',
-      [
-        {
-          parentId: 0,
-          name: 'Garden tools',
-          createdAt: '2018.01.01',
-          updatedAt: '2018.01.01'
-        },
-        {
-          parentId: 0,
-          name: 'Saplings',
-          createdAt: '2018.01.01',
-          updatedAt: '2018.01.01'
-        }, {
-          parentId: 1,
-          name: 'Hoes',
-          createdAt: '2018.01.01',
-          updatedAt: '2018.01.01'
-        }, {
-          parentId: 1,
-          name: 'Spades',
-          createdAt: '2018.01.01',
-          updatedAt: '2018.01.01'
-        }, {
-          parentId: 4,
-          name: 'Big Spades',
-          createdAt: '2018.01.01',
-          updatedAt: '2018.01.01'
-        }, {
-          parentId: 4,
-          name: 'Short Spades',
-          createdAt: '2018.01.01',
-          updatedAt: '2018.01.01'
-        }, {
-          parentId: 2,
-          name: 'Oak saplings',
-          createdAt: '2018.01.01',
-          updatedAt: '2018.01.01'
-        }, {
-          parentId: 2,
-          name: 'Cherry saplings',
-          createdAt: '2018.01.01',
-          updatedAt: '2018.01.01'
-        }
-      ], {});
+
+    let categories = [];
+    return new Promise((resolve, reject) => {
+      fs.createReadStream(`${__dirname}/03-demo-category.csv`)
+        .pipe(csv())
+        .on('data', (data) => {
+          categories.push({
+            id: data.id,
+            parentId: data.parentId,
+            name: data.name,
+            createdAt: '2018.01.01',
+            updatedAt: '2018.01.01'
+          });
+        }).on('error', (err) => {
+          console.log(err);
+          reject(err);
+        }).on('end', () => {
+          resolve(queryInterface.bulkInsert('Categories', categories).then);
+        });
+    });
   },
 
   down: (queryInterface, Sequelize) => {
