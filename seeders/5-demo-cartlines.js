@@ -7,20 +7,20 @@ module.exports = {
         {
           quantity: 2,
           productId: 1,
-          userId: 1,
+          userId: 2,
           createdAt: '2018.01.01',
           updatedAt: '2018.01.01'
         },
         {
           quantity: 3,
           productId: 2,
-          userId: 1,
+          userId: 2,
           createdAt: '2018.01.01',
           updatedAt: '2018.01.01'
         }, {
           quantity: 1,
           productId: 3,
-          userId: 1,
+          userId: 2,
           createdAt: '2018.01.01',
           updatedAt: '2018.01.01'
         }, {
