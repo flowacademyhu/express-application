@@ -1,12 +1,18 @@
 {{#each products}}
 
-<div class="row justify-content-center align-self-center mt-2 mb-2">
+<div class="row justify-content-center align-self-center align-items-center mt-2 mb-2">
 
-  <div> <img src="/uploads/{{picture}}" alt="picture" class="img-thumbnail rounded mx-auto d-block" width="85" height="85"> </div>
-  <div class="btn-group col-sm-2 ml-3"><h4> {{name}}</h4></div>
-  <div class="btn-group col-sm-2 ml-3"><h4> {{description}}</h4></div>
-  <div class="btn-group col-sm-5 ml-3"><h4> {{price}}</h4></div>
-  <div class="btn-group col-sm-5 ml-3"><h4> {{Category.name}}</h4></div>
+  <div>
+    {{#if picture}}
+      <img src="/uploads/{{picture}}" alt="picture" class="img-thumbnail rounded mx-auto d-block" width="85" height="85">
+    {{else}}
+      <img src="/images/noimg.jpg" alt="no-image" class="img-thumbnail rounded mx-auto d-block" width="85" height="85" >
+    {{/if}}
+  </div>
+  <div class="btn-group col-sm-2 ml-2"><h4> {{name}}</h4></div>
+  <div class="btn-group col-sm-2 ml-2"><h4> {{description}}</h4></div>
+  <div class="btn-group col-sm-2 ml-2"><h4> {{price}}</h4></div>
+  <div class="btn-group col-sm-2 ml-2"><h4> {{Category.name}}</h4></div>
     
   <div class="btn-group col-sm-2">
     <a href="/admin/products/{{id}}">
