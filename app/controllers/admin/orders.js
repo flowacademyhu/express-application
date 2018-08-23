@@ -65,13 +65,19 @@ orders.post('/', (req, res) => {
 // Edit
 orders.get('/:id/edit', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
-    let ctx = { order: orderRecord };
+    let statuses = [
+      { value: 'ordered', label: 'Ordered', isSelected: (orderRecord.status === 'ordered') },
+      { value: 'delivered', label: 'Delivered', isSelected: (orderRecord.status === 'delivered') },
+      { value: 'deleted', label: 'Deleted', isSelected: (orderRecord.status === 'deleted') }
+    ];
+    let ctx = { order: orderRecord, statuses };
     res.render('admins/orders/edit.handlebars', ctx);
   });
 });
 
 // Update
 orders.put('/:id', (req, res) => {
+  console.log('EZ KELLL A STATUS AZ IYEBE: ' + req.body.status);
   Order.findById(req.params.id).then((orderRecord) => {
     orderRecord.update(req.body).then((updatedOrderRecord) => {
       res.redirect('/admin/orders');

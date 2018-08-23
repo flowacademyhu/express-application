@@ -1,22 +1,32 @@
 <div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
 <form method="POST" action="/admin/orders/{{order.id}}?_method=put">
- <div class="btn-group col-md-1 ml-1"><h4>ID: {{order.id}}</h4></div>
+ <div class="btn-group col-md-2 ml-1"><h4>ID: {{order.id}}</h4></div>
 
-  <div class="form-group">
+{{!--   <div class="form-group">
     <label for="">Status:</label>
     <input name="status" type="options" value="{{order.status}}" class="form-control">
-  </div>
+  </div> --}}
 
-    <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown link
-    </a>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a value="{{order.status}}" class="dropdown-item" href="?_method=put">delete</a>
-      <a value="{{order.status}}" class="dropdown-item" href="?_method=put&status=ordered">ordered</a>
-      <a value="{{order.status}}" class="dropdown-item" href="?_method=put&status=delivered">delivered</a>
-    </div>  
-  </div>
+ <div class="form-group">
+    <label for="status">Status:</label>
+ {{!--    <input name="status" type="options" value="{{order.status}}" class="form-control"> --}}
+    
+
+{{!--     <div class="dropdown">
+    <label>Categories:</label>
+    <select class="ui dropdown" name="status">
+      {{#each order}}
+        <option value="{{id}}">{{status}}</option>
+      {{/each}}
+    </select>
+  </div> --}}
+
+  <select class="ui dropdown" name="status" form="form-group">
+    {{#each statuses}}
+      <option value="{{value}}" {{#if isSelected}} selected {{/if}}>{{label}}</option>
+    {{/each}}
+    </select>
+  </div> 
 
 
   <div class="form-group">
@@ -25,7 +35,7 @@
   </div>
 
   
-  <button class="btn btn-success my-2 my-sm-0" type="submit">Edit</button>
+  <button class="btn btn-success my-2 my-sm-0" type="submit" onclick="?_method=put&status=ordered">Edit</button>
 </form>
 </div>
 
