@@ -118,7 +118,6 @@ products.put('/:id', (req, res) => {
 // Destroy
 products.delete('/:id', (req, res) => {
   Product.findById(req.params.id).then((productRecord) => {
-    // cartline lekérése és annak törlése, majd a product törlése
     productRecord.destroy().then(() => {
       res.redirect('/admin/products');
     });
