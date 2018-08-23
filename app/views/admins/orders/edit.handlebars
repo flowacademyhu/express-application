@@ -1,29 +1,20 @@
 <div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
 <form method="POST" action="/admin/orders/{{order.id}}?_method=put">
- <div class="btn-group col-md-1 ml-1"><h4>ID: {{order.id}}</h4></div>
+ <div class="btn-group row-md-2 ml-1"><h4>ID: {{order.id}}</h4></div>
 
-  <div class="form-group">
-    <label for="">Status:</label>
-    <input name="status" type="options" value="{{order.status}}" class="form-control">
-  </div>
+ <div name="status" class="form-group">
+    <label for="status">Status:</label>
 
-    <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown link
-    </a>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a value="{{order.status}}" class="dropdown-item" href="?_method=put">delete</a>
-      <a value="{{order.status}}" class="dropdown-item" href="?_method=put&status=ordered">ordered</a>
-      <a value="{{order.status}}" class="dropdown-item" href="?_method=put&status=delivered">delivered</a>
-    </div>
-    
-    </div>
-v
-
+  <select name="status" class="ui dropdown">
+    {{#each statuses}}
+      <option value="{{value}}" {{#if isSelected}} selected {{/if}}>{{label}}</option>
+    {{/each}}
+    </select>
+  </div> 
 
   <div class="form-group">
     <label for="">User ID:</label>
-    <input name="price" type="text" value="{{order.userId}}" class="form-control">
+    <input name="userId" type="text" value="{{order.userId}}" class="form-control">
   </div>
 
   

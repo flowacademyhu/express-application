@@ -18,7 +18,6 @@ orders.get('/', (req, res) => {
 });
 
 // Filtered list
-
 orders.get('/filtered/:status', (req, res, next) => {
   Order.findAll({
     where: { status: req.params.status },
@@ -65,7 +64,12 @@ orders.post('/', (req, res) => {
 // Edit
 orders.get('/:id/edit', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
-    let ctx = { order: orderRecord };
+    let statuses = [
+      { value: 'ordered', label: 'Ordered', isSelected: (orderRecord.status === 'ordered') },
+      { value: 'delivered', label: 'Delivered', isSelected: (orderRecord.status === 'delivered') },
+      { value: 'deleted', label: 'Deleted', isSelected: (orderRecord.status === 'deleted') }
+    ];
+    let ctx = { order: orderRecord, statuses };
     res.render('admins/orders/edit.handlebars', ctx);
   });
 });
@@ -78,15 +82,5 @@ orders.put('/:id', (req, res) => {
     });
   });
 });
-
-/*
-// Destroy
-orders.delete('/:id', (req, res) => {
-  Order.findById(req.params.id).then((orderRecord) => {
-    orderRecord.destroy().then(() => {
-      res.redirect('/admin/orders');
-    });
-  });
-}); */
 
 module.exports = orders;
