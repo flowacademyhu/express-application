@@ -22,11 +22,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/users', users);
 
-const searches = require('./app/controllers/searches');
-app.use('/search', searches);
-
+// api controllers
 const api = require('./app/controllers/api');
 app.use('/api', api);
+
+const searches = require('./app/controllers/searches');
+app.use('/search', searches);
 
 const admin = require('./app/controllers/admin');
 app.use('/admin', admin);
