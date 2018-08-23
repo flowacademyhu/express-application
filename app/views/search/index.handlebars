@@ -1,29 +1,42 @@
 <h1 align="center"> Keresési találatok </h1>
 
-{{#if products.length }} <!-- ha van eleme a tombnek, amit a search.js-ben kaptunk meg. -->
-{{#each products}}
-<div class="productlist">
-    <div class="productphoto">
-        {{#if picture}}
-        <img id="productphoto" src="{{picture}}" height="100px"/>
-        {{else}}
-        <img id="productnophoto" src="/images/nincs_kep.jpg"/>
-        {{/if}}
+<div class="text-dark p-5">
+    <div class="container-fluid">
+        <div class="row products mx-auto">
+            {{#each products}}
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card shadow mx-auto">
+                    <a href="/products/{{id}}">
+                        {{#if picture}}
+                        <div>
+                            <img class="card-img-top img-responsive" src="/uploads/{{picture}}" alt="{{name}}">
+                        </div>
+                        {{else}}
+                        <div>
+                            <img class="card-img-top img-responsive" src="/images/noimg.jpg" alt="{{name}}">
+                        </div>
+                        {{/if}}
+                    </a>
+                    <div class="card-body">
+                        <a href="/products/{{id}}">
+                            <h4 class="card-title text-capitalize">{{name}}</h4>
+                        </a>
+                        <div class="row mx-auto d-flex justify-content-between">
+                            <h5 class="card-text p-2">{{price}} Ft</h5>
+                            <input type="text" class="form-control text-center col-2" value="1" min="1" max="10">
 
-    </div>
-    <div class="details px-3">
-        <b>
-            <font size="5em">Termék: </b>{{name}}</font>
-        <br>
-        <b>Termékleírás: </b>{{description}}
-    </div>
-    <div class="price px-3">
-        <b>
-            <font size="5em">{{price}} Ft</b>
-        </font>
+                            <form method="POST" action="#">
+                                <a href="#">
+                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart"
+                                            title="Add to cart" alt="add to cart"></i></button>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
     </div>
 </div>
-{{/each}}
-{{else}}
-<p>Nincs találat a keresésre.</p>
-{{/if}}
+
