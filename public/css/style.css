@@ -133,9 +133,21 @@ a:hover{
 .card {
     margin: 5% 5%;
     width: 280px;
+    overflow: hidden;
+}
+.card-body {
+    width: 280px;
+    
 }
 .card-body a {
     color: #212529;
+}
+#cardimg {
+    height: 210px;
+    width: 280px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow:hidden;
 }
 @media (max-width: 1500px) {
     .card {
