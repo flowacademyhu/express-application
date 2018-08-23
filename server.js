@@ -37,7 +37,6 @@ app.use((req, res, next) => {
       tokenRecord.getUser().then(userRecord => {
         res.locals = res.locals || {};
         req.user = res.locals.user = userRecord;
-        console.log(req.user);
         next();
       });
     });

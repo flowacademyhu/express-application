@@ -5,9 +5,27 @@ const Order = models.Order;
 
 // Index
 orders.get('/', (req, res) => {
-  Order.findAll().then((allOrder) => {
-    let ctx = { users: allOrder };
-    res.render('orders/index.handlebars', ctx);
+  Order.findAll({
+    include: [
+      { model: User }
+    ]
+  }).then((allOrder) => {
+    let ctx = { orders: allOrder };
+    res.render('admins/orders/index.handlebars', ctx);
+    /*   res.json(allOrder); */
+  });
+});
+
+// Filtered list
+orders.get('/filtered/:status', (req, res, next) => {
+  Order.findAll({
+    where: { status: req.params.status },
+    include: [
+      { model: User }
+    ]
+  }).then((allOrder) => {
+    let ctx = { orders: allOrder };
+    res.render('admins/orders/index.handlebars', ctx);
   });
 });
 
@@ -43,8 +61,13 @@ orders.post('/', (req, res) => {
 // Edit
 orders.get('/:id/edit', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
-    let ctx = { order: orderRecord };
-    res.render('orders/edit.handlebars', ctx);
+    let statuses = [
+      { value: 'ordered', label: 'Ordered', isSelected: (orderRecord.status === 'ordered') },
+      { value: 'delivered', label: 'Delivered', isSelected: (orderRecord.status === 'delivered') },
+      { value: 'deleted', label: 'Deleted', isSelected: (orderRecord.status === 'deleted') }
+    ];
+    let ctx = { order: orderRecord, statuses };
+    res.render('admins/orders/edit.handlebars', ctx);
   });
 });
 
@@ -52,15 +75,6 @@ orders.get('/:id/edit', (req, res) => {
 orders.put('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     orderRecord.update(req.body).then((updatedOrderRecord) => {
-      res.redirect('/orders');
-    });
-  });
-});
-
-// Destroy
-orders.delete('/:id', (req, res) => {
-  Order.findById(req.params.id).then((orderRecord) => {
-    orderRecord.destroy().then(() => {
       res.redirect('/orders');
     });
   });
