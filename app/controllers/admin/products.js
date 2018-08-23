@@ -2,36 +2,68 @@ const express = require('express');
 const products = express.Router();
 const models = require('../../models');
 const Product = models.Product;
+const Category = models.Category;
 
 // Index
 products.get('/', (req, res) => {
-  Product.findAll().then((allProduct) => {
+  Product.findAll(
+    {
+      include: [
+        {model: Category}
+      ]
+    }).then((allProduct) => {
     let ctx = { products: allProduct };
-    res.render('products/index.handlebars', ctx);
+    res.render('admins/products/index.handlebars', ctx);
   });
 });
 
 // New
 products.get('/new', (req, res) => {
-  res.render('products/new.handlebars');
+  Category.findAll().then((allCategories) => {
+    let ctx = { categories: allCategories };
+    res.render('admins/products/new.handlebars', ctx);
+  });
 });
 
 // Show
 products.get('/:id', (req, res) => {
-  Product.findById(req.params.id).then((productRecord) => {
-    let ctx = { product: productRecord };
-    res.render('products/show.handlebars', ctx);
+  Product.findById(req.params.id).then((getProduct) => {
+    Category.findById(getProduct.categoryId).then((getCategory) => {
+      const product = getProduct;
+      const category = getCategory;
+      let ctx = { product, category };
+      res.render('admins/products/show.handlebars', ctx);
+    });
   });
 });
 
 // Create
 products.post('/', (req, res) => {
-  Product.create({
+  let filename = Math.random().toString(36).substr(2, 16);
+  let fileExtension;
+  if (req.files.image) {
+    let image = req.files.image;
+    let splittedFilename = req.files.image.name.split('.');
+    fileExtension = splittedFilename[1];
+    image.mv((`./public/uploads/${filename}` + '.' + fileExtension), (error) => {
+      if (error) {
+        return res.send(error);
+      }
+    });
+  }
+
+  let productParams = {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    onStock: req.body.onStock
-  }).then(product => {
+    categoryId: req.body.id
+  };
+
+  if (req.files.image) {
+    productParams.picture = filename + '.' + fileExtension;
+  }
+
+  Product.create(productParams).then(product => {
     res.status(200).redirect('/admin/products');
   }).catch(error => {
     res.status(500).json(error);
@@ -40,9 +72,13 @@ products.post('/', (req, res) => {
 
 // Edit
 products.get('/:id/edit', (req, res) => {
-  Product.findById(req.params.id).then((productRecord) => {
-    let ctx = { product: productRecord };
-    res.render('products/edit.handlebars', ctx);
+  Product.findById(req.params.id).then((getProduct) => {
+    Category.findAll().then((getCategory) => {
+      const product = getProduct;
+      const category = getCategory;
+      let ctx = { product, category };
+      res.render('admins/products/edit.handlebars', ctx);
+    });
   });
 });
 

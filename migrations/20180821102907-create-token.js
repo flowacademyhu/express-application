@@ -1,6 +1,8 @@
+'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('OrderLines', {
+    return queryInterface.createTable('Tokens', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -8,20 +10,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
-      productId: {
-        allowNull: false,
-        type: Sequelize.INTEGER
+      token: {
+        type: Sequelize.STRING
       },
-      unitPrice: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      quantity: {
-        allowNull: false,
-        type: Sequelize.INTEGER
+      expireAt: {
+        allowNull: true,
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -33,7 +29,8 @@ module.exports = {
       }
     });
   },
+
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('OrderLines');
+    return queryInterface.dropTable('Tokens');
   }
 };

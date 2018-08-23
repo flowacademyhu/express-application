@@ -1,3 +1,5 @@
+var bcrypt = require('bcryptjs');
+
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
     username: DataTypes.STRING,
@@ -10,7 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
     encryptedPassword: DataTypes.STRING,
-    addressId: DataTypes.STRING
+    country: DataTypes.STRING,
+    city: DataTypes.STRING,
+    zip: DataTypes.STRING,
+    county: DataTypes.STRING,
+    street: DataTypes.STRING,
+    houseNumber: DataTypes.STRING,
+    floor: DataTypes.STRING,
+    door: DataTypes.STRING
   }, {
     getterMethods: {
       fullName: function () {
@@ -28,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.CartLine, { foreignKey: 'userId' });
     User.hasMany(models.Comment, { foreignKey: 'userId' });
     User.hasMany(models.Order, { foreignKey: 'userId' });
-    User.belongsTo(models.Address, { foreignKey: 'addressId' });
+    User.hasMany(models.Token, { foreignKey: 'userId' });
   };
   return User;
 };
