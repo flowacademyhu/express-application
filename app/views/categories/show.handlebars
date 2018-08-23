@@ -6,7 +6,7 @@
 <div class="container-fluid">
 <div class="row products mx-auto">
 {{#each products}}
-<div class="col-lg-3 col-md-6 col-sm-12">
+<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 <div class="card shadow mx-auto">
   <div id="cardimg">
     <a href="/products/{{id}}">
@@ -17,16 +17,16 @@
       {{/if}}
     </a>
   </div>
-  <div class="card-body">
+  <div class="card-body cardfooter">
     <a href="/products/{{id}}">
       <h4 class="card-title text-capitalize">{{name}}</h4>
     </a>
-    <div class="row d-flex justify-content-between">
-      <h5 class="card-text mt-2 col-6">{{price}} Ft</h5>
-      <form method="POST" action="/categories/{{id}}?_method=put" class="col-6">
-        <div class="row mx-auto">
-          <input name="quantity" type="text" class="form-control text-center col-5 mr-2" value="1" min="1">
-            <button  class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart" title="Add to cart" alt="add to cart"></i></button>
+    <div class="row d-flex justify-content-between mx-auto">
+      <h5 class="card-text mt-2 col-sm-6 col-md-6 col-lg-12 col-xl-6">{{price}} Ft</h5>
+      <form method="POST" action="/categories/{{id}}?_method=put" class="col-sm-6 col-md-6 col-lg-12 col-xl-6">
+        <div class="row mx-auto" id="cart">
+          <input name="quantity" type="text" class="form-control text-center col-lg-4 col-sm-3 p-1 mr-2" value="1" min="1">
+          <button  class="btn btn-success my-2 my-sm-0" type="submit"><i class="fa fa-shopping-cart mx-auto" title="Add to cart" alt="add to cart"></i></button>
         </div>
       </form>
     </div>
