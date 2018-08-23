@@ -6,6 +6,7 @@
 5. Product
 6. Sidebar
 7. Forms
+8. Index page
 */
 
 /*----------------------------------------------------------
@@ -272,3 +273,20 @@ login-icon {
   border-bottom: 7px solid #5cb85c
 }
 
+/*----------------------------------------------------------
+8. Index
+----------------------------------------------------------*/
+
+.carousel-inner{
+    max-height: 400px !important;
+    margin-bottom: 200px
+  }
+
+hr{
+    margin-bottom: 0px
+}
+
+.bestsellers{
+    text-align: center;
+
+}
