@@ -2,6 +2,7 @@ const express = require('express');
 const orders = express.Router();
 const models = require('../../models');
 const Order = models.Order;
+const User = models.User;
 
 // Index
 orders.get('/', (req, res) => {
