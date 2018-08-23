@@ -2,7 +2,7 @@ const express = require('express');
 const users = express.Router();
 const models = require('../models');
 const bcrypt = require('bcryptjs');
-const randomstring = require("randomstring");
+const randomstring = require('randomstring');
 const User = models.User;
 const Token = models.Token;
 
@@ -143,6 +143,5 @@ users.delete('/:id', (req, res) => {
     });
   });
 });
-
 
 module.exports = users;

@@ -6,6 +6,24 @@ module.exports = {
     return queryInterface.bulkInsert('Users',
       [
         {
+          username: 'admin',
+          role: 'admin',
+          firstName: 'admin',
+          lastName: 'admin',
+          encryptedPassword: bcrypt.hashSync('admin', bcrypt.genSaltSync(8), null),
+          email: 'admin@admin.com',
+          createdAt: '2018.01.01',
+          updatedAt: '2018.01.01',
+          city: 'admintown',
+          country: 'administratoria',
+          county: 'administratoria',
+          door: '0',
+          floor: '0',
+          houseNumber: '0',
+          street: '0000',
+          zip: '0000'
+        },
+        {
           username: 'BurnTheTree',
           role: 'admin',
           firstName: 'Sylvannas',
