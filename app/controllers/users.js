@@ -40,7 +40,7 @@ users.post('/login', (req, res) => {
           token: tokenField
         }).then(tokenRecord => {
           res.cookie('token', tokenField);
-          res.redirect('/users'); // ha lesz nyitó oldal, akkor oda kell irányítani
+          res.redirect('/'); // ha lesz nyitó oldal, akkor oda kell irányítani
         })
       } else {
         res.redirect('/users/login');
@@ -94,7 +94,7 @@ users.post('/', (req, res) => {
   });
 });
 
-// Edit
+// Edit page
 users.get('/:id/edit', (req, res) => {
   User.findById(req.params.id).then((userRecord) => {
     let ctx = { user: userRecord };
@@ -102,11 +102,35 @@ users.get('/:id/edit', (req, res) => {
   });
 });
 
+// Edit personal details
+users.get('/:id/editper', (req, res) => {
+  User.findById(req.params.id).then((userRecord) => {
+    let ctx = { user: userRecord };
+    res.render('users/editper.handlebars', ctx);
+  });
+});
+
+// Edit password
+users.get('/:id/editpw', (req, res) => {
+  User.findById(req.params.id).then((userRecord) => {
+    let ctx = { user: userRecord };
+    res.render('users/editpw.handlebars', ctx);
+  });
+});
+
+// Edit location
+users.get('/:id/editloc', (req, res) => {
+  User.findById(req.params.id).then((userRecord) => {
+    let ctx = { user: userRecord };
+    res.render('users/editloc.handlebars', ctx);
+  });
+});
+
 // Update
 users.put('/:id', (req, res) => {
   User.findById(req.params.id).then((userRecord) => {
     userRecord.update(req.body).then((updatedUserRecord) => {
-      res.redirect('/users');
+      res.redirect('/users/:id/edit');
     });
   });
 });
