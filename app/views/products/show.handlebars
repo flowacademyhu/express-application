@@ -4,7 +4,7 @@
             {{#if product.picture}}
                 <img src="/uploads/{{product.picture}}" class="img-responsive" alt="{{name}}" id="image">
             {{else}}
-                <img src="/images/nincs_kep.jpg" class="img-responsive" alt="{{name}}" id="image">
+                <img src="/images/noimg.jpg" class="img-responsive" alt="{{name}}" id="image">
             {{/if}}
         </div>
         <div class="col-md-6">
@@ -12,11 +12,11 @@
             <p><u></u><br/>{{product.description}}</p>
             <div class="row mx-auto d-flex justify-content-between mt-5 mb-5">
                 <h4 class="font-weight-bold mr-auto"><u></u>{{product.price}} Ft</h4>
-                <input type="text" class="form-control input-number text-center col-1 mr-2" value="1" min="1" max="10">
-                <form method="POST" action="#">
-                    <a href="#">
+                <form method="POST" action="/products/{{product.id}}?_method=put" class="col-6">
+                    <div class="row mx-auto">
+                        <input name="quantity" type="text" class="form-control text-center col-2 mr-2" value="1" min="1" >
                         <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Add to cart</button>
-                    </a>
+                    </div>
                 </form>
             </div>
         </div>
