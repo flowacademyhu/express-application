@@ -62,7 +62,6 @@ products.post('/', (req, res) => {
   if (req.files.image) {
     productParams.picture = filename + '.' + fileExtension;
   }
-
   Product.create(productParams).then(product => {
     res.status(200).redirect('/admin/products');
   }).catch(error => {
@@ -72,11 +71,12 @@ products.post('/', (req, res) => {
 
 // Edit
 products.get('/:id/edit', (req, res) => {
-  Product.findById(req.params.id).then((getProduct) => {
-    Category.findAll().then((getCategory) => {
-      const product = getProduct;
-      const category = getCategory;
-      let ctx = { product, category };
+  Product.findById(req.params.id).then((product) => {
+    Category.findAll().then((categories) => {
+      for (let i in categories) {
+        categories[i].isSelected = categories[i].id === product.categoryId;
+      }
+      let ctx = { product, categories };
       res.render('admins/products/edit.handlebars', ctx);
     });
   });
@@ -85,7 +85,31 @@ products.get('/:id/edit', (req, res) => {
 // Update
 products.put('/:id', (req, res) => {
   Product.findById(req.params.id).then((productRecord) => {
-    productRecord.update(req.body).then((updatedProductRecord) => {
+    let filename = Math.random().toString(36).substr(2, 16);
+    let fileExtension;
+    if (req.files.image) {
+      let image = req.files.image;
+      let splittedFilename = req.files.image.name.split('.');
+      fileExtension = splittedFilename[1];
+      image.mv((`./public/uploads/${filename}` + '.' + fileExtension), (error) => {
+        if (error) {
+          return res.send(error);
+        }
+      });
+    }
+
+    let productParams = {
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      categoryId: req.body.categoryId
+    };
+
+    if (req.files.image) {
+      productParams.picture = filename + '.' + fileExtension;
+    }
+
+    productRecord.update(productParams).then((updatedProductRecord) => {
       res.redirect('/admin/products');
     });
   });
