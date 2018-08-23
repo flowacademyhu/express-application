@@ -18,7 +18,6 @@ orders.get('/', (req, res) => {
 });
 
 // Filtered list
-
 orders.get('/filtered/:status', (req, res, next) => {
   Order.findAll({
     where: { status: req.params.status },
@@ -77,22 +76,11 @@ orders.get('/:id/edit', (req, res) => {
 
 // Update
 orders.put('/:id', (req, res) => {
-  console.log('EZ KELLL A STATUS AZ IYEBE: ' + req.body.status);
   Order.findById(req.params.id).then((orderRecord) => {
     orderRecord.update(req.body).then((updatedOrderRecord) => {
       res.redirect('/admin/orders');
     });
   });
 });
-
-/*
-// Destroy
-orders.delete('/:id', (req, res) => {
-  Order.findById(req.params.id).then((orderRecord) => {
-    orderRecord.destroy().then(() => {
-      res.redirect('/admin/orders');
-    });
-  });
-}); */
 
 module.exports = orders;
