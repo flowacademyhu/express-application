@@ -78,8 +78,15 @@ users.post('/', (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    password: req.body.encryptedPassword
-
+    password: req.body.encryptedPassword,
+    country: req.body.country,
+    city: req.body.city,
+    zip: req.body.zip,
+    county: req.body.county,
+    street: req.body.street,
+    houseNumber: req.body.houseNumber,
+    floor: req.body.floor,
+    door: req.body.door
   }).then(user => {
     res.status(200).redirect('/users');
   }).catch(error => {

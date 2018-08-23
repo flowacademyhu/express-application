@@ -26,15 +26,19 @@
 <body>
   <!-- Logo -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="/users">LOGO HELYE</a>
+    <a href="/users"><img id="logo" src="/images/todologo.png" alt="Logo"></a>
     <ul class="navbar-nav ml-5">
       <!-- Category Sidebar -->
-      <div id="mySidenav" class="sidenav">
+       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="dropdown">
           {{{sidebar}}}
         </div>
-      </li>
+      </div>
+      <!-- Use any element to open the sidenav -->
+      <div class="hamIcon" onclick="openNav()">
+        Categories
+      </div>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -45,12 +49,10 @@
       <form class="form-inline my-2 my-lg-0  ml-auto" action="/search/" method="GET">
         <div class="form-group col-12">
           <input class="form-control" id="searchfield" name="search" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" id="searcbutton" type="submit">Search</button>
+          <button class="btn btn-success my-2 my-sm-0" id="searcbutton" type="submit">Search</button>
         </div>
       </form>
-
       <!-- log / reg -->
-
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           {{#if user}}
@@ -188,7 +190,7 @@
   <script>
     /* Set the width of the side navigation to 250px */
     function openNav() {
-      document.getElementById("mySidenav").style.width = "400px";
+      document.getElementById("mySidenav").style.width = "250px";
     }
     /* Set the width of the side navigation to 0 */
     function closeNav() {
