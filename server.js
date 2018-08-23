@@ -27,33 +27,34 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-	if (req.cookies.token) {
-		models.Token.findOne({
-			where: {
-				token: req.cookies.token
-			}
-		}).then(tokenRecord => {
-			if (!tokenRecord) next();
-			tokenRecord.getUser().then(userRecord => {
-				res.locals = res.locals || {};
-				req.user = res.locals.user = userRecord;
-				console.log(req.user);
-				next();
-			});
-		});
-	} else {
-		next();
-	}
+  if (req.cookies.token) {
+    models.Token.findOne({
+      where: {
+        token: req.cookies.token
+      }
+    }).then(tokenRecord => {
+      if (!tokenRecord) next();
+      tokenRecord.getUser().then(userRecord => {
+        res.locals = res.locals || {};
+        req.user = res.locals.user = userRecord;
+        console.log(req.user);
+        next();
+      });
+    });
+  } else {
+    next();
+  }
 });
 
 const users = require('./app/controllers/users');
 app.use('/users', users);
 
-const searches = require('./app/controllers/searches');
-app.use('/search', searches);
-
+// api controllers
 const api = require('./app/controllers/api');
 app.use('/api', api);
+
+const searches = require('./app/controllers/searches');
+app.use('/search', searches);
 
 const admin = require('./app/controllers/admin');
 app.use('/admin', admin);
@@ -70,9 +71,11 @@ app.use('/comments', comments);
 const cart = require('./app/controllers/cart');
 app.use('/cart', cart);
 
-const checkout = require('./app/controllers/checkout');
-app.use('/checkout', checkout);
-
 app.use(express.static('./public'));
+
+// Index
+app.get('/', (req, res) => {
+  res.render('index.handlebars');
+});
 
 app.listen(8080);

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
     crossorigin="anonymous">
   <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <!-- Font Awesome JS -->
@@ -17,21 +18,28 @@
     crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
   <!-- Logo -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="/users">LOGO HELYE</a>
+    <a href="/users"><img id="logo" src="/images/todologo.png" alt="Logo"></a>
     <ul class="navbar-nav ml-5">
       <!-- Category Sidebar -->
-      <div id="mySidenav" class="sidenav">
+       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="dropdown">
           {{{sidebar}}}
         </div>
-      </li>
+      </div>
+      <!-- Use any element to open the sidenav -->
+      <div class="hamIcon" onclick="openNav()">
+        Categories
+      </div>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -42,12 +50,10 @@
       <form class="form-inline my-2 my-lg-0  ml-auto" action="/search/" method="GET">
         <div class="form-group col-12">
           <input class="form-control" id="searchfield" name="search" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" id="searcbutton" type="submit">Search</button>
+          <button class="btn btn-success my-2 my-sm-0" id="searcbutton" type="submit">Search</button>
         </div>
       </form>
-
       <!-- log / reg -->
-
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           {{#if user}}
@@ -84,12 +90,8 @@
     </div>
   </nav>
   <hr id="header-line" />
-  <div class="container">
-
     <!-- Body -->
     {{{body}}}
-
-  </div>
   <!-- Footer -->
   <footer class="page-footer font-small mdb-color pt-1 text-white bg-dark">
     <!-- Footer Links -->
@@ -189,7 +191,7 @@
   <script>
     /* Set the width of the side navigation to 250px */
     function openNav() {
-      document.getElementById("mySidenav").style.width = "400px";
+      document.getElementById("mySidenav").style.width = "250px";
     }
     /* Set the width of the side navigation to 0 */
     function closeNav() {

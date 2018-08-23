@@ -37,8 +37,7 @@ a:hover{
 ----------------------------------------------------------*/
 
 #logo {
-    width: 83px;
-    height: 30px;
+    height: 50px;
 }
 
 .navbar {
@@ -70,8 +69,8 @@ a:hover{
 3. BODY
 ----------------------------------------------------------*/
 
-.container {
-    width: 90vw;
+.list {
+    width: 90%;
     min-height: 100%
 }
 
@@ -118,27 +117,56 @@ a:hover{
     border: 1px solid black;
     align-items: center;
 }
+.products {
+    width: 80%;
+}
+.center {
+    width: 115px;
+}
 .card p {
     color: #212529;
 }
+.card-title {
+    height: 60px;
+    margin-bottom: 20px;
+}
 .card {
-    border-color: #212529;
-    margin: 2% auto;
+    margin: 5% 5%;
+    width: 280px;
+    overflow: hidden;
+}
+.card-body {
+    width: 280px;
+    
+}
+.card-body a {
+    color: #212529;
+}
+#cardimg {
+    height: 210px;
+    width: 280px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow:hidden;
+}
+@media (max-width: 1500px) {
+    .card {
+        width: 95%;
+    }
 }
 .comment {
     background-color: whitesmoke;
     padding-left: 30px;
     padding-bottom: 10px;
     border-radius: 15px;
-    width: 90%;
+    width: 74%;
 }
 #image {
-    padding: 5%;
+    padding: 0%;
     padding-right: 20%;
     max-width: 500px;
     margin: 1% auto;
 }
-
 /*----------------------------------------------------------
 6. SIDEBAR 
 ----------------------------------------------------------*/
@@ -155,7 +183,7 @@ a:hover{
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 80px; /* Stay at the top */
+    top: 0; /* Stay at the top */
     left: 0;
     background-color: #383C42; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
@@ -166,7 +194,7 @@ a:hover{
 
 /* The navigation menu links */
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 6px;
     text-decoration: none;
     font-size: 18px;
     color: #f1f1f1;
@@ -187,6 +215,10 @@ a:hover{
     font-size: 48px;
     font-weight: bold;
     margin-left: 50px;
+}
+
+.sidenav ul{
+    list-style: none;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -237,4 +269,6 @@ login-icon {
 
 .userauth {
   text-align: center;
+  border-bottom: 7px solid #5cb85c
 }
+
