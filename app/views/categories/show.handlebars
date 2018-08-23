@@ -23,12 +23,10 @@
     </a>
     <div class="row d-flex justify-content-between">
       <h5 class="card-text mt-2 col-6">{{price}} Ft</h5>
-      <form method="POST" action="#" class="col-6">
+      <form method="POST" action="/categories/{{id}}?_method=put" class="col-6">
         <div class="row mx-auto">
-          <input type="text" class="form-control text-center col-5 mr-2" value="1" min="1" max="10">
-          <a href="#">
+          <input name="quantity" type="text" class="form-control text-center col-5 mr-2" value="1" min="1">
             <button  class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart" title="Add to cart" alt="add to cart"></i></button>
-          </a>
         </div>
       </form>
     </div>
