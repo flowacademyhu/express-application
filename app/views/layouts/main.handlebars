@@ -27,7 +27,7 @@
 <body>
   <!-- Logo -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="/users"><img id="logo" src="/images/todologo.png" alt="Logo"></a>
+    <a href="/"><img id="logo" src="/images/todologo.png" alt="Logo"></a>
     <ul class="navbar-nav ml-5">
       <!-- Category Sidebar -->
        <div id="mySidenav" class="sidenav">
@@ -91,6 +91,13 @@
   </nav>
   <hr id="header-line" />
     <!-- Body -->
+    {{#if alert}}
+      <div class="errorMsg">
+        <h4>
+        {{alert}}
+        </h4>
+      </div>
+    {{/if}}
     {{{body}}}
   <!-- Footer -->
   <footer class="page-footer font-small mdb-color pt-1 text-white bg-dark">

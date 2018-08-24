@@ -31,21 +31,26 @@ users.post('/login', (req, res) => {
       username: req.body.username
     }
   }).then((userRecord) => {
-    if (!userRecord) return res.redirect('/users/login');
-    bcrypt.compare(req.body.password, userRecord.encryptedPassword, (err, result) => {
-      if (result) {
-        let tokenField = randomstring.generate();
-        Token.create({
-          userId: userRecord.id,
-          token: tokenField
-        }).then(tokenRecord => {
-          res.cookie('token', tokenField);
-          res.redirect('/'); // ha lesz nyitó oldal, akkor oda kell irányítani
-        })
-      } else {
-        res.redirect('/users/login');
-      }
-    });
+    if (userRecord) {
+      bcrypt.compare(req.body.password, userRecord.encryptedPassword, (fail, result) => {
+        if (result) {
+          let tokenField = randomstring.generate();
+          Token.create({
+            userId: userRecord.id,
+            token: tokenField
+          }).then(tokenRecord => {
+            res.cookie('token', tokenField);
+            res.redirect('/'); // ha lesz nyitó oldal, akkor oda kell irányítani
+          });
+        } else {
+          res.locals.alert = 'Invalid username or password!';
+          res.render('users/login.handlebars');
+        }
+      });
+    } else {
+      res.locals.alert = 'Invalid username or password!';
+      res.render('users/login.handlebars');
+    }
   });
 });
 

@@ -288,3 +288,9 @@ login-icon {
   border-bottom: 7px solid #5cb85c
 }
 
+.errorMsg {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 1em
+}

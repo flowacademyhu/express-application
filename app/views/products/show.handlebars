@@ -13,10 +13,12 @@
             <div class="row mx-auto d-flex justify-content-between mt-5 mb-5">
                 <h4 class="font-weight-bold mr-auto"><u></u>{{product.price}} Ft</h4>
                 <form method="POST" action="/products/{{product.id}}?_method=put" class="col-6">
+                    {{#if user}}
                     <div class="row mx-auto">
                         <input name="quantity" type="text" class="form-control text-center col-2 mr-2" value="1" min="1" >
                         <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Add to cart</button>
                     </div>
+                    {{/if}}
                 </form>
             </div>
         </div>
