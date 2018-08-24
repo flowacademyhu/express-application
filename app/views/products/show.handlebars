@@ -8,24 +8,25 @@
             {{/if}}
         </div>
         <div class="col-md-6">
-            <h3 class="font-weight-bold"><u></u><br/>{{product.name}}</h3>
-            <p><u></u><br/>{{product.description}}</p>
+            <h3 class="font-weight-bold"><br/>{{product.name}}</h3>
+            <p><br/>{{product.description}}</p>
             <div class="row mx-auto d-flex justify-content-between mt-5 mb-5">
-                <h4 class="font-weight-bold mr-auto"><u></u>{{product.price}} Ft</h4>
-                <form method="POST" action="/products/{{product.id}}?_method=put" class="col-6">
-                    <div class="row mx-auto cart">
-                        <input name="quantity" type="text" class="form-control text-center col-2 mr-2" value="1" min="1" >
-                        <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Add to cart</button>
-                    </div>
-                </form>
+                <h4 class="font-weight-bold mr-auto">{{product.price}} Ft</h4>
+                {{#if user}}
+                    <form method="POST" action="/products/{{product.id}}?_method=put" class="col-6">
+                        <div class="row mx-auto cart">
+                            <input name="quantity" type="text" class="form-control text-center col-2 mr-2" value="1" min="1" >
+                            <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Add to cart</button>
+                        </div>
+                    </form>
+                {{/if}}
             </div>
         </div>
       </div>
     </div>
 
 <div class="text-left p-5 mx-auto">
-
-    {{!-- {{#if user}} --}}
+    {{#if user}}
         <form method="POST" action="/comments" class="col-9 mx-auto">
             <h2>Comments</h2><br>
             <input type="hidden" name="productId" value={{product.id}}/>
@@ -33,16 +34,15 @@
             <div class="mb-3">
                 <button class="btn btn-success my-2 my-sm-3" type="submit">Submit</button>
             </div>
-            
         </form>
-   {{!-- }} {{/if}} --}}
+    {{/if}}
 
     {{#each comments}}
-    <div class="comment shadow-sm mx-auto">
-    <h4><br/>{{User.username}}</h4>
-    <hr width="20%" class="mt-0">
-    <p align="justify">{{comment}}</p>
-    </div>
-    <br>
+        <div class="comment shadow-sm mx-auto">
+            <h4><br/>{{User.username}}</h4>
+            <hr width="20%" class="mt-0">
+            <p align="justify">{{comment}}</p>
+        </div>
+        <br>
     {{/each}}
 </div>
