@@ -5,13 +5,10 @@ const Category = models.Category;
 const Product = models.Product;
 const CartLine = models.CartLine;
 
-let tempCatId;
-
 // Show
 indeces.get('/', (req, res) => {
   const getCategory = Category.findById(30);
   const getProducts = Product.findAll({ where: { categoryId: 30 } });
-  tempCatId = 30;
   Promise.all([getCategory, getProducts]).then(results => {
     const category = results[0];
     const products = results[1];
@@ -31,6 +28,5 @@ indeces.put('/:id', (req, res) => {
     res.redirect(`/`);
   });
 });
-
 
 module.exports = indeces;

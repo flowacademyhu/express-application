@@ -15,7 +15,8 @@ categories.get('/:id', (req, res) => {
   Promise.all([getCategory, getProducts]).then(results => {
     const category = results[0];
     const products = results[1];
-    let ctx = { category, products };
+    let ctx = { category, products, user: req.user };
+    // res.json(ctx);
     res.render('categories/show.handlebars', ctx);
   });
 });
