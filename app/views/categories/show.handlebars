@@ -23,7 +23,7 @@
             </a>
             <div class="row d-flex justify-content-between mx-auto">
               <h5 class="card-text mt-2 col-sm-6 col-md-6 col-lg-12 col-xl-6">{{price}} Ft</h5>
-              {{#if user}}
+              {{#if ../user}}
                 <form method="POST" action="/categories/{{id}}?_method=put" class="col-sm-6 col-md-6 col-lg-12 col-xl-6">
                   <div class="row cart mx-auto">
                     <input name="quantity" type="text" class="form-control text-center col-lg-4 col-sm-3 p-1 mr-2" value="1" min="1">
