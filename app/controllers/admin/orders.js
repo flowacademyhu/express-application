@@ -30,32 +30,30 @@ orders.get('/filtered/:status', (req, res, next) => {
   });
 });
 
+/*
 // New
 orders.get('/new', (req, res) => {
-  res.render('admins/orders/new.handlebars');
+  res.render('orders/new.handlebars');
 });
+ */
 
 // Show
 orders.get('/:id', (req, res) => {
-  Order.findById(req.params.id,
-    {
-      include: [
-        { model: User }
-      ]
-    }).then((orderRecord) => {
-    let ctx = { order: orderRecord };
-    /* res.json(orderRecord); */
-    res.render('admins/orders/show.handlebars', ctx);
+  Order.findById(req.params.id).then((userRecord) => {
+    let ctx = { user: userRecord };
+    res.render('orders/show.handlebars', ctx);
   });
 });
 
 // Create
 orders.post('/', (req, res) => {
   Order.create({
-    userId: req.body.userId,
-    status: req.body.status
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    encryptedPassword: req.body.encryptedPassword
   }).then(user => {
-    res.status(200).redirect('/admin/orders');
+    res.status(200).redirect('/orders');
   }).catch(error => {
     res.status(500).json(error);
   });
@@ -78,7 +76,7 @@ orders.get('/:id/edit', (req, res) => {
 orders.put('/:id', (req, res) => {
   Order.findById(req.params.id).then((orderRecord) => {
     orderRecord.update(req.body).then((updatedOrderRecord) => {
-      res.redirect('/admin/orders');
+      res.redirect('/orders');
     });
   });
 });
