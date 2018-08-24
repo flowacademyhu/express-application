@@ -18,8 +18,8 @@
     </div>
     <div class="row">
       <div class="form-group col-sm-6">
-        <label>Username:</label>
-        <input name="username" type="text" class="form-control" pattern="^\S{6,}$">
+        <label>Username<span style="font-size: 120%">*</span>:</label>
+        <input name="username" required type="text" class="form-control" pattern="^\S{6,}$">
       </div>
       <div class="form-group col-sm-6">
         <label>Country:</label>
@@ -49,8 +49,8 @@
     </div>
     <div class="row">
       <div class="form-group col-sm-6">
-        <label>Email address:</label>
-        <input name="email" type="email" class="form-control" aria-describedby="emailHelp">
+        <label>Email addres<span style="font-size: 120%">*</span>:</label>
+        <input name="email" required type="email" class="form-control" aria-describedby="emailHelp">
       </div>
       <div class="form-group col-sm-6">
         <label>ZIP:</label>
@@ -59,8 +59,8 @@
     </div>
     <div class="row">
       <div class="form-group col-sm-6">
-        <label>Password:</label>
-        <input id="password" class="form-control" name="encryptedPassword" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;"
+        <label>Password<span style="font-size: 120%">*</span>:</label>
+        <input id="password" required class="form-control" name="encryptedPassword" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;"
           required>
       </div>
       <div class="form-group col-sm-6">
@@ -70,12 +70,12 @@
 
     </div>
     <div class="row">
-      <div class="form-group col-sm-6">
-        <label>Confirm password:</label>
-        <input id="password_two" class="form-control" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
+      <div class="form-group  col-sm-6">
+        <label>Confirm password<span style="font-size: 120%">*</span>:</label>
+        <input id="password_two" required class="form-control" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
           required>
       </div>
-      <div class="form-group col-sm-6">
+      <div class="form-group  col-sm-6">
         <div class="row">
           <div class="form-group  col-sm-4">
             <label>Number:</label>
@@ -92,6 +92,7 @@
         </div>
       </div>
     </div>
+    <span>* : field has to be filled for registrate process</span><br>
     <button class="btn btn-success my-1 my-sm-3" type="submit" style="width: 200px">Register</button>
   </form>
 </div>

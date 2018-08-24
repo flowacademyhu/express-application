@@ -90,6 +90,13 @@
   </nav>
   <hr id="header-line" />
     <!-- Body -->
+    {{#if alert}}
+      <div class="errorMsg">
+        <h4>
+        {{alert}}
+        </h4>
+      </div>
+    {{/if}}
     {{{body}}}
   <!-- Footer -->
   <footer class="page-footer font-small mdb-color pt-1 text-white bg-dark">

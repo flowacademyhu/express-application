@@ -75,6 +75,13 @@ a:hover{
     min-height: 100%
 }
 
+.errorMsg {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 1em
+}
+
 /*----------------------------------------------------------
 4. FOOTER 
 ----------------------------------------------------------*/
