@@ -123,6 +123,9 @@ a:hover{
 .center {
     width: 115px;
 }
+.cart {
+    flex-wrap: nowrap;
+}
 .card p {
     color: #212529;
 }
@@ -160,8 +163,11 @@ a:hover{
     .card {
         width: 95%;
     }
-    .cardfooter h4, h5 {
-        font-size: 1.2em;
+    .cardfooter h4 {
+        font-size: 1.3em;
+    }
+    .cardfooter h5 {
+        font-size: 1.1em;
     }
     #image {
         max-width: 400px;
@@ -177,10 +183,9 @@ a:hover{
 }
 
 .comment {
-    background-color: whitesmoke;
-    padding-left: 30px;
-    padding-bottom: 10px;
-    border-radius: 15px;
+    padding: 0px 30px 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
     width: 74%;
 }
 /*----------------------------------------------------------

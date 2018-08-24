@@ -13,7 +13,7 @@
             <div class="row mx-auto d-flex justify-content-between mt-5 mb-5">
                 <h4 class="font-weight-bold mr-auto"><u></u>{{product.price}} Ft</h4>
                 <form method="POST" action="/products/{{product.id}}?_method=put" class="col-6">
-                    <div class="row mx-auto">
+                    <div class="row mx-auto cart">
                         <input name="quantity" type="text" class="form-control text-center col-2 mr-2" value="1" min="1" >
                         <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Add to cart</button>
                     </div>
@@ -38,9 +38,10 @@
    {{!-- }} {{/if}} --}}
 
     {{#each comments}}
-    <div class="comment mx-auto">
-    <h4><u></u><br/>{{User.username}}</h4>
-    <p><u></u>{{comment}}</p>
+    <div class="comment shadow-sm mx-auto">
+    <h4><br/>{{User.username}}</h4>
+    <hr width="20%" class="mt-0">
+    <p align="justify">{{comment}}</p>
     </div>
     <br>
     {{/each}}
