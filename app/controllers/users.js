@@ -93,7 +93,7 @@ users.post('/', (req, res) => {
     floor: req.body.floor,
     door: req.body.door
   }).then(user => {
-    res.status(200).redirect('/users');
+    res.status(200).redirect('/');
   }).catch(error => {
     res.status(500).json(error);
   });

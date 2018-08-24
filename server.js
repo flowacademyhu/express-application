@@ -70,11 +70,9 @@ app.use('/comments', comments);
 const cart = require('./app/controllers/cart');
 app.use('/cart', cart);
 
-app.use(express.static('./public'));
+const index = require('./app/controllers/indeces');
+app.use('/', index);
 
-// Index
-app.get('/', (req, res) => {
-  res.render('index.handlebars');
-});
+app.use(express.static('./public'));
 
 app.listen(8080);

@@ -1,20 +1,29 @@
-{{#each results}}
-<div class="row">
-  <div class="col-sm-4"><h4>{{Product.name}}</h4></div>
-  <div class="col-sm-4"><h4>{{Product.price}} Ft</h4></div>
-  <form method="POST" action="/cart/{{id}}?_method=put">
-    <input name="quantity" type="text" value="{{quantity}}" size="4">
-    <button type="submit" class="btn btn-sm btn-outline-secondary">Modify</button> 
-  </form>
-  <form method="POST" action="/cart/{{id}}?_method=delete">
-    <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button> 
-  </form>
-</div>
-{{/each}}
-<br>
-<div class="row">
-  <div class="col-sm-9"></div>
-  <form method="GET" action="/cart/order">
-    <button type="submit" class="btn btn-sm btn-outline-secondary">Order</button> 
+<div class="container mx-auto mt-3">
+  {{#each results}}
+  <div class="row">
+    <div class="col-sm-6">
+      <h4>{{Product.name}}</h4>
+    </div>
+    <div class="col-sm-3">
+      <h4>{{Product.price}} Ft</h4>
+    </div>
+    <div class="row col-sm-3 d-flex justify-content-end">
+      <form method="POST" action="/cart/{{id}}?_method=put">
+        <input name="quantity" style="text-align: right" type="text" value="{{quantity}}" size="2">
+        <button type="submit" class="mx-2 btn btn-sm btn-outline-success">Modify</button>
+      </form>
+      <form method="POST" action="/cart/{{id}}?_method=delete">
+        <button type="submit" class="btn btn-sm btn-outline-success">Delete</button>
+      </form>
+      </div>
+  </div>
+  {{/each}}
+  
+  <div class="my-3">
+  <hr id="header-line" style="height: 3px"/>
+  </div>
+  
+  <form method="GET" action="/cart/order" class="mb-3 d-flex justify-content-end mr-3">
+    <button type="submit" class="btn btn-sm btn-outline-success">Order</button>
   </form>
 </div>
