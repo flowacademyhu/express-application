@@ -6,30 +6,30 @@ id,parentId,name
 5,1,Landline telephone
 6,1,GPS
 7,0,Video
-8,5,Television
-9,5,DVD player
-10,5,Digital photo frame
-11,5,Digital camera
-12,5,Video camera
+8,7,Television
+9,7,DVD player
+10,7,Digital photo frame
+11,7,Digital camera
+12,7,Video camera
 13,0,Audio
-14,11,MP3 player
-15,11,Home cinema system
-16,11,Headset
-17,11,Mini-hifi
+14,13,MP3 player
+15,13,Home cinema system
+16,13,Headset
+17,13,Mini-hifi
 18,0,Computer
-19,16,Laptop
-20,16,Notebook
-21,16,Tablet
-22,16,Personal computer
-23,16,Monitor
-24,16,Hardver
+19,18,Laptop
+20,18,Notebook
+21,18,Tablet
+22,18,Personal computer
+23,18,Monitor
+24,18,Hardver
 25,0,Household appliances
-26,23,Cooker
-27,23,Hob
-28,23,Oven
-29,23,Refridgeratory
-30,23,Freezer
-31,23,Dishwasher
-32,23,Washing machine
-33,23,Kitchen appliances
-34,23,Other household appliances
+26,25,Cooker
+27,25,Hob
+28,25,Oven
+29,25,Refridgeratory
+30,25,Freezer
+31,25,Dishwasher
+32,25,Washing machine
+33,25,Kitchen appliances
+34,25,Other household appliances
