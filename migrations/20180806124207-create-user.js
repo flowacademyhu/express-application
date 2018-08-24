@@ -10,26 +10,48 @@ module.exports = {
       username: {
         type: Sequelize.STRING
       },
-      firstname: {
+      role: {
+        type: Sequelize.ENUM('user', 'admin'),
+        allowNull: false
+      },
+      firstName: {
         type: Sequelize.STRING
       },
-      lastname: {
-        type: Sequelize.STRING
-      },
-      password: {
+      lastName: {
         type: Sequelize.STRING
       },
       email: {
         type: Sequelize.STRING
       },
-      address: {
+      country: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      zip: {
+        type: Sequelize.STRING
+      },
+      county: {
+        type: Sequelize.STRING
+      },
+      street: {
+        type: Sequelize.STRING
+      },
+      houseNumber: {
+        type: Sequelize.STRING
+      },
+      floor: {
+        type: Sequelize.STRING
+      },
+      door: {
         type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      lastLoginAt: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

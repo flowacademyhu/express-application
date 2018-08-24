@@ -1,0 +1,41 @@
+    <div class="btn-group col-md-1 ml-1 mt-2 mb-2">
+    
+    <a href="/admin/orders/filtered/deleted">
+      <button type="submit" class="btn btn-outline-success">Show: Deleted</button>
+    </a>
+
+    <a href="/admin/orders/filtered/delivered">
+      <button type="submit" class="btn btn-outline-success">Show: Delivered</button>
+    </a>
+
+    <a href="/admin/orders/filtered/ordered">
+      <button type="submit" class="btn btn-outline-success">Show: Ordered</button>
+    </a>
+
+    <a href="/admin/orders/">
+      <button type="submit" class="btn btn-outline-success">Show: All</button>
+    </a>
+  </div>
+{{#each orders}}
+
+<div method="GET" action="/admin/orders/{{order.status}}?_method=get" class="row justify-content-center align-self-center mt-2 mb-2">
+
+  <div class="btn-group col-md-1 ml-0"><h4> {{id}}</h4></div>
+  <div class="btn-group col-md-4 ml-1"><h4> {{User.email}}</h4></div>
+  <div class="btn-group col-md-2 ml-1"><h4> {{User.username}}</h4></div>
+  <div class="btn-group col-md-1 ml-1 mr-3"><h4> {{status}}</h4></div>
+    
+  <div class="btn-group col-md-1">
+    <a href="/admin/orders/{{id}}">
+      <button type="submit" class="btn btn-outline-success">Show</button>
+    </a>
+
+    <a href="/admin/orders/{{id}}/edit">
+      <button type="submit" class="btn btn-outline-success">Edit</button>
+    </a>
+  </div>
+ 
+</div>
+ <hr style="width: 100%; color: black; height: 1px; background-color:black; padding:0; margin:0;"  />
+
+{{/each}}

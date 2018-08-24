@@ -1,31 +1,328 @@
+/*
+1. Main
+2. Header
+3. Body
+4. Footer
+5. Product
+6. Sidebar
+7. Forms
+8. Index page
+*/
+
+/*----------------------------------------------------------
+1. MAIN
+----------------------------------------------------------*/
 
 * { margin:0;padding:0;font-family: 'Quicksand', sans-serif} 
 
 body {
-    width:100; 
-    height:100
-}
-
-#logo {
-    width: 83px;
-    height: 30px
+    width:100vw; 
+    height:100;
 }
 
 a {
-    color: white
+    color: white;
 }
 
 a:hover{
-    color: #00BF38;
-    text-decoration: none
+    color: #5cb85c;
+    text-decoration: none;
 }
 
 .green {
-    color: #00BF38
+    color: #5cb85c;
 }
+
+/*----------------------------------------------------------
+2. HEADER
+----------------------------------------------------------*/
+
+#logo {
+    height: 40px;
+}
+
+.navbar {
+    min-height: 40px;
+  }
+  
+  .navbar-brand {
+    padding: 0 15px;
+    height: 60px;
+    line-height: 60px;
+  }
+  
+  .navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    margin-top: 13px;
+    padding: 9px 10px !important;
+  }
+  
+  @media (min-width: 768px) {
+    .navbar-nav > li > a {
+      /* (80px - line-height of 27px) / 2 = 26.5px */
+      padding-top: 16.5px;
+      padding-bottom: 16.5px;
+      line-height: 27px;
+    }
+  }
+
+/*----------------------------------------------------------
+3. BODY
+----------------------------------------------------------*/
+
+.list {
+    width: 90%;
+    min-height: 100%
+}
+
+.errorMsg {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 1em
+}
+
+/*----------------------------------------------------------
+4. FOOTER 
+----------------------------------------------------------*/
+
+/*----------------------------------------------------------
+5. PRODUCT 
+----------------------------------------------------------*/
 
 .usersList {
     display: flex;
     justify-content: space-around;
-    flex-flow: row wrap
+    flex-flow: row wrap;
+}
+
+.productlist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    table-layout: fixed;
+}
+
+#productphoto{
+    height: 100px;
+    border: 1px solid black;
+}
+
+#productnophoto{
+    height: 100px;
+    border: 1px solid black;
+}
+
+.details {
+    width: 50vw;
+    word-wrap: break-word;
+    border: 1px solid black;
+    display: block;
+}
+.price {
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+}
+.products {
+    width: 80%;
+}
+.center {
+    width: 115px;
+}
+.cart {
+    flex-wrap: nowrap;
+}
+.card p {
+    color: #212529;
+}
+.card-title {
+    height: 60px;
+    margin-bottom: 20px;
+}
+.card {
+    margin: 5% 5%;
+    max-width: 280px;
+    min-width: 220px;
+    overflow: hidden;
+}
+.card-body {
+    max-width: 280px;
+}
+.card-body a {
+    color: #212529;
+}
+#cardimg {
+    height: 210px;
+    max-width: 280px;
+    min-width: 220px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow:hidden;
+}
+#image {
+    padding: 0%;
+    padding-right: 15%;
+    max-width: 500px;
+    margin: 1% auto;
+}
+@media (max-width: 1600px) {
+    .card {
+        width: 95%;
+    }
+    .cardfooter h4 {
+        font-size: 1.3em;
+    }
+    .cardfooter h5 {
+        font-size: 1.1em;
+    }
+    #image {
+        max-width: 400px;
+        padding-right: 0%;
+    }
+}
+@media (max-width: 1400px) {
+    #image {
+        max-width: 350px;
+        padding-right: 0%;
+    }
+}
+@media (max-width: 1100px) {
+    #image {
+        max-width: 300px;
+        padding-right: 0%;
+    }
+}
+.container {
+    width: 65%;
+}
+.comment {
+    padding: 0px 30px 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 74%;
+}
+/*----------------------------------------------------------
+6. SIDEBAR 
+----------------------------------------------------------*/
+
+/* sidebar open icon */
+.hamIcon {
+    color: #1FB24D;
+    font-weight: bold;
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #383C42; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    opacity: 0.95
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #1FB24D;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    padding: 0px;
+    top: 0;
+    right: 25px;
+    font-size: 48px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.sidenav ul{
+    list-style: none;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.dropdown li {
+    position: relative;
+    left: 15px;
+}
+
+/*----------------------------------------------------------
+7. FORMS
+----------------------------------------------------------*/
+
+#searchfield {
+    border-radius: 0px;
+    min-width: 500px;
+}
+
+#searcbutton {
+    border-radius: 0 20px 20px 0;
+}
+
+#header-line{
+    height: 7px;
+    background-color: #5cb85c;
+    margin-top: 0;
+}
+
+.circle{
+  border-radius: 50%;
+  width:100px;
+  height: 100px;
+}
+
+login-icon {
+  size: 5x;
+}
+
+.userauth {
+  text-align: center;
+  border-bottom: 7px solid #5cb85c
+}
+
+/*----------------------------------------------------------
+8. Index
+----------------------------------------------------------*/
+
+.carousel-inner{
+    max-height: 400px !important;
+    margin-bottom: 70px
+  }
+
+hr{
+    margin-bottom: 0px
+}
+
+.bestsellers{
+    text-align: center;
+
 }

@@ -1,0 +1,25 @@
+<div class="col-4 p-3 m-3 mx-auto bg-dark text-white">
+<form method="POST" action="/admin/orders/{{order.id}}?_method=put">
+ <div class="btn-group row-md-2 ml-1"><h4>ID: {{order.id}}</h4></div>
+
+ <div name="status" class="form-group">
+    <label for="status">Status:</label>
+
+  <select name="status" class="ui dropdown">
+    {{#each statuses}}
+      <option value="{{value}}" {{#if isSelected}} selected {{/if}}>{{label}}</option>
+    {{/each}}
+    </select>
+  </div> 
+
+  <div class="form-group">
+    <label for="">User ID:</label>
+    <input name="userId" type="text" value="{{order.userId}}" class="form-control">
+  </div>
+
+  
+  <button class="btn btn-success my-2 my-sm-0" type="submit">Edit</button>
+</form>
+</div>
+
+

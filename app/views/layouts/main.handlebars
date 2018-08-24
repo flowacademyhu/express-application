@@ -1,64 +1,119 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Express</title>
+  <title>ToDoShop</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+  <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+    crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <!-- Logo -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="/users"><img id="logo" src="/images/flowlogo.png"/></a>
-     <ul class="navbar-nav  ml-5">
-      <li class="nav-item dropdown ml-auto">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Products
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+    <a href="/"><img id="logo" src="/images/todologo.png" alt="Logo"></a>
+    <ul class="navbar-nav ml-5">
+      <!-- Category Sidebar -->
+       <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="dropdown">
+          {{{sidebar}}}
         </div>
-      </li>
-    </ul>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-<!-- search -->
-  <div class="collapse navbar-collapse " id="navbarSupportedContent">
-    <form class="form-inline my-2 my-lg-0  ml-auto">
-      <div class="form-group col-12">
-        <input class="form-control mr-1" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </div>
-    </form>
-    <!-- log / reg -->
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Login<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/users/new">Registration<span class="sr-only">(current)</span></a>
-      </li>
+      <!-- Use any element to open the sidenav -->
+      <div class="hamIcon" onclick="openNav()">
+        <button type="button" class="btn btn-outline-success">Categories</button>
+      </div>
     </ul>
-  </div>
-</nav>
-
-  {{{body}}}
-
-<!-- Footer -->
-<footer class="page-footer font-small mdb-color pt-1 text-white bg-dark" >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- search -->
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <form class="form-inline my-2 my-lg-0  ml-auto" action="/search/" method="GET">
+        <div class="form-group col-12">
+          <input class="form-control" id="searchfield" name="search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success my-2 my-sm-0" id="searcbutton" type="submit">Search</button>
+        </div>
+      </form>
+      <!-- log / reg -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          {{#if user}}
+          <div class="column">
+            <div class="usericons mr-3 mb-1" style="color: white">
+              Hello, {{user.username}}!
+            {{#if isAdmin}}   
+              <a href="/admin">
+                <!-- admin aloldal -->
+                <i class="fa fa-cog mx-3" aria-hidden="true" title="Admin"></i>
+              </a>
+              {{else}}
+                <a href="/users/{{user.id}}/edit">
+                <!-- setting aloldal -->
+                <i class="fa fa-cog mx-3" aria-hidden="true" title="Settings"></i>
+              </a>
+            {{/if}}
+              <a href="/cart">
+                <!-- cart oldal -->
+                <i class="fa fa-shopping-cart mr-3" aria-hidden="true" title="Cart"></i>
+              </a>
+              <a href="/users/logout">
+                <i class="fa fa-sign-out-alt mr-3" aria-hidden="true" title="Logout"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+        {{else}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/users/login">Login
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/users/new">Registration
+            <span class="sr-only">(current)</span>
+          </a>
+          {{/if}}
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <hr id="header-line" />
+    <!-- Body -->
+    {{#if alert}}
+      <div class="errorMsg">
+        <h4>
+        {{alert}}
+        </h4>
+      </div>
+    {{/if}}
+    {{{body}}}
+  <!-- Footer -->
+  <footer class="page-footer font-small mdb-color pt-1 text-white bg-dark">
     <!-- Footer Links -->
-    <div class="container text-center text-md-left" >
+    <div class="container text-center text-md-left">
       <!-- Footer links -->
       <div class="row text-center text-md-left mt-3 pb-3">
         <!-- Grid column -->
         <div class="col-md-3 col-lg-3 col-xl-4 mx-auto mt-1">
-          <h6 class="text-uppercase mb-4 font-weight-bold green">Todoshop</h6>
+          <h6 class="text-uppercase mb-4 font-weight-bold text-success">Todoshop</h6>
           <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
             adipisicing elit.</p>
         </div>
@@ -66,24 +121,35 @@
         <hr class="w-100 clearfix d-md-none">
         <!-- Grid column -->
         <div class="col-md-3 col-lg-2 col-xl-3 mx-auto mt-1">
-          <h6 class="text-uppercase mb-4 font-weight-bold green">Let us help you</h6>
-          <p><a href="#!">Your Account</a></p>
-          <p><a href="#!">Returns & Replacements</a></p>
-          <p><a href="#!">Shipping Rates</a></p>
-          <p><a href="#!">Help</a></p>
+          <h6 class="text-uppercase mb-4 font-weight-bold text-success">Let us help you</h6>
+          <p>
+            <a href="#!">Your Account</a>
+          </p>
+          <p>
+            <a href="#!">Returns & Replacements</a>
+          </p>
+          <p>
+            <a href="#!">Shipping Rates</a>
+          </p>
+          <p>
+            <a href="#!">Help</a>
+          </p>
         </div>
         <!-- Grid column -->
         <hr class="w-100 clearfix d-md-none">
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-1">
-          <h6 class="text-uppercase mb-4 font-weight-bold green">Contact</h6>
+          <h6 class="text-uppercase mb-4 font-weight-bold text-success">Contact</h6>
           <p>
             <span class="fa fa-home mr-3" aria-hidden="true"></span>17 Todo Street, Szeged, 6723
           </p>
-          <p><i class="fa fa-envelope-square mr-3" aria-hidden="true"></i>todotodosshop@gmail.com</p>
-          <p><i class="fa fa-phone mr-3" aria-hidden="true"></i>+ 36 30 234 567 88</p>
-          <p><i class="fa fa-skype mr-3" aria-hidden="true"></i>Todo.Shop18</p>
-        </div>       
+          <p>
+            <i class="fa fa-envelope-square mr-3" aria-hidden="true"></i>todotodosshop@gmail.com</p>
+          <p>
+            <i class="fa fa-phone mr-3" aria-hidden="true"></i>+ 36 30 234 567 88</p>
+          <p>
+            <i class="fab fa-skype mr-3" aria-hidden="true"></i>Todo.Shop18</p>
+        </div>
         <!-- Grid column -->
       </div>
       <!-- Footer links -->
@@ -92,7 +158,9 @@
         <!-- Grid column -->
         <div class="col-md-4 col-lg-4 text-center">
           <!--Copyright-->
-          <p class="text-center text-md-left ml-4"><b>© 2018 CODEZILLAS</b></p>
+          <p class="text-center text-md-left ml-4">
+            <b>© 2018 CODEZILLAS</b>
+          </p>
         </div>
         <!-- Grid column -->
         <div class="col-md-4 col-lg-4">
@@ -101,27 +169,27 @@
             <ul class="list-unstyled list-inline">
               <li class="list-inline-item">
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-cc-visa fa-2x"></i>
-                </a>
-              </li>
-               <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-cc-mastercard fa-2x"></i>
-                </a>
-              </li>
-               <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-cc-amex fa-2x"></i>
+                  <i class="fab fa-cc-visa fa-2x"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-paypal fa-2x"></i>
+                  <i class="fab fa-cc-mastercard fa-2x"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-google-wallet fa-2x"></i>
+                  <i class="fab fa-cc-amex fa-2x"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-paypal fa-2x"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-google-wallet fa-2x"></i>
                 </a>
               </li>
             </ul>
@@ -132,5 +200,18 @@
       <!-- Grid row -->
     </div>
   </footer>
+
+  <script>
+    /* Set the width of the side navigation to 250px */
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "25vw";
+    }
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+
 </body>
+
 </html>
