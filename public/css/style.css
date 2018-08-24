@@ -6,6 +6,7 @@
 5. Product
 6. Sidebar
 7. Forms
+8. Index page
 */
 
 /*----------------------------------------------------------
@@ -212,7 +213,7 @@ a:hover{
 .sidenav a {
     padding: 6px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     color: #f1f1f1;
     display: block;
     transition: 0.3s;
@@ -226,6 +227,7 @@ a:hover{
 /* Position and style the close button (top right corner) */
 .sidenav .closebtn {
     position: absolute;
+    padding: 0px;
     top: 0;
     right: 25px;
     font-size: 48px;
@@ -251,7 +253,7 @@ a:hover{
 
 .dropdown li {
     position: relative;
-    left: 30px;
+    left: 15px;
 }
 
 /*----------------------------------------------------------
@@ -260,7 +262,7 @@ a:hover{
 
 #searchfield {
     border-radius: 0px;
-    min-width: 400px;
+    min-width: 500px;
 }
 
 #searcbutton {
@@ -288,3 +290,20 @@ login-icon {
   border-bottom: 7px solid #5cb85c
 }
 
+/*----------------------------------------------------------
+8. Index
+----------------------------------------------------------*/
+
+.carousel-inner{
+    max-height: 400px !important;
+    margin-bottom: 70px
+  }
+
+hr{
+    margin-bottom: 0px
+}
+
+.bestsellers{
+    text-align: center;
+
+}
