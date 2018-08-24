@@ -1,6 +1,6 @@
 const express = require('express');
 const users = express.Router();
-const models = require('../models');
+const models = require('../../models');
 const bcrypt = require('bcryptjs');
 const randomstring = require('randomstring');
 const User = models.User;
@@ -10,19 +10,14 @@ const Token = models.Token;
 users.get('/', (req, res) => {
   User.findAll().then((allUser) => {
     let ctx = { users: allUser };
-    res.render('users/index.handlebars', ctx);
+    res.render('admins/users/index.handlebars', ctx);
   });
-});
-
-// New
-users.get('/new', (req, res) => {
-  res.render('users/new.handlebars');
 });
 
 // Login
 
 users.get('/login', (req, res) => {
-  res.render('users/login.handlebars');
+  res.render('admins/users/login.handlebars');
 });
 
 users.post('/login', (req, res) => {
@@ -40,7 +35,7 @@ users.post('/login', (req, res) => {
           token: tokenField
         }).then(tokenRecord => {
           res.cookie('token', tokenField);
-          res.redirect('/'); // ha lesz nyitó oldal, akkor oda kell irányítani
+          res.redirect('/users'); // ha lesz nyitó oldal, akkor oda kell irányítani
         });
       } else {
         res.redirect('/users/login');
@@ -68,7 +63,7 @@ users.get('/logout', (req, res) => {
 users.get('/:id', (req, res) => {
   User.findById(req.params.id).then((userRecord) => {
     let ctx = { user: userRecord };
-    res.render('users/show.handlebars', ctx);
+    res.render('admins/users/show.handlebars', ctx);
   });
 });
 
@@ -89,41 +84,17 @@ users.post('/', (req, res) => {
     floor: req.body.floor,
     door: req.body.door
   }).then(user => {
-    res.status(200).redirect('/');
+    res.status(200).redirect('/users');
   }).catch(error => {
     res.status(500).json(error);
   });
 });
 
-// Edit page
+// Edit
 users.get('/:id/edit', (req, res) => {
   User.findById(req.params.id).then((userRecord) => {
     let ctx = { user: userRecord };
-    res.render('users/edit.handlebars', ctx);
-  });
-});
-
-// Edit personal details
-users.get('/:id/editper', (req, res) => {
-  User.findById(req.params.id).then((userRecord) => {
-    let ctx = { user: userRecord };
-    res.render('users/editper.handlebars', ctx);
-  });
-});
-
-// Edit password
-users.get('/:id/editpw', (req, res) => {
-  User.findById(req.params.id).then((userRecord) => {
-    let ctx = { user: userRecord };
-    res.render('users/editpw.handlebars', ctx);
-  });
-});
-
-// Edit location
-users.get('/:id/editloc', (req, res) => {
-  User.findById(req.params.id).then((userRecord) => {
-    let ctx = { user: userRecord };
-    res.render('users/editloc.handlebars', ctx);
+    res.render('admins/users/edit.handlebars', ctx);
   });
 });
 
@@ -131,15 +102,6 @@ users.get('/:id/editloc', (req, res) => {
 users.put('/:id', (req, res) => {
   User.findById(req.params.id).then((userRecord) => {
     userRecord.update(req.body).then((updatedUserRecord) => {
-      res.redirect('/users/:id/edit');
-    });
-  });
-});
-
-// Destroy
-users.delete('/:id', (req, res) => {
-  User.findById(req.params.id).then((userRecord) => {
-    userRecord.destroy().then(() => {
       res.redirect('/users');
     });
   });

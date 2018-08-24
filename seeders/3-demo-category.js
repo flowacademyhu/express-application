@@ -17,10 +17,12 @@ module.exports = {
             createdAt: '2018.01.01',
             updatedAt: '2018.01.01'
           });
-        }).on('error', (err) => {
+        })
+        .on('error', (err) => {
           console.log(err);
           reject(err);
-        }).on('end', () => {
+        })
+        .on('end', () => {
           resolve(queryInterface.bulkInsert('Categories', categories).then);
         });
     });
