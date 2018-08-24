@@ -1,8 +1,14 @@
+<div class="d-flex flex-row flex-wrap align-items-center pl-5 pt-3 pb-3">
+    <h1 class="mr-auto" > <u> Products </u> </h1>
+    <a href="/admin" class="text-light bg-info mr-2 p-2 rounded"> Go back to the admin mainpage </a>
+    <a href="/admin/products/new" class="text-light bg-info ml-2 mr-5 p-2 rounded"> Create new product </a>
+</div>
+
 {{#each products}}
 
 <div class="row justify-content-center align-self-center align-items-center mt-2 mb-2">
 
-  <div>
+  <div class="col-sm-1">
     {{#if picture}}
       <img src="/uploads/{{picture}}" alt="picture" class="img-thumbnail rounded mx-auto d-block" width="85" height="85">
     {{else}}
@@ -10,17 +16,17 @@
     {{/if}}
   </div>
   <div class="btn-group col-sm-2 ml-2"><h4> {{name}}</h4></div>
-  <div class="btn-group col-sm-2 ml-2"><h4> {{description}}</h4></div>
-  <div class="btn-group col-sm-2 ml-2"><h4> {{price}}</h4></div>
+  <div class="btn-group col-sm-2 ml-2"><h5> {{description}}</h5></div>
+  <div class="btn-group col-sm-1 ml-2"><h4> {{price}}</h4></div>
   <div class="btn-group col-sm-2 ml-2"><h4> {{Category.name}}</h4></div>
     
-  <div class="btn-group col-sm-2">
+  <div class="btn-group col-sm-1 d-flex flex-wrap justify-content-center align-items-center">
     <a href="/admin/products/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>
 
     <a href="/admin/products/{{id}}/edit">
-      <button type="submit" class="btn btn-outline-success">Edit</button>
+      <button type="submit" class="btn btn-outline-success m-1">Edit</button>
     </a>
 
     <form method="POST" action="/admin/products/{{id}}?_method=delete">

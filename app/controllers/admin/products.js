@@ -44,7 +44,7 @@ products.post('/', (req, res) => {
   if (req.files.image) {
     let image = req.files.image;
     let splittedFilename = req.files.image.name.split('.');
-    fileExtension = splittedFilename[1];
+    fileExtension = splittedFilename.pop();
     image.mv((`./public/uploads/${filename}` + '.' + fileExtension), (error) => {
       if (error) {
         return res.send(error);
@@ -120,6 +120,8 @@ products.delete('/:id', (req, res) => {
   Product.findById(req.params.id).then((productRecord) => {
     productRecord.destroy().then(() => {
       res.redirect('/admin/products');
+    }).catch((error) => {
+      res.render('admins/products/error.handlebars', error);
     });
   });
 });
