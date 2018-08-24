@@ -4,32 +4,28 @@ id,parentId,name
 3,2,Smartphone
 4,2,Basic phones
 5,1,Landline telephone
-6,1,GPS
-7,0,Video
-8,5,Television
-9,5,DVD player
-10,5,Digital photo frame
-11,5,Digital camera
-12,5,Video camera
-13,0,Audio
-14,11,MP3 player
-15,11,Home cinema system
-16,11,Headset
-17,11,Mini-hifi
-18,0,Computer
-19,16,Laptop
-20,16,Notebook
-21,16,Tablet
-22,16,Personal computer
-23,16,Monitor
-24,16,Hardver
-25,0,Household appliances
-26,23,Cooker
-27,23,Hob
-28,23,Oven
-29,23,Refridgeratory
-30,23,Freezer
-31,23,Dishwasher
-32,23,Washing machine
-33,23,Kitchen appliances
-34,23,Other household appliances
+6,0,Video
+7,6,Television
+8,6,DVD player
+9,6,Digital camera
+10,6,Video camera
+11,0,Audio
+12,11,MP3 player
+13,11,Home cinema system
+14,11,Headphone
+15,11,Wireless speaker
+16,0,Computer
+17,16,Laptop
+18,16,Tablet
+19,16,Console
+20,16,Personal computer
+21,16,Monitor
+22,16,Hardver
+23,0,Household appliances
+24,23,Microwave
+25,23,Refrigerator
+26,23,Dishwasher
+27,23,Washing machine
+28,23,Kitchen appliances
+29,23,Other household appliances
+30,23,Most popular items

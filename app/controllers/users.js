@@ -41,10 +41,11 @@ users.post('/login', (req, res) => {
         }).then(tokenRecord => {
           res.cookie('token', tokenField);
           res.redirect('/'); // ha lesz nyitó oldal, akkor oda kell irányítani
-        })
+        });
       } else {
         res.redirect('/users/login');
       }
+      console.log(err);
     });
   });
 });
@@ -88,7 +89,7 @@ users.post('/', (req, res) => {
     floor: req.body.floor,
     door: req.body.door
   }).then(user => {
-    res.status(200).redirect('/users');
+    res.status(200).redirect('/');
   }).catch(error => {
     res.status(500).json(error);
   });
