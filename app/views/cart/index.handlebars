@@ -1,4 +1,7 @@
 <div class="container mx-auto mt-3">
+  <h2 style="font-weight: bold">Cart:</h2>
+  <hr color="darkgrey">
+  <br>
   {{#each results}}
   <div class="row">
     <div class="col-sm-6">
@@ -9,7 +12,7 @@
     </div>
     <div class="row col-sm-3 d-flex justify-content-end">
       <form method="POST" action="/cart/{{id}}?_method=put">
-        <input name="quantity" style="text-align: right" type="text" value="{{quantity}}" size="2">
+        <input name="quantity" style="text-align: center" type="text" value="{{quantity}}" size="2">
         <button type="submit" class="mx-2 btn btn-sm btn-outline-success">Modify</button>
       </form>
       <form method="POST" action="/cart/{{id}}?_method=delete">
