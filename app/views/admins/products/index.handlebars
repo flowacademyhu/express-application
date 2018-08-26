@@ -1,40 +1,46 @@
-<div class="d-flex flex-row flex-wrap align-items-center pl-5 pt-3 pb-3">
-    <h1 class="mr-auto" > <u> Products </u> </h1>
-    <a href="/admin" class="text-light bg-info mr-2 p-2 rounded"> Go back to the admin mainpage </a>
-    <a href="/admin/products/new" class="text-light bg-info ml-2 mr-5 p-2 rounded"> Create new product </a>
+<div class="justify-content-between d-flex flex-row flex-wrap align-items-center col-10 m-5">
+  <h1 class="mr-auto"><u>Products</u></h1>
+  <a href="/admin" class="btn btn-success mx-3"> Go back to the admin mainpage </a>
+  <a href="/admin/products/new" class="btn btn-success mx-3"> Create new product </a>
 </div>
 
 {{#each products}}
 
-<div class="row justify-content-center align-self-center align-items-center mt-2 mb-2">
+<div class="row justify-content-center align-items-center  mx-auto my-2 col-11" style=" border: 1px solid #1FB24D">
 
-  <div class="col-sm-1">
+  <div class="col-sm-2">
     {{#if picture}}
-      <img src="/uploads/{{picture}}" alt="picture" class="img-thumbnail rounded mx-auto d-block" width="85" height="85">
-    {{else}}
-      <img src="/images/noimg.jpg" alt="no-image" class="img-thumbnail rounded mx-auto d-block" width="85" height="85" >
-    {{/if}}
+    <img src="/uploads/{{picture}}" alt="picture" class="img-thumbnail rounded mx-auto d-block" width="120" height="120"> {{else}}
+    <img src="/images/noimg.jpg" alt="no-image" class="img-thumbnail rounded mx-auto d-block" width="120" height="120"> {{/if}}
   </div>
-  <div class="btn-group col-sm-2 ml-2"><h4> {{name}}</h4></div>
-  <div class="btn-group col-sm-2 ml-2"><h5> {{description}}</h5></div>
-  <div class="btn-group col-sm-1 ml-2"><h4> {{price}}</h4></div>
-  <div class="btn-group col-sm-2 ml-2"><h4> {{Category.name}}</h4></div>
-    
-  <div class="btn-group col-sm-1 d-flex flex-wrap justify-content-center align-items-center">
+  <div class="btn-group col-sm-2 ml-2">
+    <h5> {{name}}</h5>
+  </div>
+  <div class="btn-group col-sm-2 ml-3">
+    <h6> {{description}}</h6>
+  </div>
+  <div class="btn-group col-sm-1 ml-1">
+    <h5> {{price}}
+      </5>
+  </div>
+  <div class="btn-group col-sm-2 ml-1">
+    <h6> {{Category.name}}</h6>
+  </div>
+
+  <div class="column col-sm-2 ml-1">
     <a href="/admin/products/{{id}}">
-      <button type="submit" class="btn btn-outline-success">Show</button>
+      <button type="submit" class="btn btn-outline-success col-12">Show</button>
     </a>
 
     <a href="/admin/products/{{id}}/edit">
-      <button type="submit" class="btn btn-outline-success m-1">Edit</button>
+      <button type="submit" class="btn btn-outline-success col-12">Edit</button>
     </a>
 
     <form method="POST" action="/admin/products/{{id}}?_method=delete">
-      <button type="submit" class="btn btn-outline-success">Delete</button>
+      <button type="submit" class="btn btn-outline-success col-12">Delete</button>
     </form>
   </div>
- 
 </div>
- <hr style="width: 100%; color: black; height: 1px; background-color:black; padding:0; margin:0;"  />
+
 
 {{/each}}

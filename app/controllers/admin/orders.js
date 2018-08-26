@@ -39,9 +39,25 @@ orders.get('/new', (req, res) => {
 
 // Show
 orders.get('/:id', (req, res) => {
-  Order.findById(req.params.id).then((userRecord) => {
-    let ctx = { user: userRecord };
-    res.render('orders/show.handlebars', ctx);
+  Order.findOne({where: {id: req.params.id} },
+    {include: [
+      { model: User }
+    ]}
+  ).then((orderRecord) => {
+    let ctx = { order: orderRecord };
+    res.render('admins/orders/show.handlebars', ctx);
+  });
+});
+
+orders.get('/', (req, res) => {
+  Order.findAll({
+    include: [
+      { model: User }
+    ]
+  }).then((allOrder) => {
+    let ctx = { orders: allOrder };
+    res.render('admins/orders/index.handlebars', ctx);
+    /*   res.json(allOrder); */
   });
 });
 

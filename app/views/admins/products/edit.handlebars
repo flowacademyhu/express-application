@@ -13,9 +13,9 @@
     <input name="price" type="text" value="{{product.price}}" class="form-control" id="exampleInputEmail1">
   </div>
   
-  <div class="dropdown">
+  <div class="form-group dropdown">
     <label>Categories:</label><br>
-    <select class="ui dropdown" name="categoryId">
+    <select class="btn dropdown-toggle btn-block bg-white text-dark" name="categoryId">
       {{#each categories}}
         <option value="{{id}}" {{#if isSelected}} selected {{/if}} >{{name}}</option>
       {{/each}}

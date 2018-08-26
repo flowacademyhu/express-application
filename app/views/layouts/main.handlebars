@@ -25,7 +25,7 @@
 
 <body>
   <!-- Logo -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="row navbar navbar-expand-lg navbar-dark bg-dark">
     <a href="/"><img id="logo" src="/images/todologo.png" alt="Logo"></a>
     <ul class="navbar-nav ml-5">
       <!-- Category Sidebar -->
@@ -45,15 +45,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- search -->
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="form-inline my-2 my-lg-0  ml-auto" action="/search/" method="GET">
-        <div class="form-group col-12">
+        <div class="form-group">
           <input class="form-control" id="searchfield" name="search" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-success my-2 my-sm-0" id="searcbutton" type="submit">Search</button>
         </div>
       </form>
       <!-- log / reg -->
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto row">
         <li class="nav-item active">
           {{#if user}}
           <div class="column">
@@ -104,7 +104,9 @@
         </h4>
       </div>
     {{/if}}
+    <div class="contBody">
     {{{body}}}
+    </div>
   <!-- Footer -->
   <footer class="page-footer font-small mdb-color pt-1 text-white bg-dark">
     <!-- Footer Links -->
@@ -144,7 +146,7 @@
             <span class="fa fa-home mr-3" aria-hidden="true"></span>17 Todo Street, Szeged, 6723
           </p>
           <p>
-            <i class="fa fa-envelope-square mr-3" aria-hidden="true"></i>todotodosshop@gmail.com</p>
+            <i class="fa fa-envelope-square mr-3" aria-hidden="true"></i>todosshop@gmail.com</p>
           <p>
             <i class="fa fa-phone mr-3" aria-hidden="true"></i>+ 36 30 234 567 88</p>
           <p>
@@ -163,7 +165,7 @@
           </p>
         </div>
         <!-- Grid column -->
-        <div class="col-md-4 col-lg-4">
+        <div class="col-md-8 col-lg-8">
           <!-- Social buttons -->
           <div class="text-center text-md-center">
             <ul class="list-unstyled list-inline">

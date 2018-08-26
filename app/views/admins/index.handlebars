@@ -1,13 +1,21 @@
-<div class="row my-auto bg-dark">
-  <div class="btn-group-horizontal mx-auto">
-    <a href="/admin/orders">
-    <button type="submit" class="btn btn-outline-success">ORDERS ADMIN</button> </a>
-    <a href="/admin/products">
-    <button type="submit" class="btn btn-outline-success">PRODUCTS ADMIN</button></a>
-    <a href="/admin/categories">
-    <button type="submit" class="btn btn-outline-success">CATEGORY ADMIN</button></a>
-    <a href="/admin/users">
-    <button type="submit" class="btn btn-outline-success">USERS ADMIN</button></a>
-  </div>
+<div class="userauth col-sm-5 col-md-4 col-lg-4 col-xl-3 p-3 my-3 mx-auto bg-dark text-white row">
+  <form method="POST" action="/users/{{user.id}}?_method=put" class="my-3 mx-auto">
+    <div class="circle mx-auto bg-success">
+      <i class="fas fa-eye fa-4x mt-3" aria-hidden="true"></i>
+    </div>
+    <h3 class="my-4">Edit</h3>
 
+    <div>
+      <a href="/admin/orders">ORDERS ADMIN</a>
+    </div>
+    <div>
+      <a href="/admin/products">PRODUCTS ADMIN</a>
+    </div>
+     <div>
+      <a href="/admin/categories">CATEGORY ADMIN</a>
+    </div>
+    <div>
+      <a href="/admin/users">USERS ADMIN</a>
+    </div>
+  </form>
 </div>
