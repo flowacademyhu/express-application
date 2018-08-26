@@ -49,18 +49,6 @@ orders.get('/:id', (req, res) => {
   });
 });
 
-orders.get('/', (req, res) => {
-  Order.findAll({
-    include: [
-      { model: User }
-    ]
-  }).then((allOrder) => {
-    let ctx = { orders: allOrder };
-    res.render('admins/orders/index.handlebars', ctx);
-    /*   res.json(allOrder); */
-  });
-});
-
 // Create
 orders.post('/', (req, res) => {
   Order.create({
