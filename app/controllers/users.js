@@ -20,7 +20,6 @@ users.get('/new', (req, res) => {
 });
 
 // Login
-
 users.get('/login', (req, res) => {
   res.render('users/login.handlebars');
 });

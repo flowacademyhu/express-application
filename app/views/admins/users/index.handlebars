@@ -1,12 +1,25 @@
+<div class="justify-content-between d-flex flex-row flex-wrap align-items-center col-10 mx-auto my-3">
+  <h1 class="mr-auto"><u>Users</u></h1>
+  <a href="/admin" class="btn btn-success mx-3"> Go back to the admin mainpage </a>
+</div>
+
 {{#each users}}
 
-<div class="row justify-content-center align-self-center m-2">
-  <div class="btn-group col-sm-2 md-4 lg-2 xl-2"><h5>{{username}}</h5></div>
-  <div class="btn-group col-sm-2 md-4 lg-2 xl-2"><h5>{{firstName}}</h5></div>
-  <div class="btn-group col-sm-2 md-4 lg-2 xl-2"><h5> {{lastName}}</h5></div>
-  <div class="btn-group col-sm-3 md-6 lg-3 xl-3"><h5> {{email}}</h5></div>
-    
-  <div class="btn-group col-sm-2 md-4 lg-2 xl-2">
+<div class="row bordered justify-content-center col-10 mx-auto my-2">
+  <div class="align-self-center col-sm-12 col-lg-2 col-xl-2">
+    <h5>{{username}}</h5>
+  </div>
+  <div class="align-self-center col-sm-6 col-lg-2 col-xl-2">
+    <h5>{{firstName}}</h5>
+  </div>
+  <div class="align-self-center col-sm-6 col-lg-2 col-xl-2">
+    <h5> {{lastName}}</h5>
+  </div>
+  <div class="align-self-center col-sm-12 col-lg-4 col-xl-4">
+    <h5> {{email}}</h5>
+  </div>
+
+  <div class="btn-group col-sm-12 col-lg-2 col-xl-2">
     <a href="/admin/users/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>
@@ -15,8 +28,6 @@
       <button type="submit" class="btn btn-outline-success">Edit</button>
     </a>
   </div>
- 
-</div>
- <hr style="width: 100%; color: black; height: 1px; background-color:black; padding:0; margin:0;"  />
 
+</div>
 {{/each}}

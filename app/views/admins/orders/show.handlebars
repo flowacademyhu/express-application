@@ -1,9 +1,9 @@
-<div class="col-3 p-3 m-3 mx-auto bg-dark text-white">
+<div class="d-flex flex-column col-5 p-3 m-3 mx-auto bg-dark text-white">
     <h4><u>ID:</u><br/>{{order.id}}</h4>
     <h4><u>UserID:</u><br/>{{order.userId}}</h4>
-    <h4><u>User name:</u><br/>{{order.User.username}}</h4>
-    <h4><u>Delivery Address:</u><br/>{{order.deliveryAddress.zip}}, {{order.deliveryAddress.city}}</h4>
-    <h4><u>Billing Address:</u><br/>{{order.billingAddress.zip}}, {{order.billingAddress.city}}</h4>
+    <h4><u>User name:</u><br/>{{user.username}}</h4>
+    <h4><u>City:</u><br/>{{user.zip}}, {{user.city}}</h4>
+    <h4><u>Address:</u><br/>{{user.street}} {{user.houseNumber}}, {{user.floor}} f / {{user.door}} d</h4>
     <h4><u>Status:</u><br/>{{order.status}}</h4>
-    <h4><u>E-mail:</u><br/>{{order.User.email}}</h4>
+    <h4><u>E-mail:</u><br/>{{user.email}}</h4>
 </div>

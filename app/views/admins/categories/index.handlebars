@@ -1,31 +1,33 @@
-  {{#each categories}}
+<div class="d-flex justify-content-left flex-row flex-wrap align-items-center col-10 mx-auto my-4">
+  <h1 class="mr-autocol-sm-12 col-lg-3 mx-2"><u>Categories</u></h1>
+  <div class="row btn-group col-sm-12 col-lg-8 mx-2">
+    <a href="/admin/categories/new" class="btn btn-success m-2">Add new category</a>
+    <a href="/admin" class="btn btn-success m-2"> Go back to the admin mainpage</a>
+  </div>
+</div>
 
-<div class="row justify-content-center align-self-center mt-2 mb-2">
+{{#each categories}}
 
-  <div class="btn-group col-sm-2 ml-3"><h4>{{name}}</h4></div>
-    
-  <div class="btn-group col-sm-2">
+<div class="row bordered justify-content-around align-self-center col-10 mx-auto my-2">
+
+  <div class="btn-group col-sm-12 col-lg-6">
+    <h4>{{name}}</h4>
+  </div>
+
+  <div class="btn-group col-sm-12 col-lg-3">
     <a href="/admin/categories/{{id}}">
       <button type="submit" class="btn btn-outline-success">Show</button>
     </a>
 
     <a href="/admin/categories/{{id}}/edit">
-      <button type="submit" class="btn btn-outline-success">Edit</button>
+      <button type="submit" class="btn btn-outline-success mx-1">Edit</button>
     </a>
 
     <form method="POST" action="/admin/categories/{{id}}?_method=delete">
-      <button type="submit" class="btn btn-outline-success">Törlés</button>
+      <button type="submit" class="btn btn-outline-success">Delete</button>
     </form>
   </div>
- 
+
 </div>
- <hr style="width: 100%; color: black; height: 1px; background-color:black; padding:0; margin:0;"  />
 
 {{/each}}
-<div class="row justify-content-center col-sm-2 mt-2 mb-2"></div>
-<div class="btn-group col-sm-2">
-    <a href="/admin/categories/new">
-      <button type="submit" class="btn btn-outline-success">Add new category</button>
-    </a>
-</div>  
-</div>
