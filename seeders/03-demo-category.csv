@@ -1,0 +1,31 @@
+id,parentId,name
+1,0,Communication
+2,1,Mobile phone
+3,2,Smartphone
+4,2,Basic phones
+5,1,Landline telephone
+6,0,Video
+7,6,Television
+8,6,DVD player
+9,6,Digital camera
+10,6,Video camera
+11,0,Audio
+12,11,MP3 player
+13,11,Home cinema system
+14,11,Headphone
+15,11,Wireless speaker
+16,0,Computer
+17,16,Laptop
+18,16,Tablet
+19,16,Console
+20,16,Personal computer
+21,16,Monitor
+22,16,Hardver
+23,0,Household appliances
+24,23,Microwave
+25,23,Refrigerator
+26,23,Dishwasher
+27,23,Washing machine
+28,23,Kitchen appliances
+29,23,Other household appliances
+30,23,Most popular items

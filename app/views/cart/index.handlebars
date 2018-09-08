@@ -1,0 +1,32 @@
+<div class="container mx-auto mt-3">
+  <h2 style="font-weight: bold">Cart:</h2>
+  <hr color="darkgrey">
+  <br>
+  {{#each results}}
+  <div class="row">
+    <div class="col-sm-6">
+      <h4>{{Product.name}}</h4>
+    </div>
+    <div class="col-sm-3">
+      <h4>{{Product.price}} Ft</h4>
+    </div>
+    <div class="row col-sm-3 d-flex justify-content-end">
+      <form method="POST" action="/cart/{{id}}?_method=put">
+        <input name="quantity" style="text-align: center" type="text" value="{{quantity}}" size="2">
+        <button type="submit" class="mx-2 btn btn-sm btn-outline-success">Modify</button>
+      </form>
+      <form method="POST" action="/cart/{{id}}?_method=delete">
+        <button type="submit" class="btn btn-sm btn-outline-success">Delete</button>
+      </form>
+      </div>
+  </div>
+  {{/each}}
+  
+  <div class="my-3">
+  <hr id="header-line" style="height: 3px"/>
+  </div>
+  
+  <form method="GET" action="/cart/order" class="mb-3 d-flex justify-content-end mr-3">
+    <button type="submit" class="btn btn-sm btn-outline-success">Order</button>
+  </form>
+</div>

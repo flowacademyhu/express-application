@@ -1,0 +1,42 @@
+<h3 align="center" class="my-3"> Search results </h3>
+
+<div class="text-dark p-5">
+    <div class="container-fluid">
+        <div class="row products mx-auto">
+            {{#each products}}
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card shadow mx-auto">
+                    <div id="cardimg">
+                    <a href="/products/{{id}}">
+                        {{#if picture}}
+                        <div>
+                            <img class="card-img-top img-responsive" src="/uploads/{{picture}}" alt="{{name}}">
+                        </div>
+                        {{else}}
+                        <div>
+                            <img class="card-img-top img-responsive" src="/images/noimg.jpg" alt="{{name}}">
+                        </div>
+                        {{/if}}
+                    </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="/products/{{id}}">
+                            <h4 class="card-title text-capitalize">{{name}}</h4>
+                        </a>
+                        <div class="row mx-auto d-flex justify-content-between">
+                            <h5 class="card-text p-2">{{price}} Ft</h5>
+                            {{#if ../user}}
+                            <form method="POST" action="/search/{{id}}?_method=put">
+                                <input name="quantity" type="text" class="form-control text-center col-2" value="1" min="1">
+                                <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-shopping-cart" title="Add to cart" alt="add to cart"></i></button>
+                            </form>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
